@@ -1,0 +1,1830 @@
+18 Set Declarations
+    BatCompConstr1_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    BatCompConstr2_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    SoCConstr_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    SupplyConstr_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    UseConstr1_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    UseConstr2_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    batConstr1_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    batConstr2_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    bat_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    buyConstr_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    dmdConstr_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    maxEinspConstr_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    p_Nutz_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    p_bat_Lade_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    p_bat_Nutz_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    p_einsp_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    p_kauf_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+    z1_index : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :   96 : {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95}
+
+7 Var Declarations
+    bat : Size=96, Index=bat_index
+        Key : Lower : Value              : Upper : Fixed : Stale : Domain
+          0 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          1 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          2 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          3 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          4 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          5 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          6 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          7 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          8 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+          9 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         10 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         11 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         12 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         13 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         14 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         15 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         16 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         17 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         18 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         19 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         20 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         21 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         22 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         23 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         24 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         25 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         26 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         27 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         28 :     0 :                0.0 : 20000 : False : False : NonNegativeReals
+         29 :     0 : 0.0427942276000977 : 20000 : False : False : NonNegativeReals
+         30 :     0 :    0.7289959192276 : 20000 : False : False : NonNegativeReals
+         31 :     0 :    0.3644979596138 : 20000 : False : False : NonNegativeReals
+         32 :     0 :   152.485400483012 : 20000 : False : False : NonNegativeReals
+         33 :     0 :    258.11219971627 : 20000 : False : False : NonNegativeReals
+         34 :     0 :   637.686219763011 : 20000 : False : False : NonNegativeReals
+         35 :     0 :   1363.38569250703 : 20000 : False : False : NonNegativeReals
+         36 :     0 :   1160.42285334133 : 20000 : False : False : NonNegativeReals
+         37 :     0 :   2311.28535955586 : 20000 : False : False : NonNegativeReals
+         38 :     0 :   4576.55428898893 : 20000 : False : False : NonNegativeReals
+         39 :     0 :    5071.9479588531 : 20000 : False : False : NonNegativeReals
+         40 :     0 :   4877.71788117662 : 20000 : False : False : NonNegativeReals
+         41 :     0 :   4927.90498438254 : 20000 : False : False : NonNegativeReals
+         42 :     0 :   3901.50918854326 : 20000 : False : False : NonNegativeReals
+         43 :     0 :   2528.79403123707 : 20000 : False : False : NonNegativeReals
+         44 :     0 :   1264.39701561853 : 20000 : False : False : NonNegativeReals
+         45 :     0 :   632.198507809266 : 20000 : False : False : NonNegativeReals
+         46 :     0 :   1155.24615885206 : 20000 : False : False : NonNegativeReals
+         47 :     0 :   1676.46126618274 : 20000 : False : False : NonNegativeReals
+         48 :     0 :   1443.76517722942 : 20000 : False : False : NonNegativeReals
+         49 :     0 :   1761.93739231266 : 20000 : False : False : NonNegativeReals
+         50 :     0 :   1760.44599691518 : 20000 : False : False : NonNegativeReals
+         51 :     0 :   4050.77873980366 : 20000 : False : False : NonNegativeReals
+         52 :     0 :   4246.78939979225 : 20000 : False : False : NonNegativeReals
+         53 :     0 :   5671.88615274988 : 20000 : False : False : NonNegativeReals
+         54 :     0 :   8172.49513573013 : 20000 : False : False : NonNegativeReals
+         55 :     0 :   9718.60310862027 : 20000 : False : False : NonNegativeReals
+         56 :     0 :   9724.18013464473 : 20000 : False : False : NonNegativeReals
+         57 :     0 :    9516.3200666327 : 20000 : False : False : NonNegativeReals
+         58 :     0 :   9086.65776354447 : 20000 : False : False : NonNegativeReals
+         59 :     0 :    8393.9796832297 : 20000 : False : False : NonNegativeReals
+         60 :     0 :   8507.94269751944 : 20000 : False : False : NonNegativeReals
+         61 :     0 :    7925.2993384786 : 20000 : False : False : NonNegativeReals
+         62 :     0 :   7686.37416210771 : 20000 : False : False : NonNegativeReals
+         63 :     0 :   7446.24199046567 : 20000 : False : False : NonNegativeReals
+         64 :     0 :   7446.24199046567 : 20000 : False : False : NonNegativeReals
+         65 :     0 :   7446.24199046567 : 20000 : False : False : NonNegativeReals
+         66 :     0 :   7107.25254121237 : 20000 : False : False : NonNegativeReals
+         67 :     0 :   6638.50017347746 : 20000 : False : False : NonNegativeReals
+         68 :     0 :   6638.50017347746 : 20000 : False : False : NonNegativeReals
+         69 :     0 :   6638.50017347746 : 20000 : False : False : NonNegativeReals
+         70 :     0 :   6411.50166312419 : 20000 : False : False : NonNegativeReals
+         71 :     0 :    6222.1666237805 : 20000 : False : False : NonNegativeReals
+         72 :     0 :   6019.86513751559 : 20000 : False : False : NonNegativeReals
+         73 :     0 :   5774.17953090928 : 20000 : False : False : NonNegativeReals
+         74 :     0 :   5533.75184387527 : 20000 : False : False : NonNegativeReals
+         75 :     0 :   5313.19971842133 : 20000 : False : False : NonNegativeReals
+         76 :     0 :   4679.98859461956 : 20000 : False : False : NonNegativeReals
+         77 :     0 :    4050.1648576241 : 20000 : False : False : NonNegativeReals
+         78 :     0 :      3540.86236763 : 20000 : False : False : NonNegativeReals
+         79 :     0 :   3017.01160576195 : 20000 : False : False : NonNegativeReals
+         80 :     0 :   2443.46233802289 : 20000 : False : False : NonNegativeReals
+         81 :     0 :   1931.02557848766 : 20000 : False : False : NonNegativeReals
+         82 :     0 :   1453.18699808419 : 20000 : False : False : NonNegativeReals
+         83 :     0 :   1453.18699808419 : 20000 : False : False : NonNegativeReals
+         84 :     0 :   1295.29356295243 : 20000 : False : False : NonNegativeReals
+         85 :     0 :   1116.40000997297 : 20000 : False : False : NonNegativeReals
+         86 :     0 :   940.779334265739 : 20000 : False : False : NonNegativeReals
+         87 :     0 :   940.779334265739 : 20000 : False : False : NonNegativeReals
+         88 :     0 :   810.688472360373 : 20000 : False : False : NonNegativeReals
+         89 :     0 :   638.400729445741 : 20000 : False : False : NonNegativeReals
+         90 :     0 :   482.288968229666 : 20000 : False : False : NonNegativeReals
+         91 :     0 :   482.288968229666 : 20000 : False : False : NonNegativeReals
+         92 :     0 :   326.722663965076 : 20000 : False : False : NonNegativeReals
+         93 :     0 :   163.361331982538 : 20000 : False : False : NonNegativeReals
+         94 :     0 :   81.6806659912691 : 20000 : False : False : NonNegativeReals
+         95 :     0 :   40.8403329956345 : 20000 : False : False : NonNegativeReals
+    p_Nutz : Size=96, Index=p_Nutz_index
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          0 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          1 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          2 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          3 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          4 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          5 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          6 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          7 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          8 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          9 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         10 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         11 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         12 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         13 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         14 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         15 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         16 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         17 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         18 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         19 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         20 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         21 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         22 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         23 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         24 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         25 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         26 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         27 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         28 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         29 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         30 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         31 :     0 : 60.2889429181814 :  None : False : False : NonNegativeReals
+         32 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         33 :     0 : 189.090240679681 :  None : False : False : NonNegativeReals
+         34 :     0 : 184.126354109496 :  None : False : False : NonNegativeReals
+         35 :     0 : 152.460371967405 :  None : False : False : NonNegativeReals
+         36 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         37 :     0 : 208.447779040784 :  None : False : False : NonNegativeReals
+         38 :     0 : 202.965789083391 :  None : False : False : NonNegativeReals
+         39 :     0 : 291.276801273227 :  None : False : False : NonNegativeReals
+         40 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         41 :     0 : 214.143667347729 :  None : False : False : NonNegativeReals
+         42 :     0 : 736.274234504998 :  None : False : False : NonNegativeReals
+         43 :     0 : 778.442834050953 :  None : False : False : NonNegativeReals
+         44 :     0 : 814.569359304011 :  None : False : False : NonNegativeReals
+         45 :     0 : 894.200384299085 :  None : False : False : NonNegativeReals
+         46 :     0 : 270.771766584367 :  None : False : False : NonNegativeReals
+         47 :     0 : 245.643483273685 :  None : False : False : NonNegativeReals
+         48 :     0 : 718.646300287545 :  None : False : False : NonNegativeReals
+         49 :     0 : 351.608954377472 :  None : False : False : NonNegativeReals
+         50 :     0 : 219.572041334212 :  None : False : False : NonNegativeReals
+         51 :     0 : 234.419704582542 :  None : False : False : NonNegativeReals
+         52 :     0 : 319.646532302722 :  None : False : False : NonNegativeReals
+         53 :     0 : 335.693626070395 :  None : False : False : NonNegativeReals
+         54 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         55 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         56 :     0 : 642.864482238889 :  None : False : False : NonNegativeReals
+         57 :     0 : 554.389563024044 :  None : False : False : NonNegativeReals
+         58 :     0 : 305.083822980523 :  None : False : False : NonNegativeReals
+         59 :     0 : 168.818741694093 :  None : False : False : NonNegativeReals
+         60 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         61 :     0 : 114.253866732121 :  None : False : False : NonNegativeReals
+         62 :     0 : 27.8019459247589 :  None : False : False : NonNegativeReals
+         63 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         64 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         65 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         66 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         67 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         68 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         69 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         70 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         71 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         72 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         73 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         74 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         75 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         76 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         77 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         78 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         79 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         80 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         81 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         82 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         83 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         84 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         85 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         86 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         87 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         88 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         89 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         90 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         91 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         92 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         93 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         94 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         95 :     0 :              0.0 :  None : False : False : NonNegativeReals
+    p_bat_Lade : Size=96, Index=p_bat_Lade_index
+        Key : Lower : Value              : Upper  : Fixed : Stale : Domain
+          0 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          1 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          2 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          3 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          4 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          5 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          6 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          7 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          8 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+          9 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         10 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         11 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         12 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         13 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         14 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         15 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         16 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         17 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         18 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         19 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         20 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         21 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         22 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         23 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         24 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         25 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         26 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         27 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         28 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         29 :     0 : 0.0427942276000977 : 5000.0 : False : False : NonNegativeReals
+         30 :     0 :  0.686201691627502 : 5000.0 : False : False : NonNegativeReals
+         31 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         32 :     0 :   152.120902523398 : 5000.0 : False : False : NonNegativeReals
+         33 :     0 :   105.626799233258 : 5000.0 : False : False : NonNegativeReals
+         34 :     0 :   379.574020046741 : 5000.0 : False : False : NonNegativeReals
+         35 :     0 :   725.699472744018 : 5000.0 : False : False : NonNegativeReals
+         36 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         37 :     0 :   1150.86250621453 : 5000.0 : False : False : NonNegativeReals
+         38 :     0 :   2265.26892943308 : 5000.0 : False : False : NonNegativeReals
+         39 :     0 :   495.393669864163 : 5000.0 : False : False : NonNegativeReals
+         40 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         41 :     0 :   50.1871032059194 : 5000.0 : False : False : NonNegativeReals
+         42 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         43 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         44 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         45 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         46 :     0 :   523.047651042789 : 5000.0 : False : False : NonNegativeReals
+         47 :     0 :    521.21510733068 : 5000.0 : False : False : NonNegativeReals
+         48 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         49 :     0 :   318.172215083242 : 5000.0 : False : False : NonNegativeReals
+         50 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         51 :     0 :   2290.33274288848 : 5000.0 : False : False : NonNegativeReals
+         52 :     0 :   196.010659988597 : 5000.0 : False : False : NonNegativeReals
+         53 :     0 :   1425.09675295763 : 5000.0 : False : False : NonNegativeReals
+         54 :     0 :   2500.60898298025 : 5000.0 : False : False : NonNegativeReals
+         55 :     0 :   1546.10797289014 : 5000.0 : False : False : NonNegativeReals
+         56 :     0 :   5.57702602446079 : 5000.0 : False : False : NonNegativeReals
+         57 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         58 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         59 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         60 :     0 :   113.963014289737 : 5000.0 : False : False : NonNegativeReals
+         61 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         62 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         63 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         64 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         65 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         66 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         67 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         68 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         69 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         70 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         71 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         72 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         73 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         74 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         75 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         76 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         77 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         78 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         79 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         80 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         81 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         82 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         83 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         84 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         85 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         86 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         87 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         88 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         89 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         90 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         91 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         92 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         93 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         94 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+         95 :     0 :                0.0 : 5000.0 : False : False : NonNegativeReals
+    p_bat_Nutz : Size=96, Index=p_bat_Nutz_index
+        Key : Lower : Value            : Upper  : Fixed : Stale : Domain
+          0 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          1 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          2 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          3 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          4 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          5 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          6 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          7 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          8 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+          9 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         10 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         11 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         12 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         13 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         14 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         15 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         16 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         17 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         18 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         19 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         20 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         21 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         22 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         23 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         24 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         25 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         26 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         27 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         28 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         29 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         30 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         31 :     0 :  0.3644979596138 : 5000.0 : False : False : NonNegativeReals
+         32 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         33 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         34 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         35 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         36 :     0 : 202.962839165702 : 5000.0 : False : False : NonNegativeReals
+         37 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         38 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         39 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         40 :     0 : 194.230077676475 : 5000.0 : False : False : NonNegativeReals
+         41 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         42 :     0 : 1026.39579583928 : 5000.0 : False : False : NonNegativeReals
+         43 :     0 : 1372.71515730619 : 5000.0 : False : False : NonNegativeReals
+         44 :     0 : 1264.39701561853 : 5000.0 : False : False : NonNegativeReals
+         45 :     0 : 632.198507809266 : 5000.0 : False : False : NonNegativeReals
+         46 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         47 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         48 :     0 : 232.696088953316 : 5000.0 : False : False : NonNegativeReals
+         49 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         50 :     0 : 1.49139539748421 : 5000.0 : False : False : NonNegativeReals
+         51 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         52 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         53 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         54 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         55 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         56 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         57 :     0 : 207.860068012029 : 5000.0 : False : False : NonNegativeReals
+         58 :     0 : 429.662303088233 : 5000.0 : False : False : NonNegativeReals
+         59 :     0 :  692.67808031477 : 5000.0 : False : False : NonNegativeReals
+         60 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         61 :     0 : 582.643359040841 : 5000.0 : False : False : NonNegativeReals
+         62 :     0 : 238.925176370889 : 5000.0 : False : False : NonNegativeReals
+         63 :     0 : 240.132171642035 : 5000.0 : False : False : NonNegativeReals
+         64 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         65 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         66 :     0 : 338.989449253306 : 5000.0 : False : False : NonNegativeReals
+         67 :     0 : 468.752367734909 : 5000.0 : False : False : NonNegativeReals
+         68 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         69 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         70 :     0 : 226.998510353267 : 5000.0 : False : False : NonNegativeReals
+         71 :     0 : 189.335039343685 : 5000.0 : False : False : NonNegativeReals
+         72 :     0 : 202.301486264914 : 5000.0 : False : False : NonNegativeReals
+         73 :     0 : 245.685606606305 : 5000.0 : False : False : NonNegativeReals
+         74 :     0 : 240.427687034011 : 5000.0 : False : False : NonNegativeReals
+         75 :     0 : 220.552125453949 : 5000.0 : False : False : NonNegativeReals
+         76 :     0 : 633.211123801768 : 5000.0 : False : False : NonNegativeReals
+         77 :     0 : 629.823736995459 : 5000.0 : False : False : NonNegativeReals
+         78 :     0 : 509.302489994094 : 5000.0 : False : False : NonNegativeReals
+         79 :     0 :  523.85076186806 : 5000.0 : False : False : NonNegativeReals
+         80 :     0 : 573.549267739058 : 5000.0 : False : False : NonNegativeReals
+         81 :     0 : 512.436759535223 : 5000.0 : False : False : NonNegativeReals
+         82 :     0 : 477.838580403477 : 5000.0 : False : False : NonNegativeReals
+         83 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         84 :     0 : 157.893435131758 : 5000.0 : False : False : NonNegativeReals
+         85 :     0 : 178.893552979454 : 5000.0 : False : False : NonNegativeReals
+         86 :     0 : 175.620675707236 : 5000.0 : False : False : NonNegativeReals
+         87 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         88 :     0 : 130.090861905366 : 5000.0 : False : False : NonNegativeReals
+         89 :     0 : 172.287742914632 : 5000.0 : False : False : NonNegativeReals
+         90 :     0 : 156.111761216074 : 5000.0 : False : False : NonNegativeReals
+         91 :     0 :              0.0 : 5000.0 : False : False : NonNegativeReals
+         92 :     0 :  155.56630426459 : 5000.0 : False : False : NonNegativeReals
+         93 :     0 : 163.361331982538 : 5000.0 : False : False : NonNegativeReals
+         94 :     0 : 81.6806659912691 : 5000.0 : False : False : NonNegativeReals
+         95 :     0 : 40.8403329956345 : 5000.0 : False : False : NonNegativeReals
+    p_einsp : Size=96, Index=p_einsp_index
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          0 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          1 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          2 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          3 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          4 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          5 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          6 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          7 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          8 :     0 :              0.0 :  None : False : False : NonNegativeReals
+          9 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         10 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         11 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         12 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         13 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         14 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         15 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         16 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         17 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         18 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         19 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         20 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         21 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         22 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         23 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         24 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         25 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         26 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         27 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         28 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         29 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         30 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         31 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         32 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         33 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         34 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         35 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         36 :     0 : 1890.47699815035 :  None : False : False : NonNegativeReals
+         37 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         38 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         39 :     0 : 1196.24266749062 :  None : False : False : NonNegativeReals
+         40 :     0 : 1675.43093895912 :  None : False : False : NonNegativeReals
+         41 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         42 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         43 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         44 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         45 :     0 : 1859.80954465754 :  None : False : False : NonNegativeReals
+         46 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         47 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         48 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         49 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         50 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         51 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         52 :     0 : 1927.80695026964 :  None : False : False : NonNegativeReals
+         53 :     0 : 686.127143432201 :  None : False : False : NonNegativeReals
+         54 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         55 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         56 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         57 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         58 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         59 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         60 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         61 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         62 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         63 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         64 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         65 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         66 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         67 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         68 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         69 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         70 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         71 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         72 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         73 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         74 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         75 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         76 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         77 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         78 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         79 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         80 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         81 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         82 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         83 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         84 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         85 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         86 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         87 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         88 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         89 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         90 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         91 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         92 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         93 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         94 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         95 :     0 :              0.0 :  None : False : False : NonNegativeReals
+    p_kauf : Size=96, Index=p_kauf_index
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          0 :     0 : 244.038617964834 :  None : False : False : NonNegativeReals
+          1 :     0 : 234.229730103165 :  None : False : False : NonNegativeReals
+          2 :     0 : 213.902942616493 :  None : False : False : NonNegativeReals
+          3 :     0 : 201.151132207364 :  None : False : False : NonNegativeReals
+          4 :     0 : 132.972736723721 :  None : False : False : NonNegativeReals
+          5 :     0 : 178.572428299114 :  None : False : False : NonNegativeReals
+          6 :     0 : 220.909201472998 :  None : False : False : NonNegativeReals
+          7 :     0 : 175.004537770525 :  None : False : False : NonNegativeReals
+          8 :     0 : 172.071947062388 :  None : False : False : NonNegativeReals
+          9 :     0 : 162.773780087009 :  None : False : False : NonNegativeReals
+         10 :     0 : 133.217153187841 :  None : False : False : NonNegativeReals
+         11 :     0 : 160.392565792426 :  None : False : False : NonNegativeReals
+         12 :     0 : 216.924389079213 :  None : False : False : NonNegativeReals
+         13 :     0 : 169.934037849307 :  None : False : False : NonNegativeReals
+         14 :     0 : 161.293423127383 :  None : False : False : NonNegativeReals
+         15 :     0 : 128.617509962991 :  None : False : False : NonNegativeReals
+         16 :     0 : 157.679636858404 :  None : False : False : NonNegativeReals
+         17 :     0 : 168.579861244187 :  None : False : False : NonNegativeReals
+         18 :     0 : 168.504971610382 :  None : False : False : NonNegativeReals
+         19 :     0 : 532.997754188254 :  None : False : False : NonNegativeReals
+         20 :     0 : 613.014325605705 :  None : False : False : NonNegativeReals
+         21 :     0 : 609.106403382495 :  None : False : False : NonNegativeReals
+         22 :     0 : 1322.06988973729 :  None : False : False : NonNegativeReals
+         23 :     0 : 748.457952389494 :  None : False : False : NonNegativeReals
+         24 :     0 : 850.777214992791 :  None : False : False : NonNegativeReals
+         25 :     0 : 227.327194774523 :  None : False : False : NonNegativeReals
+         26 :     0 : 255.873604606837 :  None : False : False : NonNegativeReals
+         27 :     0 : 232.142474815249 :  None : False : False : NonNegativeReals
+         28 :     0 : 254.826011382043 :  None : False : False : NonNegativeReals
+         29 :     0 : 231.842158557847 :  None : False : False : NonNegativeReals
+         30 :     0 :   207.3638383504 :  None : False : False : NonNegativeReals
+         31 :     0 : 102.484571641311 :  None : False : False : NonNegativeReals
+         32 :     0 :  167.44818145223 :  None : False : False : NonNegativeReals
+         33 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         34 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         35 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         36 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         37 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         38 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         39 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         40 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         41 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         42 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         43 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         44 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         45 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         46 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         47 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         48 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         49 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         50 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         51 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         52 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         53 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         54 :     0 : 408.732218060642 :  None : False : False : NonNegativeReals
+         55 :     0 : 445.249941620976 :  None : False : False : NonNegativeReals
+         56 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         57 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         58 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         59 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         60 :     0 : 809.209433369339 :  None : False : False : NonNegativeReals
+         61 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         62 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         63 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         64 :     0 : 188.603968823329 :  None : False : False : NonNegativeReals
+         65 :     0 : 261.457550451159 :  None : False : False : NonNegativeReals
+         66 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         67 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         68 :     0 : 214.838290009648 :  None : False : False : NonNegativeReals
+         69 :     0 : 235.183741759509 :  None : False : False : NonNegativeReals
+         70 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         71 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         72 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         73 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         74 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         75 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         76 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         77 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         78 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         79 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         80 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         81 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         82 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         83 :     0 : 426.955257486552 :  None : False : False : NonNegativeReals
+         84 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         85 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         86 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         87 :     0 :  199.80073931627 :  None : False : False : NonNegativeReals
+         88 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         89 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         90 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         91 :     0 : 130.184055278078 :  None : False : False : NonNegativeReals
+         92 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         93 :     0 :              0.0 :  None : False : False : NonNegativeReals
+         94 :     0 : 84.5009468374774 :  None : False : False : NonNegativeReals
+         95 :     0 : 104.700598473195 :  None : False : False : NonNegativeReals
+    z1 : Size=96, Index=z1_index
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          0 :     0 :   0.0 :     1 : False : False : Binary
+          1 :     0 :   0.0 :     1 : False : False : Binary
+          2 :     0 :   0.0 :     1 : False : False : Binary
+          3 :     0 :   0.0 :     1 : False : False : Binary
+          4 :     0 :   0.0 :     1 : False : False : Binary
+          5 :     0 :   0.0 :     1 : False : False : Binary
+          6 :     0 :   0.0 :     1 : False : False : Binary
+          7 :     0 :   0.0 :     1 : False : False : Binary
+          8 :     0 :   0.0 :     1 : False : False : Binary
+          9 :     0 :   0.0 :     1 : False : False : Binary
+         10 :     0 :   0.0 :     1 : False : False : Binary
+         11 :     0 :   0.0 :     1 : False : False : Binary
+         12 :     0 :   0.0 :     1 : False : False : Binary
+         13 :     0 :   0.0 :     1 : False : False : Binary
+         14 :     0 :   0.0 :     1 : False : False : Binary
+         15 :     0 :   0.0 :     1 : False : False : Binary
+         16 :     0 :   0.0 :     1 : False : False : Binary
+         17 :     0 :   0.0 :     1 : False : False : Binary
+         18 :     0 :   0.0 :     1 : False : False : Binary
+         19 :     0 :   0.0 :     1 : False : False : Binary
+         20 :     0 :   0.0 :     1 : False : False : Binary
+         21 :     0 :   0.0 :     1 : False : False : Binary
+         22 :     0 :   0.0 :     1 : False : False : Binary
+         23 :     0 :   0.0 :     1 : False : False : Binary
+         24 :     0 :   0.0 :     1 : False : False : Binary
+         25 :     0 :   0.0 :     1 : False : False : Binary
+         26 :     0 :   0.0 :     1 : False : False : Binary
+         27 :     0 :   0.0 :     1 : False : False : Binary
+         28 :     0 :   0.0 :     1 : False : False : Binary
+         29 :     0 :   1.0 :     1 : False : False : Binary
+         30 :     0 :   1.0 :     1 : False : False : Binary
+         31 :     0 :   0.0 :     1 : False : False : Binary
+         32 :     0 :   1.0 :     1 : False : False : Binary
+         33 :     0 :   1.0 :     1 : False : False : Binary
+         34 :     0 :   1.0 :     1 : False : False : Binary
+         35 :     0 :   1.0 :     1 : False : False : Binary
+         36 :     0 :   0.0 :     1 : False : False : Binary
+         37 :     0 :   1.0 :     1 : False : False : Binary
+         38 :     0 :   1.0 :     1 : False : False : Binary
+         39 :     0 :   1.0 :     1 : False : False : Binary
+         40 :     0 :   0.0 :     1 : False : False : Binary
+         41 :     0 :   1.0 :     1 : False : False : Binary
+         42 :     0 :   0.0 :     1 : False : False : Binary
+         43 :     0 :   0.0 :     1 : False : False : Binary
+         44 :     0 :   0.0 :     1 : False : False : Binary
+         45 :     0 :   0.0 :     1 : False : False : Binary
+         46 :     0 :   1.0 :     1 : False : False : Binary
+         47 :     0 :   1.0 :     1 : False : False : Binary
+         48 :     0 :   0.0 :     1 : False : False : Binary
+         49 :     0 :   1.0 :     1 : False : False : Binary
+         50 :     0 :   0.0 :     1 : False : False : Binary
+         51 :     0 :   1.0 :     1 : False : False : Binary
+         52 :     0 :   1.0 :     1 : False : False : Binary
+         53 :     0 :   1.0 :     1 : False : False : Binary
+         54 :     0 :   1.0 :     1 : False : False : Binary
+         55 :     0 :   1.0 :     1 : False : False : Binary
+         56 :     0 :   1.0 :     1 : False : False : Binary
+         57 :     0 :   0.0 :     1 : False : False : Binary
+         58 :     0 :   0.0 :     1 : False : False : Binary
+         59 :     0 :   0.0 :     1 : False : False : Binary
+         60 :     0 :   1.0 :     1 : False : False : Binary
+         61 :     0 :   0.0 :     1 : False : False : Binary
+         62 :     0 :   0.0 :     1 : False : False : Binary
+         63 :     0 :   0.0 :     1 : False : False : Binary
+         64 :     0 :   0.0 :     1 : False : False : Binary
+         65 :     0 :   0.0 :     1 : False : False : Binary
+         66 :     0 :   0.0 :     1 : False : False : Binary
+         67 :     0 :   0.0 :     1 : False : False : Binary
+         68 :     0 :   0.0 :     1 : False : False : Binary
+         69 :     0 :   0.0 :     1 : False : False : Binary
+         70 :     0 :   0.0 :     1 : False : False : Binary
+         71 :     0 :   0.0 :     1 : False : False : Binary
+         72 :     0 :   0.0 :     1 : False : False : Binary
+         73 :     0 :   0.0 :     1 : False : False : Binary
+         74 :     0 :   0.0 :     1 : False : False : Binary
+         75 :     0 :   0.0 :     1 : False : False : Binary
+         76 :     0 :   0.0 :     1 : False : False : Binary
+         77 :     0 :   0.0 :     1 : False : False : Binary
+         78 :     0 :   0.0 :     1 : False : False : Binary
+         79 :     0 :   0.0 :     1 : False : False : Binary
+         80 :     0 :   0.0 :     1 : False : False : Binary
+         81 :     0 :   0.0 :     1 : False : False : Binary
+         82 :     0 :   0.0 :     1 : False : False : Binary
+         83 :     0 :   0.0 :     1 : False : False : Binary
+         84 :     0 :   0.0 :     1 : False : False : Binary
+         85 :     0 :   0.0 :     1 : False : False : Binary
+         86 :     0 :   0.0 :     1 : False : False : Binary
+         87 :     0 :   0.0 :     1 : False : False : Binary
+         88 :     0 :   0.0 :     1 : False : False : Binary
+         89 :     0 :   0.0 :     1 : False : False : Binary
+         90 :     0 :   0.0 :     1 : False : False : Binary
+         91 :     0 :   0.0 :     1 : False : False : Binary
+         92 :     0 :   0.0 :     1 : False : False : Binary
+         93 :     0 :   0.0 :     1 : False : False : Binary
+         94 :     0 :   0.0 :     1 : False : False : Binary
+         95 :     0 :   0.0 :     1 : False : False : Binary
+
+1 Objective Declarations
+    obj : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : maximize : 0.09720000000000001*p_einsp[0] - 0.1215*p_kauf[0] + 0.08872000000000001*p_einsp[1] - 0.1109*p_kauf[1] + 0.05608*p_einsp[2] - 0.0701*p_kauf[2] + 0.015600000000000001*p_einsp[3] - 0.0195*p_kauf[3] + 0.08736000000000001*p_einsp[4] - 0.1092*p_kauf[4] + 0.06176000000000001*p_einsp[5] - 0.0772*p_kauf[5] + 0.05600000000000001*p_einsp[6] - 0.07*p_kauf[6] + 8e-05*p_einsp[7] - 0.0001*p_kauf[7] + 0.06656*p_einsp[8] - 0.0832*p_kauf[8] + 0.05904000000000001*p_einsp[9] - 0.0738*p_kauf[9] + 0.03184*p_einsp[10] - 0.0398*p_kauf[10] + 0.01592*p_einsp[11] - 0.0199*p_kauf[11] + 0.048080000000000005*p_einsp[12] - 0.0601*p_kauf[12] + 0.03464*p_einsp[13] - 0.0433*p_kauf[13] + 0.036*p_einsp[14] - 0.045*p_kauf[14] - 0.0029600000000000004*p_einsp[15] + 0.0037*p_kauf[15] + 0.04000000000000001*p_einsp[16] - 0.05*p_kauf[16] + 0.02576*p_einsp[17] - 0.0322*p_kauf[17] + 0.006560000000000001*p_einsp[18] - 0.0082*p_kauf[18] + 0.03056*p_einsp[19] - 0.0382*p_kauf[19] - 0.03424*p_einsp[20] + 0.0428*p_kauf[20] + 0.011360000000000002*p_einsp[21] - 0.0142*p_kauf[21] + 0.03968*p_einsp[22] - 0.0496*p_kauf[22] + 0.07992*p_einsp[23] - 0.0999*p_kauf[23] + 0.0061600000000000005*p_einsp[24] - 0.0077*p_kauf[24] + 0.028880000000000003*p_einsp[25] - 0.0361*p_kauf[25] + 0.02408*p_einsp[26] - 0.0301*p_kauf[26] + 0.038400000000000004*p_einsp[27] - 0.048*p_kauf[27] + 0.008*p_einsp[28] - 0.01*p_kauf[28] + 0.04976*p_einsp[29] - 0.0622*p_kauf[29] + 0.07248*p_einsp[30] - 0.0906*p_kauf[30] + 0.09808*p_einsp[31] - 0.1226*p_kauf[31] + 0.05072*p_einsp[32] - 0.0634*p_kauf[32] + 0.06727999999999999*p_einsp[33] - 0.0841*p_kauf[33] + 0.07248*p_einsp[34] - 0.0906*p_kauf[34] + 0.072*p_einsp[35] - 0.09*p_kauf[35] + 0.08168*p_einsp[36] - 0.1021*p_kauf[36] + 0.07456*p_einsp[37] - 0.0932*p_kauf[37] + 0.07208*p_einsp[38] - 0.0901*p_kauf[38] + 0.07896*p_einsp[39] - 0.0987*p_kauf[39] + 0.096*p_einsp[40] - 0.12*p_kauf[40] + 0.096*p_einsp[41] - 0.12*p_kauf[41] + 0.1*p_einsp[42] - 0.125*p_kauf[42] + 0.10800000000000001*p_einsp[43] - 0.135*p_kauf[43] + 0.09416000000000001*p_einsp[44] - 0.1177*p_kauf[44] + 0.084*p_einsp[45] - 0.105*p_kauf[45] + 0.08288000000000001*p_einsp[46] - 0.1036*p_kauf[46] + 0.08768000000000001*p_einsp[47] - 0.1096*p_kauf[47] + 0.1*p_einsp[48] - 0.125*p_kauf[48] + 0.084*p_einsp[49] - 0.105*p_kauf[49] + 0.07608000000000001*p_einsp[50] - 0.0951*p_kauf[50] + 0.06352000000000001*p_einsp[51] - 0.0794*p_kauf[51] + 0.08808*p_einsp[52] - 0.1101*p_kauf[52] + 0.06808*p_einsp[53] - 0.0851*p_kauf[53] + 0.05280000000000001*p_einsp[54] - 0.066*p_kauf[54] + 0.04408000000000001*p_einsp[55] - 0.0551*p_kauf[55] + 0.06*p_einsp[56] - 0.075*p_kauf[56] + 0.064*p_einsp[57] - 0.08*p_kauf[57] + 0.06008*p_einsp[58] - 0.0751*p_kauf[58] + 0.06792000000000001*p_einsp[59] - 0.0849*p_kauf[59] + 0.01976*p_einsp[60] - 0.0247*p_kauf[60] + 0.06*p_einsp[61] - 0.075*p_kauf[61] + 0.06808*p_einsp[62] - 0.0851*p_kauf[62] + 0.10392*p_einsp[63] - 0.1299*p_kauf[63] + 0.007920000000000002*p_einsp[64] - 0.0099*p_kauf[64] + 0.04168*p_einsp[65] - 0.0521*p_kauf[65] + 0.08000000000000002*p_einsp[66] - 0.1*p_kauf[66] + 0.10832*p_einsp[67] - 0.1354*p_kauf[67] - 0.0052*p_einsp[68] + 0.0065*p_kauf[68] + 0.0504*p_einsp[69] - 0.063*p_kauf[69] + 0.12560000000000002*p_einsp[70] - 0.157*p_kauf[70] + 0.1584*p_einsp[71] - 0.198*p_kauf[71] + 0.06408000000000001*p_einsp[72] - 0.0801*p_kauf[72] + 0.10736000000000001*p_einsp[73] - 0.1342*p_kauf[73] + 0.136*p_einsp[74] - 0.17*p_kauf[74] + 0.13928000000000001*p_einsp[75] - 0.1741*p_kauf[75] + 0.13608*p_einsp[76] - 0.1701*p_kauf[76] + 0.126*p_einsp[77] - 0.1575*p_kauf[77] + 0.10167999999999999*p_einsp[78] - 0.1271*p_kauf[78] + 0.10096000000000001*p_einsp[79] - 0.1262*p_kauf[79] + 0.20088*p_einsp[80] - 0.2511*p_kauf[80] + 0.14064000000000002*p_einsp[81] - 0.1758*p_kauf[81] + 0.05632000000000001*p_einsp[82] - 0.0704*p_kauf[82] + 0.024560000000000002*p_einsp[83] - 0.0307*p_kauf[83] + 0.12792*p_einsp[84] - 0.1599*p_kauf[84] + 0.10192000000000001*p_einsp[85] - 0.1274*p_kauf[85] + 0.07032000000000001*p_einsp[86] - 0.0879*p_kauf[86] + 0.033760000000000005*p_einsp[87] - 0.0422*p_kauf[87] + 0.13368*p_einsp[88] - 0.1671*p_kauf[88] + 0.09200000000000001*p_einsp[89] - 0.115*p_kauf[89] + 0.07256*p_einsp[90] - 0.0907*p_kauf[90] + 0.044160000000000005*p_einsp[91] - 0.0552*p_kauf[91] + 0.09872*p_einsp[92] - 0.1234*p_kauf[92] + 0.08008*p_einsp[93] - 0.1001*p_kauf[93] + 0.06128*p_einsp[94] - 0.0766*p_kauf[94] + 0.03344*p_einsp[95] - 0.0418*p_kauf[95]
+
+11 Constraint Declarations
+    BatCompConstr1 : Size=96, Index=BatCompConstr1_index, Active=True
+        Key : Lower : Body                                : Upper : Active
+          0 :  -Inf :   p_bat_Lade[0] - 10000000000*z1[0] :   0.0 :   True
+          1 :  -Inf :   p_bat_Lade[1] - 10000000000*z1[1] :   0.0 :   True
+          2 :  -Inf :   p_bat_Lade[2] - 10000000000*z1[2] :   0.0 :   True
+          3 :  -Inf :   p_bat_Lade[3] - 10000000000*z1[3] :   0.0 :   True
+          4 :  -Inf :   p_bat_Lade[4] - 10000000000*z1[4] :   0.0 :   True
+          5 :  -Inf :   p_bat_Lade[5] - 10000000000*z1[5] :   0.0 :   True
+          6 :  -Inf :   p_bat_Lade[6] - 10000000000*z1[6] :   0.0 :   True
+          7 :  -Inf :   p_bat_Lade[7] - 10000000000*z1[7] :   0.0 :   True
+          8 :  -Inf :   p_bat_Lade[8] - 10000000000*z1[8] :   0.0 :   True
+          9 :  -Inf :   p_bat_Lade[9] - 10000000000*z1[9] :   0.0 :   True
+         10 :  -Inf : p_bat_Lade[10] - 10000000000*z1[10] :   0.0 :   True
+         11 :  -Inf : p_bat_Lade[11] - 10000000000*z1[11] :   0.0 :   True
+         12 :  -Inf : p_bat_Lade[12] - 10000000000*z1[12] :   0.0 :   True
+         13 :  -Inf : p_bat_Lade[13] - 10000000000*z1[13] :   0.0 :   True
+         14 :  -Inf : p_bat_Lade[14] - 10000000000*z1[14] :   0.0 :   True
+         15 :  -Inf : p_bat_Lade[15] - 10000000000*z1[15] :   0.0 :   True
+         16 :  -Inf : p_bat_Lade[16] - 10000000000*z1[16] :   0.0 :   True
+         17 :  -Inf : p_bat_Lade[17] - 10000000000*z1[17] :   0.0 :   True
+         18 :  -Inf : p_bat_Lade[18] - 10000000000*z1[18] :   0.0 :   True
+         19 :  -Inf : p_bat_Lade[19] - 10000000000*z1[19] :   0.0 :   True
+         20 :  -Inf : p_bat_Lade[20] - 10000000000*z1[20] :   0.0 :   True
+         21 :  -Inf : p_bat_Lade[21] - 10000000000*z1[21] :   0.0 :   True
+         22 :  -Inf : p_bat_Lade[22] - 10000000000*z1[22] :   0.0 :   True
+         23 :  -Inf : p_bat_Lade[23] - 10000000000*z1[23] :   0.0 :   True
+         24 :  -Inf : p_bat_Lade[24] - 10000000000*z1[24] :   0.0 :   True
+         25 :  -Inf : p_bat_Lade[25] - 10000000000*z1[25] :   0.0 :   True
+         26 :  -Inf : p_bat_Lade[26] - 10000000000*z1[26] :   0.0 :   True
+         27 :  -Inf : p_bat_Lade[27] - 10000000000*z1[27] :   0.0 :   True
+         28 :  -Inf : p_bat_Lade[28] - 10000000000*z1[28] :   0.0 :   True
+         29 :  -Inf : p_bat_Lade[29] - 10000000000*z1[29] :   0.0 :   True
+         30 :  -Inf : p_bat_Lade[30] - 10000000000*z1[30] :   0.0 :   True
+         31 :  -Inf : p_bat_Lade[31] - 10000000000*z1[31] :   0.0 :   True
+         32 :  -Inf : p_bat_Lade[32] - 10000000000*z1[32] :   0.0 :   True
+         33 :  -Inf : p_bat_Lade[33] - 10000000000*z1[33] :   0.0 :   True
+         34 :  -Inf : p_bat_Lade[34] - 10000000000*z1[34] :   0.0 :   True
+         35 :  -Inf : p_bat_Lade[35] - 10000000000*z1[35] :   0.0 :   True
+         36 :  -Inf : p_bat_Lade[36] - 10000000000*z1[36] :   0.0 :   True
+         37 :  -Inf : p_bat_Lade[37] - 10000000000*z1[37] :   0.0 :   True
+         38 :  -Inf : p_bat_Lade[38] - 10000000000*z1[38] :   0.0 :   True
+         39 :  -Inf : p_bat_Lade[39] - 10000000000*z1[39] :   0.0 :   True
+         40 :  -Inf : p_bat_Lade[40] - 10000000000*z1[40] :   0.0 :   True
+         41 :  -Inf : p_bat_Lade[41] - 10000000000*z1[41] :   0.0 :   True
+         42 :  -Inf : p_bat_Lade[42] - 10000000000*z1[42] :   0.0 :   True
+         43 :  -Inf : p_bat_Lade[43] - 10000000000*z1[43] :   0.0 :   True
+         44 :  -Inf : p_bat_Lade[44] - 10000000000*z1[44] :   0.0 :   True
+         45 :  -Inf : p_bat_Lade[45] - 10000000000*z1[45] :   0.0 :   True
+         46 :  -Inf : p_bat_Lade[46] - 10000000000*z1[46] :   0.0 :   True
+         47 :  -Inf : p_bat_Lade[47] - 10000000000*z1[47] :   0.0 :   True
+         48 :  -Inf : p_bat_Lade[48] - 10000000000*z1[48] :   0.0 :   True
+         49 :  -Inf : p_bat_Lade[49] - 10000000000*z1[49] :   0.0 :   True
+         50 :  -Inf : p_bat_Lade[50] - 10000000000*z1[50] :   0.0 :   True
+         51 :  -Inf : p_bat_Lade[51] - 10000000000*z1[51] :   0.0 :   True
+         52 :  -Inf : p_bat_Lade[52] - 10000000000*z1[52] :   0.0 :   True
+         53 :  -Inf : p_bat_Lade[53] - 10000000000*z1[53] :   0.0 :   True
+         54 :  -Inf : p_bat_Lade[54] - 10000000000*z1[54] :   0.0 :   True
+         55 :  -Inf : p_bat_Lade[55] - 10000000000*z1[55] :   0.0 :   True
+         56 :  -Inf : p_bat_Lade[56] - 10000000000*z1[56] :   0.0 :   True
+         57 :  -Inf : p_bat_Lade[57] - 10000000000*z1[57] :   0.0 :   True
+         58 :  -Inf : p_bat_Lade[58] - 10000000000*z1[58] :   0.0 :   True
+         59 :  -Inf : p_bat_Lade[59] - 10000000000*z1[59] :   0.0 :   True
+         60 :  -Inf : p_bat_Lade[60] - 10000000000*z1[60] :   0.0 :   True
+         61 :  -Inf : p_bat_Lade[61] - 10000000000*z1[61] :   0.0 :   True
+         62 :  -Inf : p_bat_Lade[62] - 10000000000*z1[62] :   0.0 :   True
+         63 :  -Inf : p_bat_Lade[63] - 10000000000*z1[63] :   0.0 :   True
+         64 :  -Inf : p_bat_Lade[64] - 10000000000*z1[64] :   0.0 :   True
+         65 :  -Inf : p_bat_Lade[65] - 10000000000*z1[65] :   0.0 :   True
+         66 :  -Inf : p_bat_Lade[66] - 10000000000*z1[66] :   0.0 :   True
+         67 :  -Inf : p_bat_Lade[67] - 10000000000*z1[67] :   0.0 :   True
+         68 :  -Inf : p_bat_Lade[68] - 10000000000*z1[68] :   0.0 :   True
+         69 :  -Inf : p_bat_Lade[69] - 10000000000*z1[69] :   0.0 :   True
+         70 :  -Inf : p_bat_Lade[70] - 10000000000*z1[70] :   0.0 :   True
+         71 :  -Inf : p_bat_Lade[71] - 10000000000*z1[71] :   0.0 :   True
+         72 :  -Inf : p_bat_Lade[72] - 10000000000*z1[72] :   0.0 :   True
+         73 :  -Inf : p_bat_Lade[73] - 10000000000*z1[73] :   0.0 :   True
+         74 :  -Inf : p_bat_Lade[74] - 10000000000*z1[74] :   0.0 :   True
+         75 :  -Inf : p_bat_Lade[75] - 10000000000*z1[75] :   0.0 :   True
+         76 :  -Inf : p_bat_Lade[76] - 10000000000*z1[76] :   0.0 :   True
+         77 :  -Inf : p_bat_Lade[77] - 10000000000*z1[77] :   0.0 :   True
+         78 :  -Inf : p_bat_Lade[78] - 10000000000*z1[78] :   0.0 :   True
+         79 :  -Inf : p_bat_Lade[79] - 10000000000*z1[79] :   0.0 :   True
+         80 :  -Inf : p_bat_Lade[80] - 10000000000*z1[80] :   0.0 :   True
+         81 :  -Inf : p_bat_Lade[81] - 10000000000*z1[81] :   0.0 :   True
+         82 :  -Inf : p_bat_Lade[82] - 10000000000*z1[82] :   0.0 :   True
+         83 :  -Inf : p_bat_Lade[83] - 10000000000*z1[83] :   0.0 :   True
+         84 :  -Inf : p_bat_Lade[84] - 10000000000*z1[84] :   0.0 :   True
+         85 :  -Inf : p_bat_Lade[85] - 10000000000*z1[85] :   0.0 :   True
+         86 :  -Inf : p_bat_Lade[86] - 10000000000*z1[86] :   0.0 :   True
+         87 :  -Inf : p_bat_Lade[87] - 10000000000*z1[87] :   0.0 :   True
+         88 :  -Inf : p_bat_Lade[88] - 10000000000*z1[88] :   0.0 :   True
+         89 :  -Inf : p_bat_Lade[89] - 10000000000*z1[89] :   0.0 :   True
+         90 :  -Inf : p_bat_Lade[90] - 10000000000*z1[90] :   0.0 :   True
+         91 :  -Inf : p_bat_Lade[91] - 10000000000*z1[91] :   0.0 :   True
+         92 :  -Inf : p_bat_Lade[92] - 10000000000*z1[92] :   0.0 :   True
+         93 :  -Inf : p_bat_Lade[93] - 10000000000*z1[93] :   0.0 :   True
+         94 :  -Inf : p_bat_Lade[94] - 10000000000*z1[94] :   0.0 :   True
+         95 :  -Inf : p_bat_Lade[95] - 10000000000*z1[95] :   0.0 :   True
+    BatCompConstr2 : Size=96, Index=BatCompConstr2_index, Active=True
+        Key : Lower : Body                                      : Upper : Active
+          0 :  -Inf :   p_bat_Nutz[0] - 10000000000*(1 - z1[0]) :   0.0 :   True
+          1 :  -Inf :   p_bat_Nutz[1] - 10000000000*(1 - z1[1]) :   0.0 :   True
+          2 :  -Inf :   p_bat_Nutz[2] - 10000000000*(1 - z1[2]) :   0.0 :   True
+          3 :  -Inf :   p_bat_Nutz[3] - 10000000000*(1 - z1[3]) :   0.0 :   True
+          4 :  -Inf :   p_bat_Nutz[4] - 10000000000*(1 - z1[4]) :   0.0 :   True
+          5 :  -Inf :   p_bat_Nutz[5] - 10000000000*(1 - z1[5]) :   0.0 :   True
+          6 :  -Inf :   p_bat_Nutz[6] - 10000000000*(1 - z1[6]) :   0.0 :   True
+          7 :  -Inf :   p_bat_Nutz[7] - 10000000000*(1 - z1[7]) :   0.0 :   True
+          8 :  -Inf :   p_bat_Nutz[8] - 10000000000*(1 - z1[8]) :   0.0 :   True
+          9 :  -Inf :   p_bat_Nutz[9] - 10000000000*(1 - z1[9]) :   0.0 :   True
+         10 :  -Inf : p_bat_Nutz[10] - 10000000000*(1 - z1[10]) :   0.0 :   True
+         11 :  -Inf : p_bat_Nutz[11] - 10000000000*(1 - z1[11]) :   0.0 :   True
+         12 :  -Inf : p_bat_Nutz[12] - 10000000000*(1 - z1[12]) :   0.0 :   True
+         13 :  -Inf : p_bat_Nutz[13] - 10000000000*(1 - z1[13]) :   0.0 :   True
+         14 :  -Inf : p_bat_Nutz[14] - 10000000000*(1 - z1[14]) :   0.0 :   True
+         15 :  -Inf : p_bat_Nutz[15] - 10000000000*(1 - z1[15]) :   0.0 :   True
+         16 :  -Inf : p_bat_Nutz[16] - 10000000000*(1 - z1[16]) :   0.0 :   True
+         17 :  -Inf : p_bat_Nutz[17] - 10000000000*(1 - z1[17]) :   0.0 :   True
+         18 :  -Inf : p_bat_Nutz[18] - 10000000000*(1 - z1[18]) :   0.0 :   True
+         19 :  -Inf : p_bat_Nutz[19] - 10000000000*(1 - z1[19]) :   0.0 :   True
+         20 :  -Inf : p_bat_Nutz[20] - 10000000000*(1 - z1[20]) :   0.0 :   True
+         21 :  -Inf : p_bat_Nutz[21] - 10000000000*(1 - z1[21]) :   0.0 :   True
+         22 :  -Inf : p_bat_Nutz[22] - 10000000000*(1 - z1[22]) :   0.0 :   True
+         23 :  -Inf : p_bat_Nutz[23] - 10000000000*(1 - z1[23]) :   0.0 :   True
+         24 :  -Inf : p_bat_Nutz[24] - 10000000000*(1 - z1[24]) :   0.0 :   True
+         25 :  -Inf : p_bat_Nutz[25] - 10000000000*(1 - z1[25]) :   0.0 :   True
+         26 :  -Inf : p_bat_Nutz[26] - 10000000000*(1 - z1[26]) :   0.0 :   True
+         27 :  -Inf : p_bat_Nutz[27] - 10000000000*(1 - z1[27]) :   0.0 :   True
+         28 :  -Inf : p_bat_Nutz[28] - 10000000000*(1 - z1[28]) :   0.0 :   True
+         29 :  -Inf : p_bat_Nutz[29] - 10000000000*(1 - z1[29]) :   0.0 :   True
+         30 :  -Inf : p_bat_Nutz[30] - 10000000000*(1 - z1[30]) :   0.0 :   True
+         31 :  -Inf : p_bat_Nutz[31] - 10000000000*(1 - z1[31]) :   0.0 :   True
+         32 :  -Inf : p_bat_Nutz[32] - 10000000000*(1 - z1[32]) :   0.0 :   True
+         33 :  -Inf : p_bat_Nutz[33] - 10000000000*(1 - z1[33]) :   0.0 :   True
+         34 :  -Inf : p_bat_Nutz[34] - 10000000000*(1 - z1[34]) :   0.0 :   True
+         35 :  -Inf : p_bat_Nutz[35] - 10000000000*(1 - z1[35]) :   0.0 :   True
+         36 :  -Inf : p_bat_Nutz[36] - 10000000000*(1 - z1[36]) :   0.0 :   True
+         37 :  -Inf : p_bat_Nutz[37] - 10000000000*(1 - z1[37]) :   0.0 :   True
+         38 :  -Inf : p_bat_Nutz[38] - 10000000000*(1 - z1[38]) :   0.0 :   True
+         39 :  -Inf : p_bat_Nutz[39] - 10000000000*(1 - z1[39]) :   0.0 :   True
+         40 :  -Inf : p_bat_Nutz[40] - 10000000000*(1 - z1[40]) :   0.0 :   True
+         41 :  -Inf : p_bat_Nutz[41] - 10000000000*(1 - z1[41]) :   0.0 :   True
+         42 :  -Inf : p_bat_Nutz[42] - 10000000000*(1 - z1[42]) :   0.0 :   True
+         43 :  -Inf : p_bat_Nutz[43] - 10000000000*(1 - z1[43]) :   0.0 :   True
+         44 :  -Inf : p_bat_Nutz[44] - 10000000000*(1 - z1[44]) :   0.0 :   True
+         45 :  -Inf : p_bat_Nutz[45] - 10000000000*(1 - z1[45]) :   0.0 :   True
+         46 :  -Inf : p_bat_Nutz[46] - 10000000000*(1 - z1[46]) :   0.0 :   True
+         47 :  -Inf : p_bat_Nutz[47] - 10000000000*(1 - z1[47]) :   0.0 :   True
+         48 :  -Inf : p_bat_Nutz[48] - 10000000000*(1 - z1[48]) :   0.0 :   True
+         49 :  -Inf : p_bat_Nutz[49] - 10000000000*(1 - z1[49]) :   0.0 :   True
+         50 :  -Inf : p_bat_Nutz[50] - 10000000000*(1 - z1[50]) :   0.0 :   True
+         51 :  -Inf : p_bat_Nutz[51] - 10000000000*(1 - z1[51]) :   0.0 :   True
+         52 :  -Inf : p_bat_Nutz[52] - 10000000000*(1 - z1[52]) :   0.0 :   True
+         53 :  -Inf : p_bat_Nutz[53] - 10000000000*(1 - z1[53]) :   0.0 :   True
+         54 :  -Inf : p_bat_Nutz[54] - 10000000000*(1 - z1[54]) :   0.0 :   True
+         55 :  -Inf : p_bat_Nutz[55] - 10000000000*(1 - z1[55]) :   0.0 :   True
+         56 :  -Inf : p_bat_Nutz[56] - 10000000000*(1 - z1[56]) :   0.0 :   True
+         57 :  -Inf : p_bat_Nutz[57] - 10000000000*(1 - z1[57]) :   0.0 :   True
+         58 :  -Inf : p_bat_Nutz[58] - 10000000000*(1 - z1[58]) :   0.0 :   True
+         59 :  -Inf : p_bat_Nutz[59] - 10000000000*(1 - z1[59]) :   0.0 :   True
+         60 :  -Inf : p_bat_Nutz[60] - 10000000000*(1 - z1[60]) :   0.0 :   True
+         61 :  -Inf : p_bat_Nutz[61] - 10000000000*(1 - z1[61]) :   0.0 :   True
+         62 :  -Inf : p_bat_Nutz[62] - 10000000000*(1 - z1[62]) :   0.0 :   True
+         63 :  -Inf : p_bat_Nutz[63] - 10000000000*(1 - z1[63]) :   0.0 :   True
+         64 :  -Inf : p_bat_Nutz[64] - 10000000000*(1 - z1[64]) :   0.0 :   True
+         65 :  -Inf : p_bat_Nutz[65] - 10000000000*(1 - z1[65]) :   0.0 :   True
+         66 :  -Inf : p_bat_Nutz[66] - 10000000000*(1 - z1[66]) :   0.0 :   True
+         67 :  -Inf : p_bat_Nutz[67] - 10000000000*(1 - z1[67]) :   0.0 :   True
+         68 :  -Inf : p_bat_Nutz[68] - 10000000000*(1 - z1[68]) :   0.0 :   True
+         69 :  -Inf : p_bat_Nutz[69] - 10000000000*(1 - z1[69]) :   0.0 :   True
+         70 :  -Inf : p_bat_Nutz[70] - 10000000000*(1 - z1[70]) :   0.0 :   True
+         71 :  -Inf : p_bat_Nutz[71] - 10000000000*(1 - z1[71]) :   0.0 :   True
+         72 :  -Inf : p_bat_Nutz[72] - 10000000000*(1 - z1[72]) :   0.0 :   True
+         73 :  -Inf : p_bat_Nutz[73] - 10000000000*(1 - z1[73]) :   0.0 :   True
+         74 :  -Inf : p_bat_Nutz[74] - 10000000000*(1 - z1[74]) :   0.0 :   True
+         75 :  -Inf : p_bat_Nutz[75] - 10000000000*(1 - z1[75]) :   0.0 :   True
+         76 :  -Inf : p_bat_Nutz[76] - 10000000000*(1 - z1[76]) :   0.0 :   True
+         77 :  -Inf : p_bat_Nutz[77] - 10000000000*(1 - z1[77]) :   0.0 :   True
+         78 :  -Inf : p_bat_Nutz[78] - 10000000000*(1 - z1[78]) :   0.0 :   True
+         79 :  -Inf : p_bat_Nutz[79] - 10000000000*(1 - z1[79]) :   0.0 :   True
+         80 :  -Inf : p_bat_Nutz[80] - 10000000000*(1 - z1[80]) :   0.0 :   True
+         81 :  -Inf : p_bat_Nutz[81] - 10000000000*(1 - z1[81]) :   0.0 :   True
+         82 :  -Inf : p_bat_Nutz[82] - 10000000000*(1 - z1[82]) :   0.0 :   True
+         83 :  -Inf : p_bat_Nutz[83] - 10000000000*(1 - z1[83]) :   0.0 :   True
+         84 :  -Inf : p_bat_Nutz[84] - 10000000000*(1 - z1[84]) :   0.0 :   True
+         85 :  -Inf : p_bat_Nutz[85] - 10000000000*(1 - z1[85]) :   0.0 :   True
+         86 :  -Inf : p_bat_Nutz[86] - 10000000000*(1 - z1[86]) :   0.0 :   True
+         87 :  -Inf : p_bat_Nutz[87] - 10000000000*(1 - z1[87]) :   0.0 :   True
+         88 :  -Inf : p_bat_Nutz[88] - 10000000000*(1 - z1[88]) :   0.0 :   True
+         89 :  -Inf : p_bat_Nutz[89] - 10000000000*(1 - z1[89]) :   0.0 :   True
+         90 :  -Inf : p_bat_Nutz[90] - 10000000000*(1 - z1[90]) :   0.0 :   True
+         91 :  -Inf : p_bat_Nutz[91] - 10000000000*(1 - z1[91]) :   0.0 :   True
+         92 :  -Inf : p_bat_Nutz[92] - 10000000000*(1 - z1[92]) :   0.0 :   True
+         93 :  -Inf : p_bat_Nutz[93] - 10000000000*(1 - z1[93]) :   0.0 :   True
+         94 :  -Inf : p_bat_Nutz[94] - 10000000000*(1 - z1[94]) :   0.0 :   True
+         95 :  -Inf : p_bat_Nutz[95] - 10000000000*(1 - z1[95]) :   0.0 :   True
+    SoCConstr : Size=96, Index=SoCConstr_index, Active=True
+        Key : Lower : Body                                    : Upper : Active
+          0 :  -Inf :   0.25*p_bat_Lade[0] - (20000 - bat[0]) :   0.0 :   True
+          1 :  -Inf :   0.25*p_bat_Lade[1] - (20000 - bat[1]) :   0.0 :   True
+          2 :  -Inf :   0.25*p_bat_Lade[2] - (20000 - bat[2]) :   0.0 :   True
+          3 :  -Inf :   0.25*p_bat_Lade[3] - (20000 - bat[3]) :   0.0 :   True
+          4 :  -Inf :   0.25*p_bat_Lade[4] - (20000 - bat[4]) :   0.0 :   True
+          5 :  -Inf :   0.25*p_bat_Lade[5] - (20000 - bat[5]) :   0.0 :   True
+          6 :  -Inf :   0.25*p_bat_Lade[6] - (20000 - bat[6]) :   0.0 :   True
+          7 :  -Inf :   0.25*p_bat_Lade[7] - (20000 - bat[7]) :   0.0 :   True
+          8 :  -Inf :   0.25*p_bat_Lade[8] - (20000 - bat[8]) :   0.0 :   True
+          9 :  -Inf :   0.25*p_bat_Lade[9] - (20000 - bat[9]) :   0.0 :   True
+         10 :  -Inf : 0.25*p_bat_Lade[10] - (20000 - bat[10]) :   0.0 :   True
+         11 :  -Inf : 0.25*p_bat_Lade[11] - (20000 - bat[11]) :   0.0 :   True
+         12 :  -Inf : 0.25*p_bat_Lade[12] - (20000 - bat[12]) :   0.0 :   True
+         13 :  -Inf : 0.25*p_bat_Lade[13] - (20000 - bat[13]) :   0.0 :   True
+         14 :  -Inf : 0.25*p_bat_Lade[14] - (20000 - bat[14]) :   0.0 :   True
+         15 :  -Inf : 0.25*p_bat_Lade[15] - (20000 - bat[15]) :   0.0 :   True
+         16 :  -Inf : 0.25*p_bat_Lade[16] - (20000 - bat[16]) :   0.0 :   True
+         17 :  -Inf : 0.25*p_bat_Lade[17] - (20000 - bat[17]) :   0.0 :   True
+         18 :  -Inf : 0.25*p_bat_Lade[18] - (20000 - bat[18]) :   0.0 :   True
+         19 :  -Inf : 0.25*p_bat_Lade[19] - (20000 - bat[19]) :   0.0 :   True
+         20 :  -Inf : 0.25*p_bat_Lade[20] - (20000 - bat[20]) :   0.0 :   True
+         21 :  -Inf : 0.25*p_bat_Lade[21] - (20000 - bat[21]) :   0.0 :   True
+         22 :  -Inf : 0.25*p_bat_Lade[22] - (20000 - bat[22]) :   0.0 :   True
+         23 :  -Inf : 0.25*p_bat_Lade[23] - (20000 - bat[23]) :   0.0 :   True
+         24 :  -Inf : 0.25*p_bat_Lade[24] - (20000 - bat[24]) :   0.0 :   True
+         25 :  -Inf : 0.25*p_bat_Lade[25] - (20000 - bat[25]) :   0.0 :   True
+         26 :  -Inf : 0.25*p_bat_Lade[26] - (20000 - bat[26]) :   0.0 :   True
+         27 :  -Inf : 0.25*p_bat_Lade[27] - (20000 - bat[27]) :   0.0 :   True
+         28 :  -Inf : 0.25*p_bat_Lade[28] - (20000 - bat[28]) :   0.0 :   True
+         29 :  -Inf : 0.25*p_bat_Lade[29] - (20000 - bat[29]) :   0.0 :   True
+         30 :  -Inf : 0.25*p_bat_Lade[30] - (20000 - bat[30]) :   0.0 :   True
+         31 :  -Inf : 0.25*p_bat_Lade[31] - (20000 - bat[31]) :   0.0 :   True
+         32 :  -Inf : 0.25*p_bat_Lade[32] - (20000 - bat[32]) :   0.0 :   True
+         33 :  -Inf : 0.25*p_bat_Lade[33] - (20000 - bat[33]) :   0.0 :   True
+         34 :  -Inf : 0.25*p_bat_Lade[34] - (20000 - bat[34]) :   0.0 :   True
+         35 :  -Inf : 0.25*p_bat_Lade[35] - (20000 - bat[35]) :   0.0 :   True
+         36 :  -Inf : 0.25*p_bat_Lade[36] - (20000 - bat[36]) :   0.0 :   True
+         37 :  -Inf : 0.25*p_bat_Lade[37] - (20000 - bat[37]) :   0.0 :   True
+         38 :  -Inf : 0.25*p_bat_Lade[38] - (20000 - bat[38]) :   0.0 :   True
+         39 :  -Inf : 0.25*p_bat_Lade[39] - (20000 - bat[39]) :   0.0 :   True
+         40 :  -Inf : 0.25*p_bat_Lade[40] - (20000 - bat[40]) :   0.0 :   True
+         41 :  -Inf : 0.25*p_bat_Lade[41] - (20000 - bat[41]) :   0.0 :   True
+         42 :  -Inf : 0.25*p_bat_Lade[42] - (20000 - bat[42]) :   0.0 :   True
+         43 :  -Inf : 0.25*p_bat_Lade[43] - (20000 - bat[43]) :   0.0 :   True
+         44 :  -Inf : 0.25*p_bat_Lade[44] - (20000 - bat[44]) :   0.0 :   True
+         45 :  -Inf : 0.25*p_bat_Lade[45] - (20000 - bat[45]) :   0.0 :   True
+         46 :  -Inf : 0.25*p_bat_Lade[46] - (20000 - bat[46]) :   0.0 :   True
+         47 :  -Inf : 0.25*p_bat_Lade[47] - (20000 - bat[47]) :   0.0 :   True
+         48 :  -Inf : 0.25*p_bat_Lade[48] - (20000 - bat[48]) :   0.0 :   True
+         49 :  -Inf : 0.25*p_bat_Lade[49] - (20000 - bat[49]) :   0.0 :   True
+         50 :  -Inf : 0.25*p_bat_Lade[50] - (20000 - bat[50]) :   0.0 :   True
+         51 :  -Inf : 0.25*p_bat_Lade[51] - (20000 - bat[51]) :   0.0 :   True
+         52 :  -Inf : 0.25*p_bat_Lade[52] - (20000 - bat[52]) :   0.0 :   True
+         53 :  -Inf : 0.25*p_bat_Lade[53] - (20000 - bat[53]) :   0.0 :   True
+         54 :  -Inf : 0.25*p_bat_Lade[54] - (20000 - bat[54]) :   0.0 :   True
+         55 :  -Inf : 0.25*p_bat_Lade[55] - (20000 - bat[55]) :   0.0 :   True
+         56 :  -Inf : 0.25*p_bat_Lade[56] - (20000 - bat[56]) :   0.0 :   True
+         57 :  -Inf : 0.25*p_bat_Lade[57] - (20000 - bat[57]) :   0.0 :   True
+         58 :  -Inf : 0.25*p_bat_Lade[58] - (20000 - bat[58]) :   0.0 :   True
+         59 :  -Inf : 0.25*p_bat_Lade[59] - (20000 - bat[59]) :   0.0 :   True
+         60 :  -Inf : 0.25*p_bat_Lade[60] - (20000 - bat[60]) :   0.0 :   True
+         61 :  -Inf : 0.25*p_bat_Lade[61] - (20000 - bat[61]) :   0.0 :   True
+         62 :  -Inf : 0.25*p_bat_Lade[62] - (20000 - bat[62]) :   0.0 :   True
+         63 :  -Inf : 0.25*p_bat_Lade[63] - (20000 - bat[63]) :   0.0 :   True
+         64 :  -Inf : 0.25*p_bat_Lade[64] - (20000 - bat[64]) :   0.0 :   True
+         65 :  -Inf : 0.25*p_bat_Lade[65] - (20000 - bat[65]) :   0.0 :   True
+         66 :  -Inf : 0.25*p_bat_Lade[66] - (20000 - bat[66]) :   0.0 :   True
+         67 :  -Inf : 0.25*p_bat_Lade[67] - (20000 - bat[67]) :   0.0 :   True
+         68 :  -Inf : 0.25*p_bat_Lade[68] - (20000 - bat[68]) :   0.0 :   True
+         69 :  -Inf : 0.25*p_bat_Lade[69] - (20000 - bat[69]) :   0.0 :   True
+         70 :  -Inf : 0.25*p_bat_Lade[70] - (20000 - bat[70]) :   0.0 :   True
+         71 :  -Inf : 0.25*p_bat_Lade[71] - (20000 - bat[71]) :   0.0 :   True
+         72 :  -Inf : 0.25*p_bat_Lade[72] - (20000 - bat[72]) :   0.0 :   True
+         73 :  -Inf : 0.25*p_bat_Lade[73] - (20000 - bat[73]) :   0.0 :   True
+         74 :  -Inf : 0.25*p_bat_Lade[74] - (20000 - bat[74]) :   0.0 :   True
+         75 :  -Inf : 0.25*p_bat_Lade[75] - (20000 - bat[75]) :   0.0 :   True
+         76 :  -Inf : 0.25*p_bat_Lade[76] - (20000 - bat[76]) :   0.0 :   True
+         77 :  -Inf : 0.25*p_bat_Lade[77] - (20000 - bat[77]) :   0.0 :   True
+         78 :  -Inf : 0.25*p_bat_Lade[78] - (20000 - bat[78]) :   0.0 :   True
+         79 :  -Inf : 0.25*p_bat_Lade[79] - (20000 - bat[79]) :   0.0 :   True
+         80 :  -Inf : 0.25*p_bat_Lade[80] - (20000 - bat[80]) :   0.0 :   True
+         81 :  -Inf : 0.25*p_bat_Lade[81] - (20000 - bat[81]) :   0.0 :   True
+         82 :  -Inf : 0.25*p_bat_Lade[82] - (20000 - bat[82]) :   0.0 :   True
+         83 :  -Inf : 0.25*p_bat_Lade[83] - (20000 - bat[83]) :   0.0 :   True
+         84 :  -Inf : 0.25*p_bat_Lade[84] - (20000 - bat[84]) :   0.0 :   True
+         85 :  -Inf : 0.25*p_bat_Lade[85] - (20000 - bat[85]) :   0.0 :   True
+         86 :  -Inf : 0.25*p_bat_Lade[86] - (20000 - bat[86]) :   0.0 :   True
+         87 :  -Inf : 0.25*p_bat_Lade[87] - (20000 - bat[87]) :   0.0 :   True
+         88 :  -Inf : 0.25*p_bat_Lade[88] - (20000 - bat[88]) :   0.0 :   True
+         89 :  -Inf : 0.25*p_bat_Lade[89] - (20000 - bat[89]) :   0.0 :   True
+         90 :  -Inf : 0.25*p_bat_Lade[90] - (20000 - bat[90]) :   0.0 :   True
+         91 :  -Inf : 0.25*p_bat_Lade[91] - (20000 - bat[91]) :   0.0 :   True
+         92 :  -Inf : 0.25*p_bat_Lade[92] - (20000 - bat[92]) :   0.0 :   True
+         93 :  -Inf : 0.25*p_bat_Lade[93] - (20000 - bat[93]) :   0.0 :   True
+         94 :  -Inf : 0.25*p_bat_Lade[94] - (20000 - bat[94]) :   0.0 :   True
+         95 :  -Inf : 0.25*p_bat_Lade[95] - (20000 - bat[95]) :   0.0 :   True
+    SupplyConstr : Size=96, Index=SupplyConstr_index, Active=True
+        Key : Lower : Body                                      : Upper                : Active
+          0 :  -Inf :    p_Nutz[0] + p_bat_Lade[0] + p_einsp[0] :                  0.0 :   True
+          1 :  -Inf :    p_Nutz[1] + p_bat_Lade[1] + p_einsp[1] :                  0.0 :   True
+          2 :  -Inf :    p_Nutz[2] + p_bat_Lade[2] + p_einsp[2] :                  0.0 :   True
+          3 :  -Inf :    p_Nutz[3] + p_bat_Lade[3] + p_einsp[3] :                  0.0 :   True
+          4 :  -Inf :    p_Nutz[4] + p_bat_Lade[4] + p_einsp[4] :                  0.0 :   True
+          5 :  -Inf :    p_Nutz[5] + p_bat_Lade[5] + p_einsp[5] :                  0.0 :   True
+          6 :  -Inf :    p_Nutz[6] + p_bat_Lade[6] + p_einsp[6] :                  0.0 :   True
+          7 :  -Inf :    p_Nutz[7] + p_bat_Lade[7] + p_einsp[7] :                  0.0 :   True
+          8 :  -Inf :    p_Nutz[8] + p_bat_Lade[8] + p_einsp[8] :                  0.0 :   True
+          9 :  -Inf :    p_Nutz[9] + p_bat_Lade[9] + p_einsp[9] :                  0.0 :   True
+         10 :  -Inf : p_Nutz[10] + p_bat_Lade[10] + p_einsp[10] :                  0.0 :   True
+         11 :  -Inf : p_Nutz[11] + p_bat_Lade[11] + p_einsp[11] :                  0.0 :   True
+         12 :  -Inf : p_Nutz[12] + p_bat_Lade[12] + p_einsp[12] :                  0.0 :   True
+         13 :  -Inf : p_Nutz[13] + p_bat_Lade[13] + p_einsp[13] :                  0.0 :   True
+         14 :  -Inf : p_Nutz[14] + p_bat_Lade[14] + p_einsp[14] :                  0.0 :   True
+         15 :  -Inf : p_Nutz[15] + p_bat_Lade[15] + p_einsp[15] :                  0.0 :   True
+         16 :  -Inf : p_Nutz[16] + p_bat_Lade[16] + p_einsp[16] :                  0.0 :   True
+         17 :  -Inf : p_Nutz[17] + p_bat_Lade[17] + p_einsp[17] :                  0.0 :   True
+         18 :  -Inf : p_Nutz[18] + p_bat_Lade[18] + p_einsp[18] :                  0.0 :   True
+         19 :  -Inf : p_Nutz[19] + p_bat_Lade[19] + p_einsp[19] :                  0.0 :   True
+         20 :  -Inf : p_Nutz[20] + p_bat_Lade[20] + p_einsp[20] :                  0.0 :   True
+         21 :  -Inf : p_Nutz[21] + p_bat_Lade[21] + p_einsp[21] :                  0.0 :   True
+         22 :  -Inf : p_Nutz[22] + p_bat_Lade[22] + p_einsp[22] :                  0.0 :   True
+         23 :  -Inf : p_Nutz[23] + p_bat_Lade[23] + p_einsp[23] :                  0.0 :   True
+         24 :  -Inf : p_Nutz[24] + p_bat_Lade[24] + p_einsp[24] :                  0.0 :   True
+         25 :  -Inf : p_Nutz[25] + p_bat_Lade[25] + p_einsp[25] :                  0.0 :   True
+         26 :  -Inf : p_Nutz[26] + p_bat_Lade[26] + p_einsp[26] :                  0.0 :   True
+         27 :  -Inf : p_Nutz[27] + p_bat_Lade[27] + p_einsp[27] :                  0.0 :   True
+         28 :  -Inf : p_Nutz[28] + p_bat_Lade[28] + p_einsp[28] :                  0.0 :   True
+         29 :  -Inf : p_Nutz[29] + p_bat_Lade[29] + p_einsp[29] : 0.042794227600097656 :   True
+         30 :  -Inf : p_Nutz[30] + p_bat_Lade[30] + p_einsp[30] :   0.6862016916275024 :   True
+         31 :  -Inf : p_Nutz[31] + p_bat_Lade[31] + p_einsp[31] :    60.28894291818142 :   True
+         32 :  -Inf : p_Nutz[32] + p_bat_Lade[32] + p_einsp[32] :    152.1209025233984 :   True
+         33 :  -Inf : p_Nutz[33] + p_bat_Lade[33] + p_einsp[33] :    294.7170399129391 :   True
+         34 :  -Inf : p_Nutz[34] + p_bat_Lade[34] + p_einsp[34] :    563.7003741562366 :   True
+         35 :  -Inf : p_Nutz[35] + p_bat_Lade[35] + p_einsp[35] :    878.1598447114229 :   True
+         36 :  -Inf : p_Nutz[36] + p_bat_Lade[36] + p_einsp[36] :   1890.4769981503487 :   True
+         37 :  -Inf : p_Nutz[37] + p_bat_Lade[37] + p_einsp[37] :    1359.310285255313 :   True
+         38 :  -Inf : p_Nutz[38] + p_bat_Lade[38] + p_einsp[38] :    2468.234718516469 :   True
+         39 :  -Inf : p_Nutz[39] + p_bat_Lade[39] + p_einsp[39] :    1982.913138628006 :   True
+         40 :  -Inf : p_Nutz[40] + p_bat_Lade[40] + p_einsp[40] :   1675.4309389591217 :   True
+         41 :  -Inf : p_Nutz[41] + p_bat_Lade[41] + p_einsp[41] :    2192.137720823288 :   True
+         42 :  -Inf : p_Nutz[42] + p_bat_Lade[42] + p_einsp[42] :    2664.081184774637 :   True
+         43 :  -Inf : p_Nutz[43] + p_bat_Lade[43] + p_einsp[43] :    2706.249784320593 :   True
+         44 :  -Inf : p_Nutz[44] + p_bat_Lade[44] + p_einsp[44] :   2742.3763095736504 :   True
+         45 :  -Inf : p_Nutz[45] + p_bat_Lade[45] + p_einsp[45] :    2754.009928956628 :   True
+         46 :  -Inf : p_Nutz[46] + p_bat_Lade[46] + p_einsp[46] :   2721.6263678967953 :   True
+         47 :  -Inf : p_Nutz[47] + p_bat_Lade[47] + p_einsp[47] :   2694.6655408740044 :   True
+         48 :  -Inf : p_Nutz[48] + p_bat_Lade[48] + p_einsp[48] :    2646.453250557184 :   True
+         49 :  -Inf : p_Nutz[49] + p_bat_Lade[49] + p_einsp[49] :   2597.5881197303534 :   True
+         50 :  -Inf : p_Nutz[50] + p_bat_Lade[50] + p_einsp[50] :   2147.3789916038513 :   True
+         51 :  -Inf : p_Nutz[51] + p_bat_Lade[51] + p_einsp[51] :   2524.7524474710226 :   True
+         52 :  -Inf : p_Nutz[52] + p_bat_Lade[52] + p_einsp[52] :    2443.464142560959 :   True
+         53 :  -Inf : p_Nutz[53] + p_bat_Lade[53] + p_einsp[53] :   2446.9175224602222 :   True
+         54 :  -Inf : p_Nutz[54] + p_bat_Lade[54] + p_einsp[54] :   2500.6089829802513 :   True
+         55 :  -Inf : p_Nutz[55] + p_bat_Lade[55] + p_einsp[55] :   1546.1079728901386 :   True
+         56 :  -Inf : p_Nutz[56] + p_bat_Lade[56] + p_einsp[56] :    648.4415082633495 :   True
+         57 :  -Inf : p_Nutz[57] + p_bat_Lade[57] + p_einsp[57] :     554.389563024044 :   True
+         58 :  -Inf : p_Nutz[58] + p_bat_Lade[58] + p_einsp[58] :    305.0838229805231 :   True
+         59 :  -Inf : p_Nutz[59] + p_bat_Lade[59] + p_einsp[59] :   168.81874169409275 :   True
+         60 :  -Inf : p_Nutz[60] + p_bat_Lade[60] + p_einsp[60] :   113.96301428973675 :   True
+         61 :  -Inf : p_Nutz[61] + p_bat_Lade[61] + p_einsp[61] :   114.25386673212051 :   True
+         62 :  -Inf : p_Nutz[62] + p_bat_Lade[62] + p_einsp[62] :    27.80194592475891 :   True
+         63 :  -Inf : p_Nutz[63] + p_bat_Lade[63] + p_einsp[63] :                  0.0 :   True
+         64 :  -Inf : p_Nutz[64] + p_bat_Lade[64] + p_einsp[64] :                  0.0 :   True
+         65 :  -Inf : p_Nutz[65] + p_bat_Lade[65] + p_einsp[65] :                  0.0 :   True
+         66 :  -Inf : p_Nutz[66] + p_bat_Lade[66] + p_einsp[66] :                  0.0 :   True
+         67 :  -Inf : p_Nutz[67] + p_bat_Lade[67] + p_einsp[67] :                  0.0 :   True
+         68 :  -Inf : p_Nutz[68] + p_bat_Lade[68] + p_einsp[68] :                  0.0 :   True
+         69 :  -Inf : p_Nutz[69] + p_bat_Lade[69] + p_einsp[69] :                  0.0 :   True
+         70 :  -Inf : p_Nutz[70] + p_bat_Lade[70] + p_einsp[70] :                  0.0 :   True
+         71 :  -Inf : p_Nutz[71] + p_bat_Lade[71] + p_einsp[71] :                  0.0 :   True
+         72 :  -Inf : p_Nutz[72] + p_bat_Lade[72] + p_einsp[72] :                  0.0 :   True
+         73 :  -Inf : p_Nutz[73] + p_bat_Lade[73] + p_einsp[73] :                  0.0 :   True
+         74 :  -Inf : p_Nutz[74] + p_bat_Lade[74] + p_einsp[74] :                  0.0 :   True
+         75 :  -Inf : p_Nutz[75] + p_bat_Lade[75] + p_einsp[75] :                  0.0 :   True
+         76 :  -Inf : p_Nutz[76] + p_bat_Lade[76] + p_einsp[76] :                  0.0 :   True
+         77 :  -Inf : p_Nutz[77] + p_bat_Lade[77] + p_einsp[77] :                  0.0 :   True
+         78 :  -Inf : p_Nutz[78] + p_bat_Lade[78] + p_einsp[78] :                  0.0 :   True
+         79 :  -Inf : p_Nutz[79] + p_bat_Lade[79] + p_einsp[79] :                  0.0 :   True
+         80 :  -Inf : p_Nutz[80] + p_bat_Lade[80] + p_einsp[80] :                  0.0 :   True
+         81 :  -Inf : p_Nutz[81] + p_bat_Lade[81] + p_einsp[81] :                  0.0 :   True
+         82 :  -Inf : p_Nutz[82] + p_bat_Lade[82] + p_einsp[82] :                  0.0 :   True
+         83 :  -Inf : p_Nutz[83] + p_bat_Lade[83] + p_einsp[83] :                  0.0 :   True
+         84 :  -Inf : p_Nutz[84] + p_bat_Lade[84] + p_einsp[84] :                  0.0 :   True
+         85 :  -Inf : p_Nutz[85] + p_bat_Lade[85] + p_einsp[85] :                  0.0 :   True
+         86 :  -Inf : p_Nutz[86] + p_bat_Lade[86] + p_einsp[86] :                  0.0 :   True
+         87 :  -Inf : p_Nutz[87] + p_bat_Lade[87] + p_einsp[87] :                  0.0 :   True
+         88 :  -Inf : p_Nutz[88] + p_bat_Lade[88] + p_einsp[88] :                  0.0 :   True
+         89 :  -Inf : p_Nutz[89] + p_bat_Lade[89] + p_einsp[89] :                  0.0 :   True
+         90 :  -Inf : p_Nutz[90] + p_bat_Lade[90] + p_einsp[90] :                  0.0 :   True
+         91 :  -Inf : p_Nutz[91] + p_bat_Lade[91] + p_einsp[91] :                  0.0 :   True
+         92 :  -Inf : p_Nutz[92] + p_bat_Lade[92] + p_einsp[92] :                  0.0 :   True
+         93 :  -Inf : p_Nutz[93] + p_bat_Lade[93] + p_einsp[93] :                  0.0 :   True
+         94 :  -Inf : p_Nutz[94] + p_bat_Lade[94] + p_einsp[94] :                  0.0 :   True
+         95 :  -Inf : p_Nutz[95] + p_bat_Lade[95] + p_einsp[95] :                  0.0 :   True
+    UseConstr1 : Size=96, Index=UseConstr1_index, Active=True
+        Key : Lower : Body                     : Upper : Active
+          0 :  -Inf :   p_bat_Nutz[0] - bat[0] :   0.0 :   True
+          1 :  -Inf :   p_bat_Nutz[1] - bat[1] :   0.0 :   True
+          2 :  -Inf :   p_bat_Nutz[2] - bat[2] :   0.0 :   True
+          3 :  -Inf :   p_bat_Nutz[3] - bat[3] :   0.0 :   True
+          4 :  -Inf :   p_bat_Nutz[4] - bat[4] :   0.0 :   True
+          5 :  -Inf :   p_bat_Nutz[5] - bat[5] :   0.0 :   True
+          6 :  -Inf :   p_bat_Nutz[6] - bat[6] :   0.0 :   True
+          7 :  -Inf :   p_bat_Nutz[7] - bat[7] :   0.0 :   True
+          8 :  -Inf :   p_bat_Nutz[8] - bat[8] :   0.0 :   True
+          9 :  -Inf :   p_bat_Nutz[9] - bat[9] :   0.0 :   True
+         10 :  -Inf : p_bat_Nutz[10] - bat[10] :   0.0 :   True
+         11 :  -Inf : p_bat_Nutz[11] - bat[11] :   0.0 :   True
+         12 :  -Inf : p_bat_Nutz[12] - bat[12] :   0.0 :   True
+         13 :  -Inf : p_bat_Nutz[13] - bat[13] :   0.0 :   True
+         14 :  -Inf : p_bat_Nutz[14] - bat[14] :   0.0 :   True
+         15 :  -Inf : p_bat_Nutz[15] - bat[15] :   0.0 :   True
+         16 :  -Inf : p_bat_Nutz[16] - bat[16] :   0.0 :   True
+         17 :  -Inf : p_bat_Nutz[17] - bat[17] :   0.0 :   True
+         18 :  -Inf : p_bat_Nutz[18] - bat[18] :   0.0 :   True
+         19 :  -Inf : p_bat_Nutz[19] - bat[19] :   0.0 :   True
+         20 :  -Inf : p_bat_Nutz[20] - bat[20] :   0.0 :   True
+         21 :  -Inf : p_bat_Nutz[21] - bat[21] :   0.0 :   True
+         22 :  -Inf : p_bat_Nutz[22] - bat[22] :   0.0 :   True
+         23 :  -Inf : p_bat_Nutz[23] - bat[23] :   0.0 :   True
+         24 :  -Inf : p_bat_Nutz[24] - bat[24] :   0.0 :   True
+         25 :  -Inf : p_bat_Nutz[25] - bat[25] :   0.0 :   True
+         26 :  -Inf : p_bat_Nutz[26] - bat[26] :   0.0 :   True
+         27 :  -Inf : p_bat_Nutz[27] - bat[27] :   0.0 :   True
+         28 :  -Inf : p_bat_Nutz[28] - bat[28] :   0.0 :   True
+         29 :  -Inf : p_bat_Nutz[29] - bat[29] :   0.0 :   True
+         30 :  -Inf : p_bat_Nutz[30] - bat[30] :   0.0 :   True
+         31 :  -Inf : p_bat_Nutz[31] - bat[31] :   0.0 :   True
+         32 :  -Inf : p_bat_Nutz[32] - bat[32] :   0.0 :   True
+         33 :  -Inf : p_bat_Nutz[33] - bat[33] :   0.0 :   True
+         34 :  -Inf : p_bat_Nutz[34] - bat[34] :   0.0 :   True
+         35 :  -Inf : p_bat_Nutz[35] - bat[35] :   0.0 :   True
+         36 :  -Inf : p_bat_Nutz[36] - bat[36] :   0.0 :   True
+         37 :  -Inf : p_bat_Nutz[37] - bat[37] :   0.0 :   True
+         38 :  -Inf : p_bat_Nutz[38] - bat[38] :   0.0 :   True
+         39 :  -Inf : p_bat_Nutz[39] - bat[39] :   0.0 :   True
+         40 :  -Inf : p_bat_Nutz[40] - bat[40] :   0.0 :   True
+         41 :  -Inf : p_bat_Nutz[41] - bat[41] :   0.0 :   True
+         42 :  -Inf : p_bat_Nutz[42] - bat[42] :   0.0 :   True
+         43 :  -Inf : p_bat_Nutz[43] - bat[43] :   0.0 :   True
+         44 :  -Inf : p_bat_Nutz[44] - bat[44] :   0.0 :   True
+         45 :  -Inf : p_bat_Nutz[45] - bat[45] :   0.0 :   True
+         46 :  -Inf : p_bat_Nutz[46] - bat[46] :   0.0 :   True
+         47 :  -Inf : p_bat_Nutz[47] - bat[47] :   0.0 :   True
+         48 :  -Inf : p_bat_Nutz[48] - bat[48] :   0.0 :   True
+         49 :  -Inf : p_bat_Nutz[49] - bat[49] :   0.0 :   True
+         50 :  -Inf : p_bat_Nutz[50] - bat[50] :   0.0 :   True
+         51 :  -Inf : p_bat_Nutz[51] - bat[51] :   0.0 :   True
+         52 :  -Inf : p_bat_Nutz[52] - bat[52] :   0.0 :   True
+         53 :  -Inf : p_bat_Nutz[53] - bat[53] :   0.0 :   True
+         54 :  -Inf : p_bat_Nutz[54] - bat[54] :   0.0 :   True
+         55 :  -Inf : p_bat_Nutz[55] - bat[55] :   0.0 :   True
+         56 :  -Inf : p_bat_Nutz[56] - bat[56] :   0.0 :   True
+         57 :  -Inf : p_bat_Nutz[57] - bat[57] :   0.0 :   True
+         58 :  -Inf : p_bat_Nutz[58] - bat[58] :   0.0 :   True
+         59 :  -Inf : p_bat_Nutz[59] - bat[59] :   0.0 :   True
+         60 :  -Inf : p_bat_Nutz[60] - bat[60] :   0.0 :   True
+         61 :  -Inf : p_bat_Nutz[61] - bat[61] :   0.0 :   True
+         62 :  -Inf : p_bat_Nutz[62] - bat[62] :   0.0 :   True
+         63 :  -Inf : p_bat_Nutz[63] - bat[63] :   0.0 :   True
+         64 :  -Inf : p_bat_Nutz[64] - bat[64] :   0.0 :   True
+         65 :  -Inf : p_bat_Nutz[65] - bat[65] :   0.0 :   True
+         66 :  -Inf : p_bat_Nutz[66] - bat[66] :   0.0 :   True
+         67 :  -Inf : p_bat_Nutz[67] - bat[67] :   0.0 :   True
+         68 :  -Inf : p_bat_Nutz[68] - bat[68] :   0.0 :   True
+         69 :  -Inf : p_bat_Nutz[69] - bat[69] :   0.0 :   True
+         70 :  -Inf : p_bat_Nutz[70] - bat[70] :   0.0 :   True
+         71 :  -Inf : p_bat_Nutz[71] - bat[71] :   0.0 :   True
+         72 :  -Inf : p_bat_Nutz[72] - bat[72] :   0.0 :   True
+         73 :  -Inf : p_bat_Nutz[73] - bat[73] :   0.0 :   True
+         74 :  -Inf : p_bat_Nutz[74] - bat[74] :   0.0 :   True
+         75 :  -Inf : p_bat_Nutz[75] - bat[75] :   0.0 :   True
+         76 :  -Inf : p_bat_Nutz[76] - bat[76] :   0.0 :   True
+         77 :  -Inf : p_bat_Nutz[77] - bat[77] :   0.0 :   True
+         78 :  -Inf : p_bat_Nutz[78] - bat[78] :   0.0 :   True
+         79 :  -Inf : p_bat_Nutz[79] - bat[79] :   0.0 :   True
+         80 :  -Inf : p_bat_Nutz[80] - bat[80] :   0.0 :   True
+         81 :  -Inf : p_bat_Nutz[81] - bat[81] :   0.0 :   True
+         82 :  -Inf : p_bat_Nutz[82] - bat[82] :   0.0 :   True
+         83 :  -Inf : p_bat_Nutz[83] - bat[83] :   0.0 :   True
+         84 :  -Inf : p_bat_Nutz[84] - bat[84] :   0.0 :   True
+         85 :  -Inf : p_bat_Nutz[85] - bat[85] :   0.0 :   True
+         86 :  -Inf : p_bat_Nutz[86] - bat[86] :   0.0 :   True
+         87 :  -Inf : p_bat_Nutz[87] - bat[87] :   0.0 :   True
+         88 :  -Inf : p_bat_Nutz[88] - bat[88] :   0.0 :   True
+         89 :  -Inf : p_bat_Nutz[89] - bat[89] :   0.0 :   True
+         90 :  -Inf : p_bat_Nutz[90] - bat[90] :   0.0 :   True
+         91 :  -Inf : p_bat_Nutz[91] - bat[91] :   0.0 :   True
+         92 :  -Inf : p_bat_Nutz[92] - bat[92] :   0.0 :   True
+         93 :  -Inf : p_bat_Nutz[93] - bat[93] :   0.0 :   True
+         94 :  -Inf : p_bat_Nutz[94] - bat[94] :   0.0 :   True
+         95 :  -Inf : p_bat_Nutz[95] - bat[95] :   0.0 :   True
+    UseConstr2 : Size=96, Index=UseConstr2_index, Active=True
+        Key : Lower : Body           : Upper   : Active
+          0 :  -Inf :  p_bat_Nutz[0] : 20000.0 :   True
+          1 :  -Inf :  p_bat_Nutz[1] : 20000.0 :   True
+          2 :  -Inf :  p_bat_Nutz[2] : 20000.0 :   True
+          3 :  -Inf :  p_bat_Nutz[3] : 20000.0 :   True
+          4 :  -Inf :  p_bat_Nutz[4] : 20000.0 :   True
+          5 :  -Inf :  p_bat_Nutz[5] : 20000.0 :   True
+          6 :  -Inf :  p_bat_Nutz[6] : 20000.0 :   True
+          7 :  -Inf :  p_bat_Nutz[7] : 20000.0 :   True
+          8 :  -Inf :  p_bat_Nutz[8] : 20000.0 :   True
+          9 :  -Inf :  p_bat_Nutz[9] : 20000.0 :   True
+         10 :  -Inf : p_bat_Nutz[10] : 20000.0 :   True
+         11 :  -Inf : p_bat_Nutz[11] : 20000.0 :   True
+         12 :  -Inf : p_bat_Nutz[12] : 20000.0 :   True
+         13 :  -Inf : p_bat_Nutz[13] : 20000.0 :   True
+         14 :  -Inf : p_bat_Nutz[14] : 20000.0 :   True
+         15 :  -Inf : p_bat_Nutz[15] : 20000.0 :   True
+         16 :  -Inf : p_bat_Nutz[16] : 20000.0 :   True
+         17 :  -Inf : p_bat_Nutz[17] : 20000.0 :   True
+         18 :  -Inf : p_bat_Nutz[18] : 20000.0 :   True
+         19 :  -Inf : p_bat_Nutz[19] : 20000.0 :   True
+         20 :  -Inf : p_bat_Nutz[20] : 20000.0 :   True
+         21 :  -Inf : p_bat_Nutz[21] : 20000.0 :   True
+         22 :  -Inf : p_bat_Nutz[22] : 20000.0 :   True
+         23 :  -Inf : p_bat_Nutz[23] : 20000.0 :   True
+         24 :  -Inf : p_bat_Nutz[24] : 20000.0 :   True
+         25 :  -Inf : p_bat_Nutz[25] : 20000.0 :   True
+         26 :  -Inf : p_bat_Nutz[26] : 20000.0 :   True
+         27 :  -Inf : p_bat_Nutz[27] : 20000.0 :   True
+         28 :  -Inf : p_bat_Nutz[28] : 20000.0 :   True
+         29 :  -Inf : p_bat_Nutz[29] : 20000.0 :   True
+         30 :  -Inf : p_bat_Nutz[30] : 20000.0 :   True
+         31 :  -Inf : p_bat_Nutz[31] : 20000.0 :   True
+         32 :  -Inf : p_bat_Nutz[32] : 20000.0 :   True
+         33 :  -Inf : p_bat_Nutz[33] : 20000.0 :   True
+         34 :  -Inf : p_bat_Nutz[34] : 20000.0 :   True
+         35 :  -Inf : p_bat_Nutz[35] : 20000.0 :   True
+         36 :  -Inf : p_bat_Nutz[36] : 20000.0 :   True
+         37 :  -Inf : p_bat_Nutz[37] : 20000.0 :   True
+         38 :  -Inf : p_bat_Nutz[38] : 20000.0 :   True
+         39 :  -Inf : p_bat_Nutz[39] : 20000.0 :   True
+         40 :  -Inf : p_bat_Nutz[40] : 20000.0 :   True
+         41 :  -Inf : p_bat_Nutz[41] : 20000.0 :   True
+         42 :  -Inf : p_bat_Nutz[42] : 20000.0 :   True
+         43 :  -Inf : p_bat_Nutz[43] : 20000.0 :   True
+         44 :  -Inf : p_bat_Nutz[44] : 20000.0 :   True
+         45 :  -Inf : p_bat_Nutz[45] : 20000.0 :   True
+         46 :  -Inf : p_bat_Nutz[46] : 20000.0 :   True
+         47 :  -Inf : p_bat_Nutz[47] : 20000.0 :   True
+         48 :  -Inf : p_bat_Nutz[48] : 20000.0 :   True
+         49 :  -Inf : p_bat_Nutz[49] : 20000.0 :   True
+         50 :  -Inf : p_bat_Nutz[50] : 20000.0 :   True
+         51 :  -Inf : p_bat_Nutz[51] : 20000.0 :   True
+         52 :  -Inf : p_bat_Nutz[52] : 20000.0 :   True
+         53 :  -Inf : p_bat_Nutz[53] : 20000.0 :   True
+         54 :  -Inf : p_bat_Nutz[54] : 20000.0 :   True
+         55 :  -Inf : p_bat_Nutz[55] : 20000.0 :   True
+         56 :  -Inf : p_bat_Nutz[56] : 20000.0 :   True
+         57 :  -Inf : p_bat_Nutz[57] : 20000.0 :   True
+         58 :  -Inf : p_bat_Nutz[58] : 20000.0 :   True
+         59 :  -Inf : p_bat_Nutz[59] : 20000.0 :   True
+         60 :  -Inf : p_bat_Nutz[60] : 20000.0 :   True
+         61 :  -Inf : p_bat_Nutz[61] : 20000.0 :   True
+         62 :  -Inf : p_bat_Nutz[62] : 20000.0 :   True
+         63 :  -Inf : p_bat_Nutz[63] : 20000.0 :   True
+         64 :  -Inf : p_bat_Nutz[64] : 20000.0 :   True
+         65 :  -Inf : p_bat_Nutz[65] : 20000.0 :   True
+         66 :  -Inf : p_bat_Nutz[66] : 20000.0 :   True
+         67 :  -Inf : p_bat_Nutz[67] : 20000.0 :   True
+         68 :  -Inf : p_bat_Nutz[68] : 20000.0 :   True
+         69 :  -Inf : p_bat_Nutz[69] : 20000.0 :   True
+         70 :  -Inf : p_bat_Nutz[70] : 20000.0 :   True
+         71 :  -Inf : p_bat_Nutz[71] : 20000.0 :   True
+         72 :  -Inf : p_bat_Nutz[72] : 20000.0 :   True
+         73 :  -Inf : p_bat_Nutz[73] : 20000.0 :   True
+         74 :  -Inf : p_bat_Nutz[74] : 20000.0 :   True
+         75 :  -Inf : p_bat_Nutz[75] : 20000.0 :   True
+         76 :  -Inf : p_bat_Nutz[76] : 20000.0 :   True
+         77 :  -Inf : p_bat_Nutz[77] : 20000.0 :   True
+         78 :  -Inf : p_bat_Nutz[78] : 20000.0 :   True
+         79 :  -Inf : p_bat_Nutz[79] : 20000.0 :   True
+         80 :  -Inf : p_bat_Nutz[80] : 20000.0 :   True
+         81 :  -Inf : p_bat_Nutz[81] : 20000.0 :   True
+         82 :  -Inf : p_bat_Nutz[82] : 20000.0 :   True
+         83 :  -Inf : p_bat_Nutz[83] : 20000.0 :   True
+         84 :  -Inf : p_bat_Nutz[84] : 20000.0 :   True
+         85 :  -Inf : p_bat_Nutz[85] : 20000.0 :   True
+         86 :  -Inf : p_bat_Nutz[86] : 20000.0 :   True
+         87 :  -Inf : p_bat_Nutz[87] : 20000.0 :   True
+         88 :  -Inf : p_bat_Nutz[88] : 20000.0 :   True
+         89 :  -Inf : p_bat_Nutz[89] : 20000.0 :   True
+         90 :  -Inf : p_bat_Nutz[90] : 20000.0 :   True
+         91 :  -Inf : p_bat_Nutz[91] : 20000.0 :   True
+         92 :  -Inf : p_bat_Nutz[92] : 20000.0 :   True
+         93 :  -Inf : p_bat_Nutz[93] : 20000.0 :   True
+         94 :  -Inf : p_bat_Nutz[94] : 20000.0 :   True
+         95 :  -Inf : p_bat_Nutz[95] : 20000.0 :   True
+    batConstr1 : Size=96, Index=batConstr1_index, Active=True
+        Key : Lower : Body                                                : Upper : Active
+          0 :   0.0 :                                              bat[0] :  +Inf :   True
+          1 :  -Inf :     bat[0] + p_bat_Lade[1] - p_bat_Nutz[1] - bat[1] :   0.0 :   True
+          2 :  -Inf :     bat[1] + p_bat_Lade[2] - p_bat_Nutz[2] - bat[2] :   0.0 :   True
+          3 :  -Inf :     bat[2] + p_bat_Lade[3] - p_bat_Nutz[3] - bat[3] :   0.0 :   True
+          4 :  -Inf :     bat[3] + p_bat_Lade[4] - p_bat_Nutz[4] - bat[4] :   0.0 :   True
+          5 :  -Inf :     bat[4] + p_bat_Lade[5] - p_bat_Nutz[5] - bat[5] :   0.0 :   True
+          6 :  -Inf :     bat[5] + p_bat_Lade[6] - p_bat_Nutz[6] - bat[6] :   0.0 :   True
+          7 :  -Inf :     bat[6] + p_bat_Lade[7] - p_bat_Nutz[7] - bat[7] :   0.0 :   True
+          8 :  -Inf :     bat[7] + p_bat_Lade[8] - p_bat_Nutz[8] - bat[8] :   0.0 :   True
+          9 :  -Inf :     bat[8] + p_bat_Lade[9] - p_bat_Nutz[9] - bat[9] :   0.0 :   True
+         10 :  -Inf :  bat[9] + p_bat_Lade[10] - p_bat_Nutz[10] - bat[10] :   0.0 :   True
+         11 :  -Inf : bat[10] + p_bat_Lade[11] - p_bat_Nutz[11] - bat[11] :   0.0 :   True
+         12 :  -Inf : bat[11] + p_bat_Lade[12] - p_bat_Nutz[12] - bat[12] :   0.0 :   True
+         13 :  -Inf : bat[12] + p_bat_Lade[13] - p_bat_Nutz[13] - bat[13] :   0.0 :   True
+         14 :  -Inf : bat[13] + p_bat_Lade[14] - p_bat_Nutz[14] - bat[14] :   0.0 :   True
+         15 :  -Inf : bat[14] + p_bat_Lade[15] - p_bat_Nutz[15] - bat[15] :   0.0 :   True
+         16 :  -Inf : bat[15] + p_bat_Lade[16] - p_bat_Nutz[16] - bat[16] :   0.0 :   True
+         17 :  -Inf : bat[16] + p_bat_Lade[17] - p_bat_Nutz[17] - bat[17] :   0.0 :   True
+         18 :  -Inf : bat[17] + p_bat_Lade[18] - p_bat_Nutz[18] - bat[18] :   0.0 :   True
+         19 :  -Inf : bat[18] + p_bat_Lade[19] - p_bat_Nutz[19] - bat[19] :   0.0 :   True
+         20 :  -Inf : bat[19] + p_bat_Lade[20] - p_bat_Nutz[20] - bat[20] :   0.0 :   True
+         21 :  -Inf : bat[20] + p_bat_Lade[21] - p_bat_Nutz[21] - bat[21] :   0.0 :   True
+         22 :  -Inf : bat[21] + p_bat_Lade[22] - p_bat_Nutz[22] - bat[22] :   0.0 :   True
+         23 :  -Inf : bat[22] + p_bat_Lade[23] - p_bat_Nutz[23] - bat[23] :   0.0 :   True
+         24 :  -Inf : bat[23] + p_bat_Lade[24] - p_bat_Nutz[24] - bat[24] :   0.0 :   True
+         25 :  -Inf : bat[24] + p_bat_Lade[25] - p_bat_Nutz[25] - bat[25] :   0.0 :   True
+         26 :  -Inf : bat[25] + p_bat_Lade[26] - p_bat_Nutz[26] - bat[26] :   0.0 :   True
+         27 :  -Inf : bat[26] + p_bat_Lade[27] - p_bat_Nutz[27] - bat[27] :   0.0 :   True
+         28 :  -Inf : bat[27] + p_bat_Lade[28] - p_bat_Nutz[28] - bat[28] :   0.0 :   True
+         29 :  -Inf : bat[28] + p_bat_Lade[29] - p_bat_Nutz[29] - bat[29] :   0.0 :   True
+         30 :  -Inf : bat[29] + p_bat_Lade[30] - p_bat_Nutz[30] - bat[30] :   0.0 :   True
+         31 :  -Inf : bat[30] + p_bat_Lade[31] - p_bat_Nutz[31] - bat[31] :   0.0 :   True
+         32 :  -Inf : bat[31] + p_bat_Lade[32] - p_bat_Nutz[32] - bat[32] :   0.0 :   True
+         33 :  -Inf : bat[32] + p_bat_Lade[33] - p_bat_Nutz[33] - bat[33] :   0.0 :   True
+         34 :  -Inf : bat[33] + p_bat_Lade[34] - p_bat_Nutz[34] - bat[34] :   0.0 :   True
+         35 :  -Inf : bat[34] + p_bat_Lade[35] - p_bat_Nutz[35] - bat[35] :   0.0 :   True
+         36 :  -Inf : bat[35] + p_bat_Lade[36] - p_bat_Nutz[36] - bat[36] :   0.0 :   True
+         37 :  -Inf : bat[36] + p_bat_Lade[37] - p_bat_Nutz[37] - bat[37] :   0.0 :   True
+         38 :  -Inf : bat[37] + p_bat_Lade[38] - p_bat_Nutz[38] - bat[38] :   0.0 :   True
+         39 :  -Inf : bat[38] + p_bat_Lade[39] - p_bat_Nutz[39] - bat[39] :   0.0 :   True
+         40 :  -Inf : bat[39] + p_bat_Lade[40] - p_bat_Nutz[40] - bat[40] :   0.0 :   True
+         41 :  -Inf : bat[40] + p_bat_Lade[41] - p_bat_Nutz[41] - bat[41] :   0.0 :   True
+         42 :  -Inf : bat[41] + p_bat_Lade[42] - p_bat_Nutz[42] - bat[42] :   0.0 :   True
+         43 :  -Inf : bat[42] + p_bat_Lade[43] - p_bat_Nutz[43] - bat[43] :   0.0 :   True
+         44 :  -Inf : bat[43] + p_bat_Lade[44] - p_bat_Nutz[44] - bat[44] :   0.0 :   True
+         45 :  -Inf : bat[44] + p_bat_Lade[45] - p_bat_Nutz[45] - bat[45] :   0.0 :   True
+         46 :  -Inf : bat[45] + p_bat_Lade[46] - p_bat_Nutz[46] - bat[46] :   0.0 :   True
+         47 :  -Inf : bat[46] + p_bat_Lade[47] - p_bat_Nutz[47] - bat[47] :   0.0 :   True
+         48 :  -Inf : bat[47] + p_bat_Lade[48] - p_bat_Nutz[48] - bat[48] :   0.0 :   True
+         49 :  -Inf : bat[48] + p_bat_Lade[49] - p_bat_Nutz[49] - bat[49] :   0.0 :   True
+         50 :  -Inf : bat[49] + p_bat_Lade[50] - p_bat_Nutz[50] - bat[50] :   0.0 :   True
+         51 :  -Inf : bat[50] + p_bat_Lade[51] - p_bat_Nutz[51] - bat[51] :   0.0 :   True
+         52 :  -Inf : bat[51] + p_bat_Lade[52] - p_bat_Nutz[52] - bat[52] :   0.0 :   True
+         53 :  -Inf : bat[52] + p_bat_Lade[53] - p_bat_Nutz[53] - bat[53] :   0.0 :   True
+         54 :  -Inf : bat[53] + p_bat_Lade[54] - p_bat_Nutz[54] - bat[54] :   0.0 :   True
+         55 :  -Inf : bat[54] + p_bat_Lade[55] - p_bat_Nutz[55] - bat[55] :   0.0 :   True
+         56 :  -Inf : bat[55] + p_bat_Lade[56] - p_bat_Nutz[56] - bat[56] :   0.0 :   True
+         57 :  -Inf : bat[56] + p_bat_Lade[57] - p_bat_Nutz[57] - bat[57] :   0.0 :   True
+         58 :  -Inf : bat[57] + p_bat_Lade[58] - p_bat_Nutz[58] - bat[58] :   0.0 :   True
+         59 :  -Inf : bat[58] + p_bat_Lade[59] - p_bat_Nutz[59] - bat[59] :   0.0 :   True
+         60 :  -Inf : bat[59] + p_bat_Lade[60] - p_bat_Nutz[60] - bat[60] :   0.0 :   True
+         61 :  -Inf : bat[60] + p_bat_Lade[61] - p_bat_Nutz[61] - bat[61] :   0.0 :   True
+         62 :  -Inf : bat[61] + p_bat_Lade[62] - p_bat_Nutz[62] - bat[62] :   0.0 :   True
+         63 :  -Inf : bat[62] + p_bat_Lade[63] - p_bat_Nutz[63] - bat[63] :   0.0 :   True
+         64 :  -Inf : bat[63] + p_bat_Lade[64] - p_bat_Nutz[64] - bat[64] :   0.0 :   True
+         65 :  -Inf : bat[64] + p_bat_Lade[65] - p_bat_Nutz[65] - bat[65] :   0.0 :   True
+         66 :  -Inf : bat[65] + p_bat_Lade[66] - p_bat_Nutz[66] - bat[66] :   0.0 :   True
+         67 :  -Inf : bat[66] + p_bat_Lade[67] - p_bat_Nutz[67] - bat[67] :   0.0 :   True
+         68 :  -Inf : bat[67] + p_bat_Lade[68] - p_bat_Nutz[68] - bat[68] :   0.0 :   True
+         69 :  -Inf : bat[68] + p_bat_Lade[69] - p_bat_Nutz[69] - bat[69] :   0.0 :   True
+         70 :  -Inf : bat[69] + p_bat_Lade[70] - p_bat_Nutz[70] - bat[70] :   0.0 :   True
+         71 :  -Inf : bat[70] + p_bat_Lade[71] - p_bat_Nutz[71] - bat[71] :   0.0 :   True
+         72 :  -Inf : bat[71] + p_bat_Lade[72] - p_bat_Nutz[72] - bat[72] :   0.0 :   True
+         73 :  -Inf : bat[72] + p_bat_Lade[73] - p_bat_Nutz[73] - bat[73] :   0.0 :   True
+         74 :  -Inf : bat[73] + p_bat_Lade[74] - p_bat_Nutz[74] - bat[74] :   0.0 :   True
+         75 :  -Inf : bat[74] + p_bat_Lade[75] - p_bat_Nutz[75] - bat[75] :   0.0 :   True
+         76 :  -Inf : bat[75] + p_bat_Lade[76] - p_bat_Nutz[76] - bat[76] :   0.0 :   True
+         77 :  -Inf : bat[76] + p_bat_Lade[77] - p_bat_Nutz[77] - bat[77] :   0.0 :   True
+         78 :  -Inf : bat[77] + p_bat_Lade[78] - p_bat_Nutz[78] - bat[78] :   0.0 :   True
+         79 :  -Inf : bat[78] + p_bat_Lade[79] - p_bat_Nutz[79] - bat[79] :   0.0 :   True
+         80 :  -Inf : bat[79] + p_bat_Lade[80] - p_bat_Nutz[80] - bat[80] :   0.0 :   True
+         81 :  -Inf : bat[80] + p_bat_Lade[81] - p_bat_Nutz[81] - bat[81] :   0.0 :   True
+         82 :  -Inf : bat[81] + p_bat_Lade[82] - p_bat_Nutz[82] - bat[82] :   0.0 :   True
+         83 :  -Inf : bat[82] + p_bat_Lade[83] - p_bat_Nutz[83] - bat[83] :   0.0 :   True
+         84 :  -Inf : bat[83] + p_bat_Lade[84] - p_bat_Nutz[84] - bat[84] :   0.0 :   True
+         85 :  -Inf : bat[84] + p_bat_Lade[85] - p_bat_Nutz[85] - bat[85] :   0.0 :   True
+         86 :  -Inf : bat[85] + p_bat_Lade[86] - p_bat_Nutz[86] - bat[86] :   0.0 :   True
+         87 :  -Inf : bat[86] + p_bat_Lade[87] - p_bat_Nutz[87] - bat[87] :   0.0 :   True
+         88 :  -Inf : bat[87] + p_bat_Lade[88] - p_bat_Nutz[88] - bat[88] :   0.0 :   True
+         89 :  -Inf : bat[88] + p_bat_Lade[89] - p_bat_Nutz[89] - bat[89] :   0.0 :   True
+         90 :  -Inf : bat[89] + p_bat_Lade[90] - p_bat_Nutz[90] - bat[90] :   0.0 :   True
+         91 :  -Inf : bat[90] + p_bat_Lade[91] - p_bat_Nutz[91] - bat[91] :   0.0 :   True
+         92 :  -Inf : bat[91] + p_bat_Lade[92] - p_bat_Nutz[92] - bat[92] :   0.0 :   True
+         93 :  -Inf : bat[92] + p_bat_Lade[93] - p_bat_Nutz[93] - bat[93] :   0.0 :   True
+         94 :  -Inf : bat[93] + p_bat_Lade[94] - p_bat_Nutz[94] - bat[94] :   0.0 :   True
+         95 :  -Inf : bat[94] + p_bat_Lade[95] - p_bat_Nutz[95] - bat[95] :   0.0 :   True
+    batConstr2 : Size=96, Index=batConstr2_index, Active=True
+        Key : Lower : Body                                                  : Upper : Active
+          0 :  -Inf :                                                bat[0] :   0.0 :   True
+          1 :  -Inf :     bat[1] - (bat[0] + p_bat_Lade[1] - p_bat_Nutz[1]) :   0.0 :   True
+          2 :  -Inf :     bat[2] - (bat[1] + p_bat_Lade[2] - p_bat_Nutz[2]) :   0.0 :   True
+          3 :  -Inf :     bat[3] - (bat[2] + p_bat_Lade[3] - p_bat_Nutz[3]) :   0.0 :   True
+          4 :  -Inf :     bat[4] - (bat[3] + p_bat_Lade[4] - p_bat_Nutz[4]) :   0.0 :   True
+          5 :  -Inf :     bat[5] - (bat[4] + p_bat_Lade[5] - p_bat_Nutz[5]) :   0.0 :   True
+          6 :  -Inf :     bat[6] - (bat[5] + p_bat_Lade[6] - p_bat_Nutz[6]) :   0.0 :   True
+          7 :  -Inf :     bat[7] - (bat[6] + p_bat_Lade[7] - p_bat_Nutz[7]) :   0.0 :   True
+          8 :  -Inf :     bat[8] - (bat[7] + p_bat_Lade[8] - p_bat_Nutz[8]) :   0.0 :   True
+          9 :  -Inf :     bat[9] - (bat[8] + p_bat_Lade[9] - p_bat_Nutz[9]) :   0.0 :   True
+         10 :  -Inf :  bat[10] - (bat[9] + p_bat_Lade[10] - p_bat_Nutz[10]) :   0.0 :   True
+         11 :  -Inf : bat[11] - (bat[10] + p_bat_Lade[11] - p_bat_Nutz[11]) :   0.0 :   True
+         12 :  -Inf : bat[12] - (bat[11] + p_bat_Lade[12] - p_bat_Nutz[12]) :   0.0 :   True
+         13 :  -Inf : bat[13] - (bat[12] + p_bat_Lade[13] - p_bat_Nutz[13]) :   0.0 :   True
+         14 :  -Inf : bat[14] - (bat[13] + p_bat_Lade[14] - p_bat_Nutz[14]) :   0.0 :   True
+         15 :  -Inf : bat[15] - (bat[14] + p_bat_Lade[15] - p_bat_Nutz[15]) :   0.0 :   True
+         16 :  -Inf : bat[16] - (bat[15] + p_bat_Lade[16] - p_bat_Nutz[16]) :   0.0 :   True
+         17 :  -Inf : bat[17] - (bat[16] + p_bat_Lade[17] - p_bat_Nutz[17]) :   0.0 :   True
+         18 :  -Inf : bat[18] - (bat[17] + p_bat_Lade[18] - p_bat_Nutz[18]) :   0.0 :   True
+         19 :  -Inf : bat[19] - (bat[18] + p_bat_Lade[19] - p_bat_Nutz[19]) :   0.0 :   True
+         20 :  -Inf : bat[20] - (bat[19] + p_bat_Lade[20] - p_bat_Nutz[20]) :   0.0 :   True
+         21 :  -Inf : bat[21] - (bat[20] + p_bat_Lade[21] - p_bat_Nutz[21]) :   0.0 :   True
+         22 :  -Inf : bat[22] - (bat[21] + p_bat_Lade[22] - p_bat_Nutz[22]) :   0.0 :   True
+         23 :  -Inf : bat[23] - (bat[22] + p_bat_Lade[23] - p_bat_Nutz[23]) :   0.0 :   True
+         24 :  -Inf : bat[24] - (bat[23] + p_bat_Lade[24] - p_bat_Nutz[24]) :   0.0 :   True
+         25 :  -Inf : bat[25] - (bat[24] + p_bat_Lade[25] - p_bat_Nutz[25]) :   0.0 :   True
+         26 :  -Inf : bat[26] - (bat[25] + p_bat_Lade[26] - p_bat_Nutz[26]) :   0.0 :   True
+         27 :  -Inf : bat[27] - (bat[26] + p_bat_Lade[27] - p_bat_Nutz[27]) :   0.0 :   True
+         28 :  -Inf : bat[28] - (bat[27] + p_bat_Lade[28] - p_bat_Nutz[28]) :   0.0 :   True
+         29 :  -Inf : bat[29] - (bat[28] + p_bat_Lade[29] - p_bat_Nutz[29]) :   0.0 :   True
+         30 :  -Inf : bat[30] - (bat[29] + p_bat_Lade[30] - p_bat_Nutz[30]) :   0.0 :   True
+         31 :  -Inf : bat[31] - (bat[30] + p_bat_Lade[31] - p_bat_Nutz[31]) :   0.0 :   True
+         32 :  -Inf : bat[32] - (bat[31] + p_bat_Lade[32] - p_bat_Nutz[32]) :   0.0 :   True
+         33 :  -Inf : bat[33] - (bat[32] + p_bat_Lade[33] - p_bat_Nutz[33]) :   0.0 :   True
+         34 :  -Inf : bat[34] - (bat[33] + p_bat_Lade[34] - p_bat_Nutz[34]) :   0.0 :   True
+         35 :  -Inf : bat[35] - (bat[34] + p_bat_Lade[35] - p_bat_Nutz[35]) :   0.0 :   True
+         36 :  -Inf : bat[36] - (bat[35] + p_bat_Lade[36] - p_bat_Nutz[36]) :   0.0 :   True
+         37 :  -Inf : bat[37] - (bat[36] + p_bat_Lade[37] - p_bat_Nutz[37]) :   0.0 :   True
+         38 :  -Inf : bat[38] - (bat[37] + p_bat_Lade[38] - p_bat_Nutz[38]) :   0.0 :   True
+         39 :  -Inf : bat[39] - (bat[38] + p_bat_Lade[39] - p_bat_Nutz[39]) :   0.0 :   True
+         40 :  -Inf : bat[40] - (bat[39] + p_bat_Lade[40] - p_bat_Nutz[40]) :   0.0 :   True
+         41 :  -Inf : bat[41] - (bat[40] + p_bat_Lade[41] - p_bat_Nutz[41]) :   0.0 :   True
+         42 :  -Inf : bat[42] - (bat[41] + p_bat_Lade[42] - p_bat_Nutz[42]) :   0.0 :   True
+         43 :  -Inf : bat[43] - (bat[42] + p_bat_Lade[43] - p_bat_Nutz[43]) :   0.0 :   True
+         44 :  -Inf : bat[44] - (bat[43] + p_bat_Lade[44] - p_bat_Nutz[44]) :   0.0 :   True
+         45 :  -Inf : bat[45] - (bat[44] + p_bat_Lade[45] - p_bat_Nutz[45]) :   0.0 :   True
+         46 :  -Inf : bat[46] - (bat[45] + p_bat_Lade[46] - p_bat_Nutz[46]) :   0.0 :   True
+         47 :  -Inf : bat[47] - (bat[46] + p_bat_Lade[47] - p_bat_Nutz[47]) :   0.0 :   True
+         48 :  -Inf : bat[48] - (bat[47] + p_bat_Lade[48] - p_bat_Nutz[48]) :   0.0 :   True
+         49 :  -Inf : bat[49] - (bat[48] + p_bat_Lade[49] - p_bat_Nutz[49]) :   0.0 :   True
+         50 :  -Inf : bat[50] - (bat[49] + p_bat_Lade[50] - p_bat_Nutz[50]) :   0.0 :   True
+         51 :  -Inf : bat[51] - (bat[50] + p_bat_Lade[51] - p_bat_Nutz[51]) :   0.0 :   True
+         52 :  -Inf : bat[52] - (bat[51] + p_bat_Lade[52] - p_bat_Nutz[52]) :   0.0 :   True
+         53 :  -Inf : bat[53] - (bat[52] + p_bat_Lade[53] - p_bat_Nutz[53]) :   0.0 :   True
+         54 :  -Inf : bat[54] - (bat[53] + p_bat_Lade[54] - p_bat_Nutz[54]) :   0.0 :   True
+         55 :  -Inf : bat[55] - (bat[54] + p_bat_Lade[55] - p_bat_Nutz[55]) :   0.0 :   True
+         56 :  -Inf : bat[56] - (bat[55] + p_bat_Lade[56] - p_bat_Nutz[56]) :   0.0 :   True
+         57 :  -Inf : bat[57] - (bat[56] + p_bat_Lade[57] - p_bat_Nutz[57]) :   0.0 :   True
+         58 :  -Inf : bat[58] - (bat[57] + p_bat_Lade[58] - p_bat_Nutz[58]) :   0.0 :   True
+         59 :  -Inf : bat[59] - (bat[58] + p_bat_Lade[59] - p_bat_Nutz[59]) :   0.0 :   True
+         60 :  -Inf : bat[60] - (bat[59] + p_bat_Lade[60] - p_bat_Nutz[60]) :   0.0 :   True
+         61 :  -Inf : bat[61] - (bat[60] + p_bat_Lade[61] - p_bat_Nutz[61]) :   0.0 :   True
+         62 :  -Inf : bat[62] - (bat[61] + p_bat_Lade[62] - p_bat_Nutz[62]) :   0.0 :   True
+         63 :  -Inf : bat[63] - (bat[62] + p_bat_Lade[63] - p_bat_Nutz[63]) :   0.0 :   True
+         64 :  -Inf : bat[64] - (bat[63] + p_bat_Lade[64] - p_bat_Nutz[64]) :   0.0 :   True
+         65 :  -Inf : bat[65] - (bat[64] + p_bat_Lade[65] - p_bat_Nutz[65]) :   0.0 :   True
+         66 :  -Inf : bat[66] - (bat[65] + p_bat_Lade[66] - p_bat_Nutz[66]) :   0.0 :   True
+         67 :  -Inf : bat[67] - (bat[66] + p_bat_Lade[67] - p_bat_Nutz[67]) :   0.0 :   True
+         68 :  -Inf : bat[68] - (bat[67] + p_bat_Lade[68] - p_bat_Nutz[68]) :   0.0 :   True
+         69 :  -Inf : bat[69] - (bat[68] + p_bat_Lade[69] - p_bat_Nutz[69]) :   0.0 :   True
+         70 :  -Inf : bat[70] - (bat[69] + p_bat_Lade[70] - p_bat_Nutz[70]) :   0.0 :   True
+         71 :  -Inf : bat[71] - (bat[70] + p_bat_Lade[71] - p_bat_Nutz[71]) :   0.0 :   True
+         72 :  -Inf : bat[72] - (bat[71] + p_bat_Lade[72] - p_bat_Nutz[72]) :   0.0 :   True
+         73 :  -Inf : bat[73] - (bat[72] + p_bat_Lade[73] - p_bat_Nutz[73]) :   0.0 :   True
+         74 :  -Inf : bat[74] - (bat[73] + p_bat_Lade[74] - p_bat_Nutz[74]) :   0.0 :   True
+         75 :  -Inf : bat[75] - (bat[74] + p_bat_Lade[75] - p_bat_Nutz[75]) :   0.0 :   True
+         76 :  -Inf : bat[76] - (bat[75] + p_bat_Lade[76] - p_bat_Nutz[76]) :   0.0 :   True
+         77 :  -Inf : bat[77] - (bat[76] + p_bat_Lade[77] - p_bat_Nutz[77]) :   0.0 :   True
+         78 :  -Inf : bat[78] - (bat[77] + p_bat_Lade[78] - p_bat_Nutz[78]) :   0.0 :   True
+         79 :  -Inf : bat[79] - (bat[78] + p_bat_Lade[79] - p_bat_Nutz[79]) :   0.0 :   True
+         80 :  -Inf : bat[80] - (bat[79] + p_bat_Lade[80] - p_bat_Nutz[80]) :   0.0 :   True
+         81 :  -Inf : bat[81] - (bat[80] + p_bat_Lade[81] - p_bat_Nutz[81]) :   0.0 :   True
+         82 :  -Inf : bat[82] - (bat[81] + p_bat_Lade[82] - p_bat_Nutz[82]) :   0.0 :   True
+         83 :  -Inf : bat[83] - (bat[82] + p_bat_Lade[83] - p_bat_Nutz[83]) :   0.0 :   True
+         84 :  -Inf : bat[84] - (bat[83] + p_bat_Lade[84] - p_bat_Nutz[84]) :   0.0 :   True
+         85 :  -Inf : bat[85] - (bat[84] + p_bat_Lade[85] - p_bat_Nutz[85]) :   0.0 :   True
+         86 :  -Inf : bat[86] - (bat[85] + p_bat_Lade[86] - p_bat_Nutz[86]) :   0.0 :   True
+         87 :  -Inf : bat[87] - (bat[86] + p_bat_Lade[87] - p_bat_Nutz[87]) :   0.0 :   True
+         88 :  -Inf : bat[88] - (bat[87] + p_bat_Lade[88] - p_bat_Nutz[88]) :   0.0 :   True
+         89 :  -Inf : bat[89] - (bat[88] + p_bat_Lade[89] - p_bat_Nutz[89]) :   0.0 :   True
+         90 :  -Inf : bat[90] - (bat[89] + p_bat_Lade[90] - p_bat_Nutz[90]) :   0.0 :   True
+         91 :  -Inf : bat[91] - (bat[90] + p_bat_Lade[91] - p_bat_Nutz[91]) :   0.0 :   True
+         92 :  -Inf : bat[92] - (bat[91] + p_bat_Lade[92] - p_bat_Nutz[92]) :   0.0 :   True
+         93 :  -Inf : bat[93] - (bat[92] + p_bat_Lade[93] - p_bat_Nutz[93]) :   0.0 :   True
+         94 :  -Inf : bat[94] - (bat[93] + p_bat_Lade[94] - p_bat_Nutz[94]) :   0.0 :   True
+         95 :  -Inf : bat[95] - (bat[94] + p_bat_Lade[95] - p_bat_Nutz[95]) :   0.0 :   True
+    buyConstr : Size=96, Index=buyConstr_index, Active=True
+        Key : Lower : Body       : Upper              : Active
+          0 :  -Inf :  p_kauf[0] : 244.03861796483397 :   True
+          1 :  -Inf :  p_kauf[1] :  234.2297301031649 :   True
+          2 :  -Inf :  p_kauf[2] :  213.9029426164925 :   True
+          3 :  -Inf :  p_kauf[3] : 201.15113220736384 :   True
+          4 :  -Inf :  p_kauf[4] : 132.97273672372103 :   True
+          5 :  -Inf :  p_kauf[5] :  178.5724282991141 :   True
+          6 :  -Inf :  p_kauf[6] : 220.90920147299767 :   True
+          7 :  -Inf :  p_kauf[7] : 175.00453777052462 :   True
+          8 :  -Inf :  p_kauf[8] : 172.07194706238806 :   True
+          9 :  -Inf :  p_kauf[9] : 162.77378008700907 :   True
+         10 :  -Inf : p_kauf[10] : 133.21715318784118 :   True
+         11 :  -Inf : p_kauf[11] : 160.39256579242647 :   True
+         12 :  -Inf : p_kauf[12] : 216.92438907921314 :   True
+         13 :  -Inf : p_kauf[13] : 169.93403784930706 :   True
+         14 :  -Inf : p_kauf[14] :   161.293423127383 :   True
+         15 :  -Inf : p_kauf[15] : 128.61750996299088 :   True
+         16 :  -Inf : p_kauf[16] : 157.67963685840368 :   True
+         17 :  -Inf : p_kauf[17] : 168.57986124418676 :   True
+         18 :  -Inf : p_kauf[18] :  168.5049716103822 :   True
+         19 :  -Inf : p_kauf[19] :  532.9977541882545 :   True
+         20 :  -Inf : p_kauf[20] :  613.0143256057054 :   True
+         21 :  -Inf : p_kauf[21] :   609.106403382495 :   True
+         22 :  -Inf : p_kauf[22] : 1322.0698897372931 :   True
+         23 :  -Inf : p_kauf[23] :  748.4579523894936 :   True
+         24 :  -Inf : p_kauf[24] :  850.7772149927914 :   True
+         25 :  -Inf : p_kauf[25] : 227.32719477452338 :   True
+         26 :  -Inf : p_kauf[26] : 255.87360460683703 :   True
+         27 :  -Inf : p_kauf[27] : 232.14247481524944 :   True
+         28 :  -Inf : p_kauf[28] : 254.82601138204336 :   True
+         29 :  -Inf : p_kauf[29] : 231.84215855784714 :   True
+         30 :  -Inf : p_kauf[30] : 207.36383835040033 :   True
+         31 :  -Inf : p_kauf[31] : 163.13801251910627 :   True
+         32 :  -Inf : p_kauf[32] : 167.44818145222962 :   True
+         33 :  -Inf : p_kauf[33] :  189.0902406796813 :   True
+         34 :  -Inf : p_kauf[34] : 184.12635410949588 :   True
+         35 :  -Inf : p_kauf[35] : 152.46037196740508 :   True
+         36 :  -Inf : p_kauf[36] : 202.96283916570246 :   True
+         37 :  -Inf : p_kauf[37] : 208.44777904078364 :   True
+         38 :  -Inf : p_kauf[38] : 202.96578908339143 :   True
+         39 :  -Inf : p_kauf[39] : 291.27680127322674 :   True
+         40 :  -Inf : p_kauf[40] : 194.23007767647505 :   True
+         41 :  -Inf : p_kauf[41] :  214.1436673477292 :   True
+         42 :  -Inf : p_kauf[42] : 1762.6700303442776 :   True
+         43 :  -Inf : p_kauf[43] : 2151.1579913571477 :   True
+         44 :  -Inf : p_kauf[44] : 2078.9663749225438 :   True
+         45 :  -Inf : p_kauf[45] :  1526.398892108351 :   True
+         46 :  -Inf : p_kauf[46] : 270.77176658436656 :   True
+         47 :  -Inf : p_kauf[47] : 245.64348327368498 :   True
+         48 :  -Inf : p_kauf[48] :  951.3423892408609 :   True
+         49 :  -Inf : p_kauf[49] :  351.6089543774724 :   True
+         50 :  -Inf : p_kauf[50] : 221.06343673169613 :   True
+         51 :  -Inf : p_kauf[51] : 234.41970458254218 :   True
+         52 :  -Inf : p_kauf[52] : 319.64653230272233 :   True
+         53 :  -Inf : p_kauf[53] :  335.6936260703951 :   True
+         54 :  -Inf : p_kauf[54] :  408.7322180606425 :   True
+         55 :  -Inf : p_kauf[55] : 445.24994162097573 :   True
+         56 :  -Inf : p_kauf[56] :  642.8644822388887 :   True
+         57 :  -Inf : p_kauf[57] :   762.249631036073 :   True
+         58 :  -Inf : p_kauf[58] :   734.746126068756 :   True
+         59 :  -Inf : p_kauf[59] :  861.4968220088631 :   True
+         60 :  -Inf : p_kauf[60] :  809.2094333693385 :   True
+         61 :  -Inf : p_kauf[61] :   696.897225772962 :   True
+         62 :  -Inf : p_kauf[62] : 266.72712229564786 :   True
+         63 :  -Inf : p_kauf[63] : 240.13217164203525 :   True
+         64 :  -Inf : p_kauf[64] : 188.60396882332861 :   True
+         65 :  -Inf : p_kauf[65] :  261.4575504511595 :   True
+         66 :  -Inf : p_kauf[66] :  338.9894492533058 :   True
+         67 :  -Inf : p_kauf[67] : 468.75236773490906 :   True
+         68 :  -Inf : p_kauf[68] :  214.8382900096476 :   True
+         69 :  -Inf : p_kauf[69] : 235.18374175950885 :   True
+         70 :  -Inf : p_kauf[70] :  226.9985103532672 :   True
+         71 :  -Inf : p_kauf[71] :  189.3350393436849 :   True
+         72 :  -Inf : p_kauf[72] : 202.30148626491427 :   True
+         73 :  -Inf : p_kauf[73] : 245.68560660630465 :   True
+         74 :  -Inf : p_kauf[74] :  240.4276870340109 :   True
+         75 :  -Inf : p_kauf[75] : 220.55212545394897 :   True
+         76 :  -Inf : p_kauf[76] :  633.2111238017678 :   True
+         77 :  -Inf : p_kauf[77] :  629.8237369954586 :   True
+         78 :  -Inf : p_kauf[78] :  509.3024899940938 :   True
+         79 :  -Inf : p_kauf[79] :  523.8507618680596 :   True
+         80 :  -Inf : p_kauf[80] :  573.5492677390575 :   True
+         81 :  -Inf : p_kauf[81] :  512.4367595352232 :   True
+         82 :  -Inf : p_kauf[82] : 477.83858040347695 :   True
+         83 :  -Inf : p_kauf[83] :   426.955257486552 :   True
+         84 :  -Inf : p_kauf[84] : 157.89343513175845 :   True
+         85 :  -Inf : p_kauf[85] :  178.8935529794544 :   True
+         86 :  -Inf : p_kauf[86] : 175.62067570723593 :   True
+         87 :  -Inf : p_kauf[87] : 199.80073931626976 :   True
+         88 :  -Inf : p_kauf[88] : 130.09086190536618 :   True
+         89 :  -Inf : p_kauf[89] : 172.28774291463196 :   True
+         90 :  -Inf : p_kauf[90] : 156.11176121607423 :   True
+         91 :  -Inf : p_kauf[91] : 130.18405527807772 :   True
+         92 :  -Inf : p_kauf[92] : 155.56630426459014 :   True
+         93 :  -Inf : p_kauf[93] :  163.3613319825381 :   True
+         94 :  -Inf : p_kauf[94] : 166.18161282874644 :   True
+         95 :  -Inf : p_kauf[95] :  145.5409314688295 :   True
+    dmdConstr : Size=96, Index=dmdConstr_index, Active=True
+        Key : Lower              : Body                                     : Upper : Active
+          0 : 244.03861796483397 :    p_kauf[0] + p_Nutz[0] + p_bat_Nutz[0] :  +Inf :   True
+          1 :  234.2297301031649 :    p_kauf[1] + p_Nutz[1] + p_bat_Nutz[1] :  +Inf :   True
+          2 :  213.9029426164925 :    p_kauf[2] + p_Nutz[2] + p_bat_Nutz[2] :  +Inf :   True
+          3 : 201.15113220736384 :    p_kauf[3] + p_Nutz[3] + p_bat_Nutz[3] :  +Inf :   True
+          4 : 132.97273672372103 :    p_kauf[4] + p_Nutz[4] + p_bat_Nutz[4] :  +Inf :   True
+          5 :  178.5724282991141 :    p_kauf[5] + p_Nutz[5] + p_bat_Nutz[5] :  +Inf :   True
+          6 : 220.90920147299767 :    p_kauf[6] + p_Nutz[6] + p_bat_Nutz[6] :  +Inf :   True
+          7 : 175.00453777052462 :    p_kauf[7] + p_Nutz[7] + p_bat_Nutz[7] :  +Inf :   True
+          8 : 172.07194706238806 :    p_kauf[8] + p_Nutz[8] + p_bat_Nutz[8] :  +Inf :   True
+          9 : 162.77378008700907 :    p_kauf[9] + p_Nutz[9] + p_bat_Nutz[9] :  +Inf :   True
+         10 : 133.21715318784118 : p_kauf[10] + p_Nutz[10] + p_bat_Nutz[10] :  +Inf :   True
+         11 : 160.39256579242647 : p_kauf[11] + p_Nutz[11] + p_bat_Nutz[11] :  +Inf :   True
+         12 : 216.92438907921314 : p_kauf[12] + p_Nutz[12] + p_bat_Nutz[12] :  +Inf :   True
+         13 : 169.93403784930706 : p_kauf[13] + p_Nutz[13] + p_bat_Nutz[13] :  +Inf :   True
+         14 :   161.293423127383 : p_kauf[14] + p_Nutz[14] + p_bat_Nutz[14] :  +Inf :   True
+         15 : 128.61750996299088 : p_kauf[15] + p_Nutz[15] + p_bat_Nutz[15] :  +Inf :   True
+         16 : 157.67963685840368 : p_kauf[16] + p_Nutz[16] + p_bat_Nutz[16] :  +Inf :   True
+         17 : 168.57986124418676 : p_kauf[17] + p_Nutz[17] + p_bat_Nutz[17] :  +Inf :   True
+         18 :  168.5049716103822 : p_kauf[18] + p_Nutz[18] + p_bat_Nutz[18] :  +Inf :   True
+         19 :  532.9977541882545 : p_kauf[19] + p_Nutz[19] + p_bat_Nutz[19] :  +Inf :   True
+         20 :  613.0143256057054 : p_kauf[20] + p_Nutz[20] + p_bat_Nutz[20] :  +Inf :   True
+         21 :   609.106403382495 : p_kauf[21] + p_Nutz[21] + p_bat_Nutz[21] :  +Inf :   True
+         22 : 1322.0698897372931 : p_kauf[22] + p_Nutz[22] + p_bat_Nutz[22] :  +Inf :   True
+         23 :  748.4579523894936 : p_kauf[23] + p_Nutz[23] + p_bat_Nutz[23] :  +Inf :   True
+         24 :  850.7772149927914 : p_kauf[24] + p_Nutz[24] + p_bat_Nutz[24] :  +Inf :   True
+         25 : 227.32719477452338 : p_kauf[25] + p_Nutz[25] + p_bat_Nutz[25] :  +Inf :   True
+         26 : 255.87360460683703 : p_kauf[26] + p_Nutz[26] + p_bat_Nutz[26] :  +Inf :   True
+         27 : 232.14247481524944 : p_kauf[27] + p_Nutz[27] + p_bat_Nutz[27] :  +Inf :   True
+         28 : 254.82601138204336 : p_kauf[28] + p_Nutz[28] + p_bat_Nutz[28] :  +Inf :   True
+         29 : 231.84215855784714 : p_kauf[29] + p_Nutz[29] + p_bat_Nutz[29] :  +Inf :   True
+         30 : 207.36383835040033 : p_kauf[30] + p_Nutz[30] + p_bat_Nutz[30] :  +Inf :   True
+         31 : 163.13801251910627 : p_kauf[31] + p_Nutz[31] + p_bat_Nutz[31] :  +Inf :   True
+         32 : 167.44818145222962 : p_kauf[32] + p_Nutz[32] + p_bat_Nutz[32] :  +Inf :   True
+         33 :  189.0902406796813 : p_kauf[33] + p_Nutz[33] + p_bat_Nutz[33] :  +Inf :   True
+         34 : 184.12635410949588 : p_kauf[34] + p_Nutz[34] + p_bat_Nutz[34] :  +Inf :   True
+         35 : 152.46037196740508 : p_kauf[35] + p_Nutz[35] + p_bat_Nutz[35] :  +Inf :   True
+         36 : 202.96283916570246 : p_kauf[36] + p_Nutz[36] + p_bat_Nutz[36] :  +Inf :   True
+         37 : 208.44777904078364 : p_kauf[37] + p_Nutz[37] + p_bat_Nutz[37] :  +Inf :   True
+         38 : 202.96578908339143 : p_kauf[38] + p_Nutz[38] + p_bat_Nutz[38] :  +Inf :   True
+         39 : 291.27680127322674 : p_kauf[39] + p_Nutz[39] + p_bat_Nutz[39] :  +Inf :   True
+         40 : 194.23007767647505 : p_kauf[40] + p_Nutz[40] + p_bat_Nutz[40] :  +Inf :   True
+         41 :  214.1436673477292 : p_kauf[41] + p_Nutz[41] + p_bat_Nutz[41] :  +Inf :   True
+         42 : 1762.6700303442776 : p_kauf[42] + p_Nutz[42] + p_bat_Nutz[42] :  +Inf :   True
+         43 : 2151.1579913571477 : p_kauf[43] + p_Nutz[43] + p_bat_Nutz[43] :  +Inf :   True
+         44 : 2078.9663749225438 : p_kauf[44] + p_Nutz[44] + p_bat_Nutz[44] :  +Inf :   True
+         45 :  1526.398892108351 : p_kauf[45] + p_Nutz[45] + p_bat_Nutz[45] :  +Inf :   True
+         46 : 270.77176658436656 : p_kauf[46] + p_Nutz[46] + p_bat_Nutz[46] :  +Inf :   True
+         47 : 245.64348327368498 : p_kauf[47] + p_Nutz[47] + p_bat_Nutz[47] :  +Inf :   True
+         48 :  951.3423892408609 : p_kauf[48] + p_Nutz[48] + p_bat_Nutz[48] :  +Inf :   True
+         49 :  351.6089543774724 : p_kauf[49] + p_Nutz[49] + p_bat_Nutz[49] :  +Inf :   True
+         50 : 221.06343673169613 : p_kauf[50] + p_Nutz[50] + p_bat_Nutz[50] :  +Inf :   True
+         51 : 234.41970458254218 : p_kauf[51] + p_Nutz[51] + p_bat_Nutz[51] :  +Inf :   True
+         52 : 319.64653230272233 : p_kauf[52] + p_Nutz[52] + p_bat_Nutz[52] :  +Inf :   True
+         53 :  335.6936260703951 : p_kauf[53] + p_Nutz[53] + p_bat_Nutz[53] :  +Inf :   True
+         54 :  408.7322180606425 : p_kauf[54] + p_Nutz[54] + p_bat_Nutz[54] :  +Inf :   True
+         55 : 445.24994162097573 : p_kauf[55] + p_Nutz[55] + p_bat_Nutz[55] :  +Inf :   True
+         56 :  642.8644822388887 : p_kauf[56] + p_Nutz[56] + p_bat_Nutz[56] :  +Inf :   True
+         57 :   762.249631036073 : p_kauf[57] + p_Nutz[57] + p_bat_Nutz[57] :  +Inf :   True
+         58 :   734.746126068756 : p_kauf[58] + p_Nutz[58] + p_bat_Nutz[58] :  +Inf :   True
+         59 :  861.4968220088631 : p_kauf[59] + p_Nutz[59] + p_bat_Nutz[59] :  +Inf :   True
+         60 :  809.2094333693385 : p_kauf[60] + p_Nutz[60] + p_bat_Nutz[60] :  +Inf :   True
+         61 :   696.897225772962 : p_kauf[61] + p_Nutz[61] + p_bat_Nutz[61] :  +Inf :   True
+         62 : 266.72712229564786 : p_kauf[62] + p_Nutz[62] + p_bat_Nutz[62] :  +Inf :   True
+         63 : 240.13217164203525 : p_kauf[63] + p_Nutz[63] + p_bat_Nutz[63] :  +Inf :   True
+         64 : 188.60396882332861 : p_kauf[64] + p_Nutz[64] + p_bat_Nutz[64] :  +Inf :   True
+         65 :  261.4575504511595 : p_kauf[65] + p_Nutz[65] + p_bat_Nutz[65] :  +Inf :   True
+         66 :  338.9894492533058 : p_kauf[66] + p_Nutz[66] + p_bat_Nutz[66] :  +Inf :   True
+         67 : 468.75236773490906 : p_kauf[67] + p_Nutz[67] + p_bat_Nutz[67] :  +Inf :   True
+         68 :  214.8382900096476 : p_kauf[68] + p_Nutz[68] + p_bat_Nutz[68] :  +Inf :   True
+         69 : 235.18374175950885 : p_kauf[69] + p_Nutz[69] + p_bat_Nutz[69] :  +Inf :   True
+         70 :  226.9985103532672 : p_kauf[70] + p_Nutz[70] + p_bat_Nutz[70] :  +Inf :   True
+         71 :  189.3350393436849 : p_kauf[71] + p_Nutz[71] + p_bat_Nutz[71] :  +Inf :   True
+         72 : 202.30148626491427 : p_kauf[72] + p_Nutz[72] + p_bat_Nutz[72] :  +Inf :   True
+         73 : 245.68560660630465 : p_kauf[73] + p_Nutz[73] + p_bat_Nutz[73] :  +Inf :   True
+         74 :  240.4276870340109 : p_kauf[74] + p_Nutz[74] + p_bat_Nutz[74] :  +Inf :   True
+         75 : 220.55212545394897 : p_kauf[75] + p_Nutz[75] + p_bat_Nutz[75] :  +Inf :   True
+         76 :  633.2111238017678 : p_kauf[76] + p_Nutz[76] + p_bat_Nutz[76] :  +Inf :   True
+         77 :  629.8237369954586 : p_kauf[77] + p_Nutz[77] + p_bat_Nutz[77] :  +Inf :   True
+         78 :  509.3024899940938 : p_kauf[78] + p_Nutz[78] + p_bat_Nutz[78] :  +Inf :   True
+         79 :  523.8507618680596 : p_kauf[79] + p_Nutz[79] + p_bat_Nutz[79] :  +Inf :   True
+         80 :  573.5492677390575 : p_kauf[80] + p_Nutz[80] + p_bat_Nutz[80] :  +Inf :   True
+         81 :  512.4367595352232 : p_kauf[81] + p_Nutz[81] + p_bat_Nutz[81] :  +Inf :   True
+         82 : 477.83858040347695 : p_kauf[82] + p_Nutz[82] + p_bat_Nutz[82] :  +Inf :   True
+         83 :   426.955257486552 : p_kauf[83] + p_Nutz[83] + p_bat_Nutz[83] :  +Inf :   True
+         84 : 157.89343513175845 : p_kauf[84] + p_Nutz[84] + p_bat_Nutz[84] :  +Inf :   True
+         85 :  178.8935529794544 : p_kauf[85] + p_Nutz[85] + p_bat_Nutz[85] :  +Inf :   True
+         86 : 175.62067570723593 : p_kauf[86] + p_Nutz[86] + p_bat_Nutz[86] :  +Inf :   True
+         87 : 199.80073931626976 : p_kauf[87] + p_Nutz[87] + p_bat_Nutz[87] :  +Inf :   True
+         88 : 130.09086190536618 : p_kauf[88] + p_Nutz[88] + p_bat_Nutz[88] :  +Inf :   True
+         89 : 172.28774291463196 : p_kauf[89] + p_Nutz[89] + p_bat_Nutz[89] :  +Inf :   True
+         90 : 156.11176121607423 : p_kauf[90] + p_Nutz[90] + p_bat_Nutz[90] :  +Inf :   True
+         91 : 130.18405527807772 : p_kauf[91] + p_Nutz[91] + p_bat_Nutz[91] :  +Inf :   True
+         92 : 155.56630426459014 : p_kauf[92] + p_Nutz[92] + p_bat_Nutz[92] :  +Inf :   True
+         93 :  163.3613319825381 : p_kauf[93] + p_Nutz[93] + p_bat_Nutz[93] :  +Inf :   True
+         94 : 166.18161282874644 : p_kauf[94] + p_Nutz[94] + p_bat_Nutz[94] :  +Inf :   True
+         95 :  145.5409314688295 : p_kauf[95] + p_Nutz[95] + p_bat_Nutz[95] :  +Inf :   True
+    maxEinspConstr : Size=96, Index=maxEinspConstr_index, Active=True
+        Key : Lower : Body        : Upper              : Active
+          0 :  -Inf :  p_einsp[0] : 1927.8069502696394 :   True
+          1 :  -Inf :  p_einsp[1] : 1927.8069502696394 :   True
+          2 :  -Inf :  p_einsp[2] : 1927.8069502696394 :   True
+          3 :  -Inf :  p_einsp[3] : 1927.8069502696394 :   True
+          4 :  -Inf :  p_einsp[4] : 1927.8069502696394 :   True
+          5 :  -Inf :  p_einsp[5] : 1927.8069502696394 :   True
+          6 :  -Inf :  p_einsp[6] : 1927.8069502696394 :   True
+          7 :  -Inf :  p_einsp[7] : 1927.8069502696394 :   True
+          8 :  -Inf :  p_einsp[8] : 1927.8069502696394 :   True
+          9 :  -Inf :  p_einsp[9] : 1927.8069502696394 :   True
+         10 :  -Inf : p_einsp[10] : 1927.8069502696394 :   True
+         11 :  -Inf : p_einsp[11] : 1927.8069502696394 :   True
+         12 :  -Inf : p_einsp[12] : 1927.8069502696394 :   True
+         13 :  -Inf : p_einsp[13] : 1927.8069502696394 :   True
+         14 :  -Inf : p_einsp[14] : 1927.8069502696394 :   True
+         15 :  -Inf : p_einsp[15] : 1927.8069502696394 :   True
+         16 :  -Inf : p_einsp[16] : 1927.8069502696394 :   True
+         17 :  -Inf : p_einsp[17] : 1927.8069502696394 :   True
+         18 :  -Inf : p_einsp[18] : 1927.8069502696394 :   True
+         19 :  -Inf : p_einsp[19] : 1927.8069502696394 :   True
+         20 :  -Inf : p_einsp[20] : 1927.8069502696394 :   True
+         21 :  -Inf : p_einsp[21] : 1927.8069502696394 :   True
+         22 :  -Inf : p_einsp[22] : 1927.8069502696394 :   True
+         23 :  -Inf : p_einsp[23] : 1927.8069502696394 :   True
+         24 :  -Inf : p_einsp[24] : 1927.8069502696394 :   True
+         25 :  -Inf : p_einsp[25] : 1927.8069502696394 :   True
+         26 :  -Inf : p_einsp[26] : 1927.8069502696394 :   True
+         27 :  -Inf : p_einsp[27] : 1927.8069502696394 :   True
+         28 :  -Inf : p_einsp[28] : 1927.8069502696394 :   True
+         29 :  -Inf : p_einsp[29] : 1927.8069502696394 :   True
+         30 :  -Inf : p_einsp[30] : 1927.8069502696394 :   True
+         31 :  -Inf : p_einsp[31] : 1927.8069502696394 :   True
+         32 :  -Inf : p_einsp[32] : 1927.8069502696394 :   True
+         33 :  -Inf : p_einsp[33] : 1927.8069502696394 :   True
+         34 :  -Inf : p_einsp[34] : 1927.8069502696394 :   True
+         35 :  -Inf : p_einsp[35] : 1927.8069502696394 :   True
+         36 :  -Inf : p_einsp[36] : 1927.8069502696394 :   True
+         37 :  -Inf : p_einsp[37] : 1927.8069502696394 :   True
+         38 :  -Inf : p_einsp[38] : 1927.8069502696394 :   True
+         39 :  -Inf : p_einsp[39] : 1927.8069502696394 :   True
+         40 :  -Inf : p_einsp[40] : 1927.8069502696394 :   True
+         41 :  -Inf : p_einsp[41] : 1927.8069502696394 :   True
+         42 :  -Inf : p_einsp[42] : 1927.8069502696394 :   True
+         43 :  -Inf : p_einsp[43] : 1927.8069502696394 :   True
+         44 :  -Inf : p_einsp[44] : 1927.8069502696394 :   True
+         45 :  -Inf : p_einsp[45] : 1927.8069502696394 :   True
+         46 :  -Inf : p_einsp[46] : 1927.8069502696394 :   True
+         47 :  -Inf : p_einsp[47] : 1927.8069502696394 :   True
+         48 :  -Inf : p_einsp[48] : 1927.8069502696394 :   True
+         49 :  -Inf : p_einsp[49] : 1927.8069502696394 :   True
+         50 :  -Inf : p_einsp[50] : 1927.8069502696394 :   True
+         51 :  -Inf : p_einsp[51] : 1927.8069502696394 :   True
+         52 :  -Inf : p_einsp[52] : 1927.8069502696394 :   True
+         53 :  -Inf : p_einsp[53] : 1927.8069502696394 :   True
+         54 :  -Inf : p_einsp[54] : 1927.8069502696394 :   True
+         55 :  -Inf : p_einsp[55] : 1927.8069502696394 :   True
+         56 :  -Inf : p_einsp[56] : 1927.8069502696394 :   True
+         57 :  -Inf : p_einsp[57] : 1927.8069502696394 :   True
+         58 :  -Inf : p_einsp[58] : 1927.8069502696394 :   True
+         59 :  -Inf : p_einsp[59] : 1927.8069502696394 :   True
+         60 :  -Inf : p_einsp[60] : 1927.8069502696394 :   True
+         61 :  -Inf : p_einsp[61] : 1927.8069502696394 :   True
+         62 :  -Inf : p_einsp[62] : 1927.8069502696394 :   True
+         63 :  -Inf : p_einsp[63] : 1927.8069502696394 :   True
+         64 :  -Inf : p_einsp[64] : 1927.8069502696394 :   True
+         65 :  -Inf : p_einsp[65] : 1927.8069502696394 :   True
+         66 :  -Inf : p_einsp[66] : 1927.8069502696394 :   True
+         67 :  -Inf : p_einsp[67] : 1927.8069502696394 :   True
+         68 :  -Inf : p_einsp[68] : 1927.8069502696394 :   True
+         69 :  -Inf : p_einsp[69] : 1927.8069502696394 :   True
+         70 :  -Inf : p_einsp[70] : 1927.8069502696394 :   True
+         71 :  -Inf : p_einsp[71] : 1927.8069502696394 :   True
+         72 :  -Inf : p_einsp[72] : 1927.8069502696394 :   True
+         73 :  -Inf : p_einsp[73] : 1927.8069502696394 :   True
+         74 :  -Inf : p_einsp[74] : 1927.8069502696394 :   True
+         75 :  -Inf : p_einsp[75] : 1927.8069502696394 :   True
+         76 :  -Inf : p_einsp[76] : 1927.8069502696394 :   True
+         77 :  -Inf : p_einsp[77] : 1927.8069502696394 :   True
+         78 :  -Inf : p_einsp[78] : 1927.8069502696394 :   True
+         79 :  -Inf : p_einsp[79] : 1927.8069502696394 :   True
+         80 :  -Inf : p_einsp[80] : 1927.8069502696394 :   True
+         81 :  -Inf : p_einsp[81] : 1927.8069502696394 :   True
+         82 :  -Inf : p_einsp[82] : 1927.8069502696394 :   True
+         83 :  -Inf : p_einsp[83] : 1927.8069502696394 :   True
+         84 :  -Inf : p_einsp[84] : 1927.8069502696394 :   True
+         85 :  -Inf : p_einsp[85] : 1927.8069502696394 :   True
+         86 :  -Inf : p_einsp[86] : 1927.8069502696394 :   True
+         87 :  -Inf : p_einsp[87] : 1927.8069502696394 :   True
+         88 :  -Inf : p_einsp[88] : 1927.8069502696394 :   True
+         89 :  -Inf : p_einsp[89] : 1927.8069502696394 :   True
+         90 :  -Inf : p_einsp[90] : 1927.8069502696394 :   True
+         91 :  -Inf : p_einsp[91] : 1927.8069502696394 :   True
+         92 :  -Inf : p_einsp[92] : 1927.8069502696394 :   True
+         93 :  -Inf : p_einsp[93] : 1927.8069502696394 :   True
+         94 :  -Inf : p_einsp[94] : 1927.8069502696394 :   True
+         95 :  -Inf : p_einsp[95] : 1927.8069502696394 :   True
+
+37 Declarations: p_einsp_index p_einsp p_kauf_index p_kauf p_Nutz_index p_Nutz p_bat_Nutz_index p_bat_Nutz p_bat_Lade_index p_bat_Lade bat_index bat z1_index z1 obj SupplyConstr_index SupplyConstr maxEinspConstr_index maxEinspConstr dmdConstr_index dmdConstr SoCConstr_index SoCConstr UseConstr1_index UseConstr1 UseConstr2_index UseConstr2 batConstr1_index batConstr1 batConstr2_index batConstr2 BatCompConstr1_index BatCompConstr1 BatCompConstr2_index BatCompConstr2 buyConstr_index buyConstr
