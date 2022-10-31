@@ -31,28 +31,32 @@ Restriktionen:
 
 
 import pyomo.environ as pe
-from Datenanalyse.Preprocessing_Functions import dmd, prc, pv, car
+from Datenanalyse.Preprocessing_Functions import dmd, prc, prc_stretched, pv, car
 import pandas as pd
 import numpy as np
 import datetime as dt
 import matplotlib.pyplot as plt
+import matplotlib.units as munits
+import matplotlib.dates as mdates
 
 timeformat = '%Y-%m-%d'
-timestep = 15
+timestep = 1
 energy_factor = timestep/60
 
-filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/BIblis_15minutes_power.csv'
+filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-01-10'
-Enddatum = '2022-01-11'
+Startdatum = '2022-10-04'
+Enddatum = '2022-10-05'
 delta = (dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).days * 24 * int(60/timestep)
 
 dmd_biblis = dmd(filepath, Startdatum, Enddatum) 
 prc_biblis = prc(filepath_spot, Startdatum, Enddatum)
+if timestep == 1:
+    prc_biblis = prc_stretched(prc_biblis, (dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).days)
 pv_biblis = pv(filepath, Startdatum, Enddatum)
 car_biblis = car(filepath, Startdatum, Enddatum)
 
-C_max = 20000
+C_max = 200000
 
 steps =[i for i in range(delta)]
 
@@ -69,7 +73,7 @@ model.p_bat_Nutz = pe.Var(steps, within=pe.NonNegativeReals, bounds=(0,energy_fa
 model.p_bat_Lade = pe.Var(steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*C_max))
 model.bat = pe.Var(steps, within=pe.NonNegativeReals, bounds=(0,C_max))
 model.z1 = pe.Var(steps, within=pe.Binary) 
-model.M = 10**10
+model.M = 10**5
 
 def ObjCosts(m):  
     return sum(0.8*m.p_einsp[t]*price_t[t] -m.p_kauf[t]*price_t[t] for t in steps)
@@ -84,9 +88,9 @@ def maxEinspRule(m, t):
     return m.p_einsp[t] <= 0.7*max(pv_t.values())
 model.maxEinspConstr = pe.Constraint(steps, rule=maxEinspRule)
 
-#def maxPVGenRule(m, t):
-#    return m.p_einsp[t] + m.p_bat_Lade[t] <= pv_t[t]
-#model.maxPVGenConstr = pe.Constraint(steps, rule=maxPVGenRule)
+def maxPVGenRule(m, t):
+   return m.p_einsp[t] + m.p_bat_Lade[t] <= pv_t[t]
+model.maxPVGenConstr = pe.Constraint(steps, rule=maxPVGenRule)
 
 def dmdRule(m,t):
     return m.p_kauf[t] + m.p_Nutz[t] + m.p_bat_Nutz[t] >= d[t] + dcar[t]
@@ -134,11 +138,20 @@ pe.SolverFactory('glpk').solve(model, tee=True)
 with open('variable.txt', 'w') as f:
     model.pprint(ostream=f)
 
-fig, axs = plt.subplots()
-axs.step(steps, 5000*prc_biblis, label='price', alpha=0.1)
-axs.step(steps, pv_biblis, label='pv')
-axs.step(steps, dmd_biblis + car_biblis, label='demand')
-axs.step(steps, [pe.value(model.p_kauf[k]) for k in  steps], label='Energy_Bought')
-axs.step(steps, [pe.value(model.p_bat_Nutz[k]) for k in  steps], label='Bat-Use')
-axs.step(steps, [pe.value(model.p_bat_Lade[k]) for k in  steps], label='Bat-Charge')
+base = dt.datetime.strptime(Startdatum, timeformat)
+lims = (dt.datetime.strptime(Startdatum, timeformat), dt.datetime.strptime(Enddatum, timeformat))
+dates = [base + dt.timedelta(minutes=i) for i in range(delta)]
+
+#converter = mdates.ConciseDateConverter()
+#munits.registry[dt.datetime] = converter
+
+fig, axs = plt.subplots(constrained_layout=True)
+axs.step(dates, 5000*prc_biblis, label='price', alpha=0.3)
+axs.step(dates, pv_biblis, label='pv')
+axs.step(dates, dmd_biblis + car_biblis, label='demand')
+axs.step(dates, [pe.value(model.p_kauf[k]) for k in  steps], label='Energy_Bought')
+axs.step(dates, [pe.value(model.p_bat_Nutz[k]) for k in  steps], label='Bat-Use')
+axs.step(dates, [pe.value(model.p_bat_Lade[k]) for k in  steps], label='Bat-Charge')
 axs.legend(loc='upper left', fontsize='x-small')
+axs.set_xlim(lims)
+plt.show()
