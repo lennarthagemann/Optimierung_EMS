@@ -1,0 +1,51 @@
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: -118600.0
+  Upper bound: -118600.0
+  Number of objectives: 1
+  Number of constraints: 14
+  Number of variables: 13
+  Number of nonzeros: 31
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Termination condition: optimal
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: 0
+      Number of created subproblems: 0
+  Error rc: 0
+  Time: 0.04690051078796387
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 1
+  number of solutions displayed: 1
+- Gap: 0.0
+  Status: feasible
+  Message: None
+  Objective:
+    Total_Cost_Objective:
+      Value: -118600
+  Variable:
+    DevotedAcreage[CORN]:
+      Value: 80
+    DevotedAcreage[SUGAR_BEETS]:
+      Value: 300
+    DevotedAcreage[WHEAT]:
+      Value: 120
+    QuantitySubQuotaSold[SUGAR_BEETS]:
+      Value: 6000
+    QuantitySubQuotaSold[WHEAT]:
+      Value: 100
+  Constraint: No values

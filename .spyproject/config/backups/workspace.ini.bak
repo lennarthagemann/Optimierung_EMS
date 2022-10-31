@@ -1,0 +1,12 @@
+[workspace]
+restore_data_on_startup = True
+save_data_on_exit = True
+save_history = True
+save_non_project_files = False
+project_type = 'empty-project-type'
+recent_files = ['Optimierung_Wohnhaus\\Biblis_Optimierung.py', 'Optimierung_Wohnhaus\\Optimierung_ohne_Einspeisung.py', 'Optimierung_Wohnhaus\\Datenanalyse\\Preprocessing_Functions.py', 'Optimierung_Wohnhaus\\Datenanalyse\\Analyse_Biblis1.py', 'CSV-Dateien\\Spot-Markt Preise 2022\\entsoe_spot_germany_2022.csv']
+
+[main]
+version = 0.2.0
+recent_files = []
+
