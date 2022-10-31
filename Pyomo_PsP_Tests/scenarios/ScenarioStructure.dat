@@ -1,0 +1,65 @@
+# IMPORTANT - THE STAGES ARE ASSUMED TO BE IN TIME-/INFORMATION- ORDER.
+# :=, set, Stages sind reservierte Wörter und notwendig
+#Trennung der Zeilen mit Semikolom, # für Kommentarzeilen
+set Stages := FirstStage SecondStage ;
+
+# set Nodes ->  required keyword
+# Root Node existiert immer, danach Node für jedes Szenario
+
+set Nodes := RootNode 
+             BelowAverageNode
+             AverageNode 
+             AboveAverageNode ;
+
+# Nodes gehören zu einer Zeitstufe, diese wird über NodeStage deklariert
+
+param NodeStage := RootNode         FirstStage 
+                   BelowAverageNode SecondStage
+                   AverageNode      SecondStage 
+                   AboveAverageNode SecondStage ;
+
+# Da nur zwei Stufen existieren, ist jede Node Kind der RootNode
+# Ansonsten hier Verzweigungen der Stages möglich als Szenariobaum
+
+set Children[RootNode] := BelowAverageNode 
+                          AverageNode 
+                          AboveAverageNode ;
+
+# Wahrscheinlichkeit eines Szenarios in Abhängigkeit der Beobachtung der parent node
+# Wahrscheinlichkeit 1.0 der root NOde muss immer angegeben werden
+
+param ConditionalProbability := RootNode          1.0
+                                BelowAverageNode  0.33333333
+                                AverageNode       0.33333334
+                                AboveAverageNode  0.33333333 ;
+
+# Name für die Szenarien
+
+set Scenarios := BelowAverageScenario 
+                 AverageScenario 
+                 AboveAverageScenario ;
+                 
+# Verknüpfung der Szenarien mit den Blattnodes, also jenen ohne Kinder
+
+param ScenarioLeafNode :=
+                    BelowAverageScenario BelowAverageNode
+                    AverageScenario      AverageNode
+                    AboveAverageScenario AboveAverageNode ;
+
+# Die Variablen werden mit den Stufen assoziiert. Variablen ohne Zuweisung
+# werden der letzten Stufe zugewiesen. Variablenindize können explizit
+# gegeben werden oder es wird eine Wildcard genutzt 
+# Variablennamen erscheinen hier ohne den Präfix 'model'
+
+set StageVariables[FirstStage] :=  DevotedAcreage[*];
+set StageVariables[SecondStage] := QuantitySubQuotaSold[*]
+                                   QuantitySuperQuotaSold[*]
+                                   QuantityPurchased[*];
+
+# Um die Daten besser zu betrachten, werden Hilfsvariablen eingeführt, um
+# die Kosten in jeder Stufe abzuspeichern. Diese haben keinen Einfluss auf den 
+# Algorithmus, aber können bei Beendigung von der Software angezeigt werden.
+# Die Variablen werden den Namen der Stages zugeordnet
+
+param StageCost := FirstStage  FirstStageCost
+                   SecondStage SecondStageCost ;
