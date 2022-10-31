@@ -121,15 +121,14 @@ def prc(filepath, Startdatum, Enddatum):
     prc_date = np.round(spot['Day-ahead Preis (Eur/kWh)'].to_numpy(), 4)
     return prc_date
     
-def prc_stretched(prc, days):
+def prc_stretched(prc):
     """
     Wenn wir das Problem in minütlichen Schritten lösen wollen, müssen wir die Preiskurce strecken,
     da die Spot-Preise sich nur jede Stunde ändern.
     Dafür müssen wir für den Gesamtzeitraum die 15 Minutenpreise für jede Minute im Zeitraum klonen.
     """
-    prc_stretched = np.array(np.zeros(1440 * days), dtype=float)
-    assert int((1440 * days)/prc.shape[0]) == 15
     mult = 15
+    prc_stretched = np.array(np.zeros(prc.shape[0]*mult), dtype=float)
     for i in range(prc.shape[0]):
         prc_stretched[mult*i:mult*(i+1)] = prc[i] 
     return prc_stretched
