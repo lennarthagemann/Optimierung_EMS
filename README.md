@@ -1,1 +1,2 @@
-# Optimierung_Elekktromanagement
+# Optimierung Elektromanagement
+Stochastische Optimierung des Elektromanagements eines Wohnhauses
