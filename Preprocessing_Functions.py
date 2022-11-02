@@ -30,6 +30,10 @@ def demand(date, demand, zeitpunkt, df):
     return demand_date
 
 def dmd(filepath, Startdatum, Enddatum):
+    """
+    Lese den Verbrauch in einem bestimmten Zeitraum ein und speiche ihn als float64-numpy array.
+    Runde die Werte auf drei Nachkommastellen um die Maschinengenauigkeit nicht auszureizen
+    """
     assert isinstance(filepath, str)
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
@@ -46,7 +50,7 @@ def dmd(filepath, Startdatum, Enddatum):
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
     df['Hausverbrauch (W)'] = df['Hausverbrauch (W)'].astype(float)
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
-    dmd_date = df['Hausverbrauch (W)'].to_numpy();
+    dmd_date = np.round(df['Hausverbrauch (W)'].to_numpy(), decimals=3);
     return dmd_date
 
 def car(filepath, Startdatum, Enddatum):
@@ -66,7 +70,7 @@ def car(filepath, Startdatum, Enddatum):
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
     df['Ladepunktverbrauch (W)'] = df['Ladepunktverbrauch (W)'].astype(float)
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
-    car_date = df['Ladepunktverbrauch (W)'].to_numpy();
+    car_date = np.round(df['Ladepunktverbrauch (W)'].to_numpy(), decimals=3);
     return car_date
 
 def price(Startdatum, Enddatum, preis, zeitpunkt, zeitschritt, df):
@@ -91,8 +95,7 @@ def price(Startdatum, Enddatum, preis, zeitpunkt, zeitschritt, df):
     gebe für ein gegebenes Dataframe und einen Tag im Format "YYYY-MM-DD" eine PV-ERzeugungskurve aus
     """
     df = df.query('@Startdatum <= zeitpunkt and @Enddatum > zeitpunkt' )
-    print(df)
-    preis_date = df[preis].to_numpy();
+    preis_date = np.round(df[preis].to_numpy(), decimals=3);
     return preis_date
 
 def prc(filepath, Startdatum, Enddatum):
@@ -110,15 +113,13 @@ def prc(filepath, Startdatum, Enddatum):
     spot['Zeitraum'] = spot['Zeitraum'].str.strip('"')
     spot['Zeitraum'] = pd.to_datetime(spot['Zeitraum'].str.slice(stop=16)) 
     spot['Zeitraum'] = spot['Zeitraum'].dt.strftime('%Y-%m-%d %H:%M:%S')
-    print(spot)
     spot['Day-ahead Preis (Eur/kWh)'] = (spot['Day-ahead Preis (Eur/kWh)'].str.strip('"'))
     spot = spot.drop_duplicates()
     spot = spot[spot['Day-ahead Preis (Eur/kWh)']!='-']
     spot['Day-ahead Preis (Eur/kWh)'] = spot['Day-ahead Preis (Eur/kWh)'].replace({'':'0'})
     spot['Day-ahead Preis (Eur/kWh)'] = spot['Day-ahead Preis (Eur/kWh)'].astype(float)/1000
     spot = spot.query('@Startdatum <= Zeitraum and @Enddatum > Zeitraum' )
-    print(spot)
-    prc_date = np.round(spot['Day-ahead Preis (Eur/kWh)'].to_numpy(), 4)
+    prc_date = np.round(spot['Day-ahead Preis (Eur/kWh)'].to_numpy(), decimals=3)
     return prc_date
     
 def prc_stretched(prc):
@@ -155,6 +156,10 @@ def pv_generation(date, pv_generation, zeitpunkt, df):
     return pv_date
 
 def pv(filepath, Startdatum, Enddatum):
+    """
+    Speichere die PV-Daten der Anlagen in einem bestimmtem Zeitraum  als numpy-Array mit float64 Werten.
+    Runde die Werte auf drei Stellen um die Maschinengenauigkeit nicht ausreizen zu müssen.
+    """
     assert isinstance(filepath, str)
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
@@ -171,7 +176,7 @@ def pv(filepath, Startdatum, Enddatum):
     df['PV Leistung (W)'] = df['PV Leistung (W)'].astype(float)
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
     df = df.set_index('Zeitstempel')
-    pv = df['PV Leistung (W)'].to_numpy();
+    pv = np.round(df['PV Leistung (W)'].to_numpy(), decimals=3);
     return pv
 
 def moving_average_full_dim(a, n=4) :

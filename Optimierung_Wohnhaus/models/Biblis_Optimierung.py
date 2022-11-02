@@ -31,7 +31,9 @@ Restriktionen:
 
 
 import pyomo.environ as pe
-from Datenanalyse.Preprocessing_Functions import dmd, prc, prc_stretched, pv, car
+import sys
+sys.path.append('C:/Users/hagem/Optimierung_EMS')
+from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car
 import pandas as pd
 import numpy as np
 import datetime as dt
@@ -39,15 +41,15 @@ import matplotlib.pyplot as plt
 import matplotlib.units as munits
 import matplotlib.dates as mdates
 
-timeformat = '%Y-%m-%d %M:%S'
+timeformat = '%Y-%m-%d %H:%M'
 timestep = 1
 energy_factor = timestep/60
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-05-03 00:00'
-Enddatum = '2022-05-03 12:00'
-delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).seconds)
+Startdatum = '2022-06-10 00:00'
+Enddatum = '2022-06-11 00:00'
+delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
 dmd_biblis = dmd(filepath, Startdatum, Enddatum) 
 prc_biblis = prc(filepath_spot, Startdatum, Enddatum)
@@ -58,85 +60,81 @@ car_biblis = car(filepath, Startdatum, Enddatum)
 
 C_max = 200000
 
-steps =[i for i in range(delta)]
-
+steps = [i for i in range(delta)]
 price = dict(zip(steps,prc_biblis))
 pv = dict(zip(steps,pv_biblis))
 d = dict(zip(steps,dmd_biblis)) 
 dcar = dict(zip(steps, car_biblis)) 
 
 model = pe.ConcreteModel()
-model.price = pe.Param(steps, default=prc_biblis, mutable=False)
-model.pv = pe.Param(steps, default=pv_biblis, mutable=False)
-model.d = pe.Param(steps, default=dmd_biblis, mutable=False)
-model.dcar = pe.Param(steps, default=car_biblis, mutable=False)
-model.p_einsp = pe.Var(steps, within=pe.NonNegativeReals)
-model.p_kauf = pe.Var(steps, within=pe.NonNegativeReals)
-model.p_Nutz = pe.Var(steps, within=pe.NonNegativeReals)
-model.p_bat_Nutz = pe.Var(steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*C_max))
-model.p_bat_Lade = pe.Var(steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*C_max))
-model.bat = pe.Var(steps, within=pe.NonNegativeReals, bounds=(0,C_max))
-model.z1 = pe.Var(steps, within=pe.Binary) 
+model.steps = pe.Set(initialize= steps)
+model.p_einsp = pe.Var(model.steps, within=pe.NonNegativeReals)
+model.p_kauf = pe.Var(model.steps, within=pe.NonNegativeReals)
+model.p_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals)
+model.p_bat_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*C_max))
+model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*C_max))
+model.bat = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,C_max))
+model.z1 = pe.Var(model.steps, within=pe.Binary) 
 model.M = 10**5
 
 def ObjCosts(m):  
-    return sum(0.8*m.p_einsp[t]*m.price[t] -m.p_kauf[t]*m.price[t] for t in steps)
+    return sum(0.8*m.p_einsp[t]*price[t] -m.p_kauf[t]*price[t] for t in model.steps)
 model.obj = pe.Objective(rule=ObjCosts, 
                       sense=pe.maximize)
 
 def SupplyRule(m, t):
-    return m.p_Nutz[t] + m.p_bat_Lade[t] + m.p_einsp[t] <= m.pv[t]
-model.SupplyConstr = pe.Constraint(steps, rule=SupplyRule)
+    return m.p_Nutz[t] + m.p_bat_Lade[t] + m.p_einsp[t] <= pv[t]
+model.SupplyConstr = pe.Constraint(model.steps, rule=SupplyRule)
 
 def maxEinspRule(m, t):
     return m.p_einsp[t] <= 0.7*max(pv.values())
-model.maxEinspConstr = pe.Constraint(steps, rule=maxEinspRule)
+model.maxEinspConstr = pe.Constraint(model.steps, rule=maxEinspRule)
 
 def maxPVGenRule(m, t):
-   return m.p_einsp[t] + m.p_bat_Lade[t] <= m.pv[t]
-model.maxPVGenConstr = pe.Constraint(steps, rule=maxPVGenRule)
+   return m.p_einsp[t] + m.p_bat_Lade[t] <= pv[t]
+model.maxPVGenConstr = pe.Constraint(model.steps, rule=maxPVGenRule)
 
 def dmdRule(m,t):
-    return m.p_kauf[t] + m.p_Nutz[t] + m.p_bat_Nutz[t] >= m.d[t] + m.dcar[t]
-model.dmdConstr = pe.Constraint(steps, rule=dmdRule)
+    return m.p_kauf[t] + m.p_Nutz[t] + m.p_bat_Nutz[t] >= d[t] + dcar[t]
+model.dmdConstr = pe.Constraint(model.steps, rule=dmdRule)
 
 def SoCRule(m,t):
     return energy_factor * m.p_bat_Lade[t] <= C_max - m.bat[t]
-model.SoCConstr = pe.Constraint(steps, rule=SoCRule)
+model.SoCConstr = pe.Constraint(model.steps, rule=SoCRule)
 
 def UseRule1(m,t):
     return m.p_bat_Nutz[t] <= m.bat[t]
-model.UseConstr1 = pe.Constraint(steps, rule=UseRule1)
+model.UseConstr1 = pe.Constraint(model.steps, rule=UseRule1)
 
 def UseRule2(m,t):
     return m.p_bat_Nutz[t] <= C_max
-model.UseConstr2 = pe.Constraint(steps, rule=UseRule2)
+model.UseConstr2 = pe.Constraint(model.steps, rule=UseRule2)
 
 def Bat1(m,t):
     if t >= 1:
         return  m.bat[t] >= m.bat[t-1] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
         return m.bat[t] >= 0
-model.batConstr1 = pe.Constraint(steps, rule=Bat1)
+model.batConstr1 = pe.Constraint(model.steps, rule=Bat1)
 
 def Bat2(m,t):
     if t >= 1:
         return  m.bat[t] <= m.bat[t-1] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
         return m.bat[t] <= 0
-model.batConstr2 = pe.Constraint(steps, rule=Bat2)
+model.batConstr2 = pe.Constraint(model.steps, rule=Bat2)
 
 def BatComp1(m,t):
     return m.p_bat_Lade[t] <= m.M *m.z1[t]
-model.BatCompConstr1 = pe.Constraint(steps, rule=BatComp1)
+model.BatCompConstr1 = pe.Constraint(model.steps, rule=BatComp1)
 
 def BatComp2(m,t):
     return m.p_bat_Nutz[t] <= m.M *(1 - m.z1[t])
-model.BatCompConstr2 = pe.Constraint(steps, rule=BatComp2)
+model.BatCompConstr2 = pe.Constraint(model.steps, rule=BatComp2)
 
 def buyRule(m,t):
-    return m.p_kauf[t] <= m.d[t] + m.dcar[t]
-model.buyConstr = pe.Constraint(steps, rule=buyRule)
+    return m.p_kauf[t] <= d[t] + dcar[t]
+model.buyConstr = pe.Constraint(model.steps, rule=buyRule)
 
 pe.SolverFactory('glpk').solve(model, tee=True)
 with open('variable.txt', 'w') as f:
@@ -153,9 +151,9 @@ fig, axs = plt.subplots(constrained_layout=True)
 axs.step(dates, 5000*prc_biblis, label='price', alpha=0.3)
 axs.step(dates, pv_biblis, label='pv')
 axs.step(dates, dmd_biblis + car_biblis, label='demand')
-axs.step(dates, [pe.value(model.p_kauf[k]) for k in  steps], label='Energy_Bought')
-axs.step(dates, [pe.value(model.p_bat_Nutz[k]) for k in  steps], label='Bat-Use')
-axs.step(dates, [pe.value(model.p_bat_Lade[k]) for k in  steps], label='Bat-Charge')
+axs.step(dates, [pe.value(model.p_kauf[k]) for k in  model.steps], label='Energy_Bought')
+axs.step(dates, [pe.value(model.p_bat_Nutz[k]) for k in  model.steps], label='Bat-Use')
+axs.step(dates, [pe.value(model.p_bat_Lade[k]) for k in  model.steps], label='Bat-Charge')
 axs.legend(loc='upper left', fontsize='x-small')
 #axs.set_xlim(lims)
 for label in axs.get_xticklabels():
