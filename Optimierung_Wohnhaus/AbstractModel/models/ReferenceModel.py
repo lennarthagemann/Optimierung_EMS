@@ -14,7 +14,6 @@ timestep = 1
 energy_factor = timestep/60
 
 model = pe.AbstractModel(name='(Biblis1)')
-
 model.steps = pe.Set()
 model.price = pe.Param(model.steps, within=pe.Reals)
 model.pv = pe.Param(model.steps, within=pe.NonNegativeReals)
@@ -61,7 +60,6 @@ def UseRule1(m,t):
     else:
         return m.p_bat_Nutz[t] <= m.bat[m.steps.prev(t)]
 model.UseConstr1 = pe.Constraint(model.steps, rule=UseRule1)
-
 
 def UseDemand(m,t):
     return m.p_bat_Nutz[t] <= m.d[t] + m.dcar[t]
