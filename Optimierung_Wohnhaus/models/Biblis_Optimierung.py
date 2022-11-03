@@ -31,6 +31,7 @@ Restriktionen:
 
 
 import pyomo.environ as pe
+from pyomo.util.infeasible import log_infeasible_constraints
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car
@@ -47,8 +48,8 @@ energy_factor = timestep/60
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-06-10 00:00'
-Enddatum = '2022-06-11 00:00'
+Startdatum = '2022-05-04 00:00'
+Enddatum = '2022-05-06 00:00'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
 dmd_biblis = dmd(filepath, Startdatum, Enddatum) 
@@ -58,16 +59,17 @@ if timestep == 1:
 pv_biblis = pv(filepath, Startdatum, Enddatum)
 car_biblis = car(filepath, Startdatum, Enddatum)
 
-C_max = 200000
+
 
 steps = [i for i in range(delta)]
+
+model = pe.ConcreteModel()
+model.steps = pe.Set(initialize=steps)
 price = dict(zip(steps,prc_biblis))
 pv = dict(zip(steps,pv_biblis))
 d = dict(zip(steps,dmd_biblis)) 
 dcar = dict(zip(steps, car_biblis)) 
-
-model = pe.ConcreteModel()
-model.steps = pe.Set(initialize= steps)
+C_max = 200000
 model.p_einsp = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_kauf = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals)
@@ -103,25 +105,32 @@ def SoCRule(m,t):
 model.SoCConstr = pe.Constraint(model.steps, rule=SoCRule)
 
 def UseRule1(m,t):
-    return m.p_bat_Nutz[t] <= m.bat[t]
+    if t==0:
+        return pe.Constraint.Skip
+    else:
+        return m.p_bat_Nutz[t] <= m.bat[t-1]
 model.UseConstr1 = pe.Constraint(model.steps, rule=UseRule1)
 
-def UseRule2(m,t):
-    return m.p_bat_Nutz[t] <= C_max
-model.UseConstr2 = pe.Constraint(model.steps, rule=UseRule2)
+# def UseRule2(m,t):
+#     return m.p_bat_Nutz[t] <= C_max
+# model.UseConstr2 = pe.Constraint(model.steps, rule=UseRule2)
+
+def UseDemand(m,t):
+    return m.p_bat_Nutz[t] <= d[t] + dcar[t]
+model.UseDemandConstr = pe.Constraint(model.steps, rule=UseDemand)
 
 def Bat1(m,t):
     if t >= 1:
         return  m.bat[t] >= m.bat[t-1] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] >= 0
+        return m.bat[t] >= 0 
 model.batConstr1 = pe.Constraint(model.steps, rule=Bat1)
 
 def Bat2(m,t):
     if t >= 1:
         return  m.bat[t] <= m.bat[t-1] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] <= 0
+        return m.bat[t] <= 0 
 model.batConstr2 = pe.Constraint(model.steps, rule=Bat2)
 
 def BatComp1(m,t):
@@ -137,9 +146,9 @@ def buyRule(m,t):
 model.buyConstr = pe.Constraint(model.steps, rule=buyRule)
 
 pe.SolverFactory('glpk').solve(model, tee=True)
-with open('variable.txt', 'w') as f:
-    model.pprint(ostream=f)
-
+log_infeasible_constraints(model)
+# with open('variable.txt', 'w') as f:
+#     model.pprint(ostream=f)
 base = dt.datetime.strptime(Startdatum, timeformat)
 #lims = (dt.datetime.strptime(Startdatum, timeformat), dt.datetime.strptime(Enddatum, timeformat))
 dates = [base + dt.timedelta(minutes=i) for i in range(delta)]

@@ -6,14 +6,14 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 
-timeformat = '%Y-%m-%d %M:%S'
+timeformat = '%Y-%m-%d %H:%M'
 timestep = 1
 energy_factor = timestep/60
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-05-03 00:00'
-Enddatum = '2022-05-04 00:00'
+Startdatum = '2022-05-08 00:00'
+Enddatum = '2022-05-10 00:00'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
 steps = [f"t{i}" for i in range(delta)]

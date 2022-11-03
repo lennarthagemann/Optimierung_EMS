@@ -1,0 +1,93 @@
+{
+    "Problem": [
+        {
+            "Lower bound": -1612.6,
+            "Name": "unknown",
+            "Number of constraints": 181,
+            "Number of nonzeros": 400,
+            "Number of objectives": 1,
+            "Number of variables": 106,
+            "Sense": "maximize",
+            "Upper bound": -1612.6
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 1,
+            "number of solutions displayed": 1
+        },
+        {
+            "Constraint": "No values",
+            "Gap": 0.0,
+            "Message": null,
+            "Objective": {
+                "obj": {
+                    "Value": -1612.6000000000001
+                }
+            },
+            "Problem": {},
+            "Status": "optimal",
+            "Variable": {
+                "p_kauf[t0]": {
+                    "Value": 298.0
+                },
+                "p_kauf[t10]": {
+                    "Value": 212.0
+                },
+                "p_kauf[t11]": {
+                    "Value": 175.0
+                },
+                "p_kauf[t12]": {
+                    "Value": 173.0
+                },
+                "p_kauf[t13]": {
+                    "Value": 175.0
+                },
+                "p_kauf[t14]": {
+                    "Value": 172.0
+                },
+                "p_kauf[t1]": {
+                    "Value": 297.0
+                },
+                "p_kauf[t2]": {
+                    "Value": 302.0
+                },
+                "p_kauf[t3]": {
+                    "Value": 306.0
+                },
+                "p_kauf[t4]": {
+                    "Value": 299.0
+                },
+                "p_kauf[t5]": {
+                    "Value": 271.0
+                },
+                "p_kauf[t6]": {
+                    "Value": 211.0
+                },
+                "p_kauf[t7]": {
+                    "Value": 347.0
+                },
+                "p_kauf[t8]": {
+                    "Value": 214.0
+                },
+                "p_kauf[t9]": {
+                    "Value": 213.0
+                }
+            }
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Time": 0.017000436782836914
+        }
+    ]
+}
