@@ -189,6 +189,32 @@ def pv(filepath, Startdatum, Enddatum, round=True):
         pv = np.round(pv, decimals=0).astype(int)
     return pv
 
+def hp(filepath, Startdatum, Enddatum, round=True):
+    """
+    Verbrauch der Wärmepumpe in einem bestimmten Zeitrahmen als numpy-Array gerundet darstellen.
+    """
+    assert isinstance(filepath, str)
+    assert isinstance(Startdatum, str)
+    assert isinstance(Enddatum, str)
+    df= pd.read_csv(filepath,
+                     sep=';',
+                     na_filter=False,
+                     low_memory=False,
+                     names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
+                            'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
+                    )
+    df = df.drop(index=0, axis=0)
+    df = df.drop(columns='Zeit', axis=1)
+    df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
+    df['Wärmepumpeverbrauch (W)'] = df['Wärmepumpeverbrauch (W)'].astype(float)
+    df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
+    df = df.set_index('Zeitstempel')
+    hp = df['Wärmepumpeverbrauch (W)'].to_numpy()
+    if round:
+        hp = np.round(hp, decimals=0).astype(int)
+    return hp
+
+
 def moving_average_full_dim(a, n=4) :
     ret = np.cumsum(a, dtype=float)
     ret[n:] = ret[n:] - ret[:-n]

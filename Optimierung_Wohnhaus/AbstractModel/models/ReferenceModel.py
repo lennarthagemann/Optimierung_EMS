@@ -7,7 +7,6 @@ import numpy as np
 import datetime as dt
 import matplotlib.pyplot as plt
 import matplotlib.units as munits
-import matplotlib.dates as mdates
 
 timeformat = '%Y-%m-%d %H:%M'
 timestep = 1
@@ -19,6 +18,7 @@ model.price = pe.Param(model.steps, within=pe.Reals)
 model.pv = pe.Param(model.steps, within=pe.NonNegativeReals)
 model.d = pe.Param(model.steps, within=pe.NonNegativeReals)
 model.dcar = pe.Param(model.steps, within=pe.NonNegativeReals)
+model.hp = pe.Param(model.steps, within=pe.NonNegativeIntegers)
 model.M = pe.Param(within=pe.NonNegativeIntegers)
 model.C_max = pe.Param(within=pe.NonNegativeIntegers)
 model.p_einsp = pe.Var(model.steps, within=pe.NonNegativeReals)
@@ -47,11 +47,14 @@ def maxPVGenRule(m, t):
 model.maxPVGenConstr = pe.Constraint(model.steps, rule=maxPVGenRule)
 
 def dmdRule(m,t):
-    return m.p_kauf[t] + m.p_Nutz[t] + m.p_bat_Nutz[t] >= m.d[t] + m.dcar[t]
+    return m.p_kauf[t] + m.p_Nutz[t] + m.p_bat_Nutz[t] >= m.d[t] + m.dcar[t] + m.hp[t]
 model.dmdConstr = pe.Constraint(model.steps, rule=dmdRule)
 
 def SoCRule(m,t):
-    return energy_factor * m.p_bat_Lade[t] <= m.C_max - m.bat[t]
+    if t==m.steps.first():
+        return pe.Constraint.Skip
+    else:
+        return energy_factor * m.p_bat_Lade[t] <= m.C_max - m.bat[m.steps.prev(t)]
 model.SoCConstr = pe.Constraint(model.steps, rule=SoCRule)
 
 def UseRule1(m,t):
@@ -62,7 +65,7 @@ def UseRule1(m,t):
 model.UseConstr1 = pe.Constraint(model.steps, rule=UseRule1)
 
 def UseDemand(m,t):
-    return m.p_bat_Nutz[t] <= m.d[t] + m.dcar[t]
+    return m.p_bat_Nutz[t] <= m.d[t] + m.dcar[t] + m.hp[t]
 model.UseDemandConstr = pe.Constraint(model.steps, rule=UseDemand)
 
 def Bat1(m,t):
@@ -88,12 +91,28 @@ def BatComp2(m,t):
 model.BatCompConstr2 = pe.Constraint(model.steps, rule=BatComp2)
 
 def buyRule(m,t):
-    return m.p_kauf[t] <= m.d[t] + m.dcar[t]
+    return m.p_kauf[t] <= m.d[t] + m.dcar[t] + m.hp[t]
 model.buyConstr = pe.Constraint(model.steps, rule=buyRule)
 
-# opt = pe.SolverFactory('glpk')
-# instance = model.create_instance("C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat")
-# results = opt.solve(instance)
+opt = pe.SolverFactory('glpk')
+instance = model.create_instance("C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat")
+results = opt.solve(instance)
+print(results)
+
+
+# fig, axs = plt.subplots(constrained_layout=True)
+# axs.step(model.steps, [5000*pe.value(model.price[k]) for k in model.steps], label='price', alpha=0.3)
+# axs.step(model.steps, [pe.value(model.pv[k]) for k in model.steps], label='pv')
+# axs.step(model.steps, [pe.value(model.d[k]) + pe.value(model.dcar[k]) for k in model.steps], label='demand')
+# axs.step(model.steps, [pe.value(model.p_kauf[k]) for k in  model.steps], label='Energy_Bought')
+# axs.step(model.steps, [pe.value(model.p_bat_Nutz[k]) for k in  model.steps], label='Bat-Use')
+# axs.step(model.steps, [pe.value(model.p_bat_Lade[k]) for k in  model.steps], label='Bat-Charge')
+# axs.legend(loc='upper left', fontsize='x-small')
+# #axs.set_xlim(lims)
+# for label in axs.get_xticklabels():
+#     label.set_rotation(30)
+#     label.set_horizontalalignment('right')
+# plt.show()
 
 # with open('variable.txt', 'w') as f:
 #     model.pprint(ostream=f)
