@@ -1,7 +1,7 @@
 import pyomo.environ as pe
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
-from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp
+from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp, load_df
 import pandas as pd
 import numpy as np
 import datetime as dt
@@ -12,18 +12,19 @@ energy_factor = timestep/60
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-05-08 00:00'
-Enddatum = '2022-05-08 01:00'
+Startdatum = '2022-07-25 12:00'
+Enddatum = '2022-07-26 12:15'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
-
 steps = [f"t{i}" for i in range(delta)]
-dmd_biblis = dmd(filepath, Startdatum, Enddatum) 
+
+df = load_df(filepath)
+dmd_biblis = dmd(df, Startdatum, Enddatum) 
 prc_biblis = prc(filepath_spot, Startdatum, Enddatum)
 if timestep == 1:
     prc_biblis = prc_stretched(prc_biblis)
-pv_biblis = pv(filepath, Startdatum, Enddatum)
-car_biblis = car(filepath, Startdatum, Enddatum)
-hp_biblis = hp(filepath, Startdatum, Enddatum)
+pv_biblis = pv(df, Startdatum, Enddatum)
+car_biblis = car(df, Startdatum, Enddatum)
+hp_biblis = hp(df, Startdatum, Enddatum)
 
 with open('C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat', 'w') as f:
     f.write('set steps := ')

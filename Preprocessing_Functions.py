@@ -7,6 +7,17 @@ Created on Tue Oct 18 10:41:01 2022
 import pandas as pd
 import numpy as np
 import datetime as dt
+
+def load_df(filepath):
+    df= pd.read_csv(filepath,
+                sep=';',
+                na_filter=False,
+                low_memory=False,
+                names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
+                        'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
+                )
+    return df
+
 def demand(date, demand, zeitpunkt, df, round=True):
     assert isinstance(date, str)
     """
@@ -31,22 +42,14 @@ def demand(date, demand, zeitpunkt, df, round=True):
         demand_date = np.round(demand_date, decimals=0).astype(int)
     return demand_date
 
-def dmd(filepath, Startdatum, Enddatum, round=True):
+def dmd(df, Startdatum, Enddatum, round=True):
     """
     Lese den Verbrauch in einem bestimmten Zeitraum ein und speiche ihn als float64-numpy array.
     Runde die Werte auf drei Nachkommastellen um die Maschinengenauigkeit nicht auszureizen
     """
-    assert isinstance(filepath, str)
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
     
-    df= pd.read_csv(filepath,
-                     sep=';',
-                     na_filter=False,
-                     low_memory=False,
-                     names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
-                            'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
-                    )
     df = df.drop(index=0, axis=0)
     df = df.drop(columns='Zeit', axis=1)
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
@@ -57,18 +60,10 @@ def dmd(filepath, Startdatum, Enddatum, round=True):
         dmd_date = np.round(dmd_date, decimals=0).astype(int)
     return dmd_date
 
-def car(filepath, Startdatum, Enddatum, round=True):
-    assert isinstance(filepath, str)
+def car(df, Startdatum, Enddatum, round=True):
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
     
-    df= pd.read_csv(filepath,
-                     sep=';',
-                     na_filter=False,
-                     low_memory=False,
-                     names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
-                            'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
-                    )
     df = df.drop(index=0, axis=0)
     df = df.drop(columns='Zeit', axis=1)
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
@@ -163,21 +158,14 @@ def pv_generation(date, pv_generation, zeitpunkt, df):
     pv_date = df.filter(like=date, axis=0)[pv_generation].to_numpy();
     return pv_date
 
-def pv(filepath, Startdatum, Enddatum, round=True):
+def pv(df, Startdatum, Enddatum, round=True):
     """
     Speichere die PV-Daten der Anlagen in einem bestimmtem Zeitraum  als numpy-Array mit float64 Werten.
     Runde die Werte auf drei Stellen um die Maschinengenauigkeit nicht ausreizen zu müssen.
     """
-    assert isinstance(filepath, str)
+
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
-    df= pd.read_csv(filepath,
-                     sep=';',
-                     na_filter=False,
-                     low_memory=False,
-                     names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
-                            'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
-                    )
     df = df.drop(index=0, axis=0)
     df = df.drop(columns='Zeit', axis=1)
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
@@ -189,20 +177,12 @@ def pv(filepath, Startdatum, Enddatum, round=True):
         pv = np.round(pv, decimals=0).astype(int)
     return pv
 
-def hp(filepath, Startdatum, Enddatum, round=True):
+def hp(df, Startdatum, Enddatum, round=True):
     """
     Verbrauch der Wärmepumpe in einem bestimmten Zeitrahmen als numpy-Array gerundet darstellen.
     """
-    assert isinstance(filepath, str)
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
-    df= pd.read_csv(filepath,
-                     sep=';',
-                     na_filter=False,
-                     low_memory=False,
-                     names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
-                            'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
-                    )
     df = df.drop(index=0, axis=0)
     df = df.drop(columns='Zeit', axis=1)
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')

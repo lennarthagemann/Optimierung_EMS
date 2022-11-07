@@ -34,7 +34,7 @@ import pyomo.environ as pe
 from pyomo.util.infeasible import log_infeasible_constraints
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
-from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp
+from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp, load_df
 import pandas as pd
 import numpy as np
 import datetime as dt
@@ -48,17 +48,18 @@ energy_factor = timestep/60
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-06-05 00:00'
-Enddatum = '2022-06-06 00:00'
+Startdatum = '2022-07-25 00:00'
+Enddatum = '2022-07-27 00:00'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
-dmd_biblis = dmd(filepath, Startdatum, Enddatum) 
+df = load_df(filepath)
+dmd_biblis = dmd(df, Startdatum, Enddatum) 
 prc_biblis = prc(filepath_spot, Startdatum, Enddatum)
 if timestep == 1:
     prc_biblis = prc_stretched(prc_biblis)
-pv_biblis = pv(filepath, Startdatum, Enddatum)
-car_biblis = car(filepath, Startdatum, Enddatum)
-hp_biblis = hp(filepath, Startdatum, Enddatum)
+pv_biblis = pv(df, Startdatum, Enddatum)
+car_biblis = car(df, Startdatum, Enddatum)
+hp_biblis = hp(df, Startdatum, Enddatum)
 
 
 
@@ -72,6 +73,7 @@ d = dict(zip(steps,dmd_biblis))
 dcar = dict(zip(steps, car_biblis)) 
 hp = dict(zip(steps, hp_biblis))
 C_max = 200000
+C_start = 0
 model.p_einsp = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_kauf = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals)
@@ -103,7 +105,10 @@ def dmdRule(m,t):
 model.dmdConstr = pe.Constraint(model.steps, rule=dmdRule)
 
 def SoCRule(m,t):
-    return energy_factor * m.p_bat_Lade[t] <= C_max - m.bat[t-1]
+    if t >= 1:
+        return energy_factor * m.p_bat_Lade[t] <= C_max - m.bat[t-1]
+    else:
+        return energy_factor * m.p_bat_Lade[t] <= C_max - C_start
 model.SoCConstr = pe.Constraint(model.steps, rule=SoCRule)
 
 def UseRule1(m,t):
@@ -125,14 +130,14 @@ def Bat1(m,t):
     if t >= 1:
         return  m.bat[t] >= m.bat[t-1] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] >= 0 
+        return m.bat[t] >= C_start
 model.batConstr1 = pe.Constraint(model.steps, rule=Bat1)
 
 def Bat2(m,t):
     if t >= 1:
         return  m.bat[t] <= m.bat[t-1] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] <= 0 
+        return m.bat[t] <= C_start
 model.batConstr2 = pe.Constraint(model.steps, rule=Bat2)
 
 def BatComp1(m,t):

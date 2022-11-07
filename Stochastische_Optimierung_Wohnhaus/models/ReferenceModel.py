@@ -29,11 +29,6 @@ model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,ene
 model.bat = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.C_max))
 model.z1 = pe.Var(model.steps, within=pe.Binary) 
 
-def ObjCosts(m):  
-    return sum(0.8*m.p_einsp[t]*m.price[t] -m.p_kauf[t]*m.price[t] for t in m.steps)
-model.obj = pe.Objective(rule=ObjCosts, 
-                      sense=pe.maximize)
-
 def SupplyRule(m, t):
     return m.p_Nutz[t] + m.p_bat_Lade[t] + m.p_einsp[t] <= m.pv[t]
 model.SupplyConstr = pe.Constraint(model.steps, rule=SupplyRule)
@@ -94,10 +89,23 @@ def buyRule(m,t):
     return m.p_kauf[t] <= m.d[t] + m.dcar[t] + m.hp[t]
 model.buyConstr = pe.Constraint(model.steps, rule=buyRule)
 
+def ObjCostsFirstStage(m):  
+    return sum(0.8*m.p_einsp[t]*m.price[t] for t in m.steps)
+model.FirstStageCost = pe.Expression(rule=ObjCostsFirstStage)
+
+def ObjCostsSecondStage(m):
+    return sum(-m.p_kauf[t]*m.price[t] for t in m.steps)
+model.SecondStageCost=pe.Objective(rule=ObjCostsSecondStage)
+
+def TotalCostRule(m):
+    return m.ObjCostsFirstStage + m.ObjCostsSecondStage
+model.TotalCostObj = pe.Objective(rule=TotalCostRule, sense=pe.maximize)
+
 opt = pe.SolverFactory('glpk')
 instance = model.create_instance("C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat")
 results = opt.solve(instance)
 print(results)
+
 
 
 # fig, axs = plt.subplots(constrained_layout=True)
