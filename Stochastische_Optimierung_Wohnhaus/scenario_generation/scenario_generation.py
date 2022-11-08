@@ -26,8 +26,8 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     timeformat = '%Y-%m-%d %H:%M'
     timestep = 1
     energy_factor = timestep/60
-    Startdatum = '2022-05-08 00:00'
-    Enddatum = '2022-05-08 01:00'
+    Startdatum = '2022-05-08 12:00'
+    Enddatum = '2022-05-08 12:30'
     delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
     steps = [f"t{i}" for i in range(delta)]
     df = load_df(filepath_prosumer)
@@ -68,8 +68,8 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
             f.write('; \n')
             f.write(f'param M := {10**5}; \n')
             f.write(f'param C_max := {20000}; \n')
+        scenarionames.append(f'{i}')
         i+=1
-        scenarionames.append(f'scenario{i}')
     return scenarionames
 
 def scenario_structure_generator(scenarionames):
@@ -127,8 +127,6 @@ def scenario_structure_generator(scenarionames):
         f.write('param StageCost := FirstStage FirstStageCost \n SecondStage SecondStageCost;')
     return
 
-Startdatum = '2022-07-25 12:00'
-Enddatum = '2022-07-26 12:15'
-scenarios = [('2022-07-25 12:00', '2022-07-26 12:00'),('2022-07-24 12:00', '2022-07-25 12:00'),('2022-07-22 12:00', '2022-07-23 12:00')]
+scenarios = [('2022-07-25 12:00', '2022-07-25 12:30'),('2022-07-24 12:00', '2022-07-24 12:30'),('2022-07-22 12:00', '2022-07-22 12:30')]
 names = scenario_data_generator(filepath_spot,filepath,scenarios)
 scenario_structure_generator(names)

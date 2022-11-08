@@ -95,10 +95,10 @@ model.FirstStageCost = pe.Expression(rule=ObjCostsFirstStage)
 
 def ObjCostsSecondStage(m):
     return sum(-m.p_kauf[t]*m.price[t] for t in m.steps)
-model.SecondStageCost=pe.Objective(rule=ObjCostsSecondStage)
+model.SecondStageCost=pe.Expression(rule=ObjCostsSecondStage)
 
 def TotalCostRule(m):
-    return m.ObjCostsFirstStage + m.ObjCostsSecondStage
+    return m.FirstStageCost + m.SecondStageCost
 model.TotalCostObj = pe.Objective(rule=TotalCostRule, sense=pe.maximize)
 
 opt = pe.SolverFactory('glpk')
