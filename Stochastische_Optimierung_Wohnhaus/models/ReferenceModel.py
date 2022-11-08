@@ -101,10 +101,10 @@ def TotalCostRule(m):
     return m.FirstStageCost + m.SecondStageCost
 model.TotalCostObj = pe.Objective(rule=TotalCostRule, sense=pe.maximize)
 
-opt = pe.SolverFactory('glpk')
-instance = model.create_instance("C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat")
-results = opt.solve(instance)
-print(results)
+# opt = pe.SolverFactory('glpk')
+# instance = model.create_instance("C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat")
+# results = opt.solve(instance)
+# print(results)
 
 
 

@@ -27,7 +27,7 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     timestep = 1
     energy_factor = timestep/60
     Startdatum = '2022-05-08 12:00'
-    Enddatum = '2022-05-08 12:30'
+    Enddatum = '2022-05-09 12:00'
     delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
     steps = [f"t{i}" for i in range(delta)]
     df = load_df(filepath_prosumer)
@@ -106,13 +106,13 @@ def scenario_structure_generator(scenarionames):
         for name in scenarionames:
             f.write(f"Node{name} SecondStage \n")
         f.write("; \n")
-        f.write(' Children[RootNode] := ')
+        f.write('set Children[RootNode] := ')
         for name in scenarionames:
             f.write(f'Node{name} \n')
         f.write('; \n')
-        f.write("param ConditionalProbability := RootNode = 1.0 \n")
+        f.write("param ConditionalProbability := RootNode 1.0 \n")
         for name, prob in zip(scenarionames, probs):
-            f.write(f"Node{name} = {prob} \n")
+            f.write(f"Node{name} {prob} \n")
         f.write("; \n")
         f.write("set Scenarios := ")
         for name in scenarionames:
@@ -122,11 +122,11 @@ def scenario_structure_generator(scenarionames):
         for name in scenarionames:
             f.write(f"Scenario{name}  Node{name} \n")
         f.write('; \n')
-        f.write("set StageVariables [FirstStage] := z1[*] \n p_bat_Nutz[*] \n p_bat_Lade[*] \n p_einsp[*] \n bat[*] \n p_Nutz[*]; \n")
+        f.write("set StageVariables[FirstStage] := z1[*] \n p_bat_Nutz[*] \n p_bat_Lade[*] \n p_einsp[*] \n bat[*] \n p_Nutz[*]; \n")
         f.write("set StageVariables[SecondStage] := p_kauf[*]; \n")
         f.write('param StageCost := FirstStage FirstStageCost \n SecondStage SecondStageCost;')
     return
 
-scenarios = [('2022-07-25 12:00', '2022-07-25 12:30'),('2022-07-24 12:00', '2022-07-24 12:30'),('2022-07-22 12:00', '2022-07-22 12:30')]
+scenarios = [('2022-07-25 12:00', '2022-07-26 12:00'),('2022-07-24 12:00', '2022-07-25 12:00'),('2022-07-22 12:00', '2022-07-23 12:00')]
 names = scenario_data_generator(filepath_spot,filepath,scenarios)
 scenario_structure_generator(names)
