@@ -1,6 +1,11 @@
-from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp
+import sys
+sys.path.append('C:/Users/hagem/Optimierung_EMS')
+from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp, load_df
 import datetime as dt
 import numpy as np
+
+filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
+filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
 
 def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     """
@@ -17,6 +22,7 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     -filepath_prosumer: Dateipfad mit Verbrauch/Erzeugung
     -scenarios: Liste von Szenarien, z.B. Tage, die jeweils als .dat gespeichert werden sollen. 
     """
+    scenarionames = []
     timeformat = '%Y-%m-%d %H:%M'
     timestep = 1
     energy_factor = timestep/60
@@ -24,41 +30,46 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     Enddatum = '2022-05-08 01:00'
     delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
     steps = [f"t{i}" for i in range(delta)]
-    dmd_biblis = dmd(filepath_prosumer, Startdatum, Enddatum) 
-    prc_biblis = prc(filepath_prc, Startdatum, Enddatum)
-    if timestep == 1:
-        prc_biblis = prc_stretched(prc_biblis)
-    pv_biblis = pv(filepath_prosumer, Startdatum, Enddatum)
-    car_biblis = car(filepath_prosumer, Startdatum, Enddatum)
-    hp_biblis = hp(filepath_prosumer, Startdatum, Enddatum)
+    df = load_df(filepath_prosumer)
+    i = 1
+    for start, end in scenarios:
+        dmd_biblis = dmd(df, start, end) 
+        prc_biblis = prc(filepath_prc, start, end)
+        if timestep == 1:
+            prc_biblis = prc_stretched(prc_biblis)
+        pv_biblis = pv(df, start, end)
+        car_biblis = car(df, start, end)
+        hp_biblis = hp(df, start, end)
 
-    with open('C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat', 'w') as f:
-        f.write('set steps := ')
-        for t in steps:
-            f.write(t + " ")
-        f.write('; \n')
-        f.write('param pv := ')
-        for t, pv in zip(steps, pv_biblis):
-            f.write(f'{t} {pv} ')
-        f.write('; \n')
-        f.write('param d := ')
-        for t, value in zip(steps, dmd_biblis):
-            f.write(f'{t} {value} ')
-        f.write('; \n')
-        f.write('param dcar := ')
-        for t, value in zip(steps, car_biblis):
-            f.write(f'{t} {value} ')
-        f.write('; \n')
-        f.write('param price := ')
-        for t, value in zip(steps, prc_biblis):
-            f.write(f'{t} {value} ')
-        f.write('; \n')
-        f.write('param hp := ')
-        for t, value in zip(steps, hp_biblis):
-            f.write(f'{t} {value} ')
-        f.write('; \n')
-        f.write(f'param M := {10**5}; \n')
-        f.write(f'param C_max := {20000}; \n')
+        with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/scenarios/scenario{i}.dat', 'w') as f:
+            f.write('set steps := ')
+            for t in steps:
+                f.write(t + " ")
+            f.write('; \n')
+            f.write('param pv := ')
+            for t, value in zip(steps, pv_biblis):
+                f.write(f'{t} {value} ')
+            f.write('; \n')
+            f.write('param d := ')
+            for t, value in zip(steps, dmd_biblis):
+                f.write(f'{t} {value} ')
+            f.write('; \n')
+            f.write('param dcar := ')
+            for t, value in zip(steps, car_biblis):
+                f.write(f'{t} {value} ')
+            f.write('; \n')
+            f.write('param price := ')
+            for t, value in zip(steps, prc_biblis):
+                f.write(f'{t} {value} ')
+            f.write('; \n')
+            f.write('param hp := ')
+            for t, value in zip(steps, hp_biblis):
+                f.write(f'{t} {value} ')
+            f.write('; \n')
+            f.write(f'param M := {10**5}; \n')
+            f.write(f'param C_max := {20000}; \n')
+        i+=1
+        scenarionames.append(f'scenario{i}')
     return scenarionames
 
 def scenario_structure_generator(scenarionames):
@@ -116,5 +127,8 @@ def scenario_structure_generator(scenarionames):
         f.write('param StageCost := FirstStage FirstStageCost \n SecondStage SecondStageCost;')
     return
 
-names = ['1','2','3','4']
+Startdatum = '2022-07-25 12:00'
+Enddatum = '2022-07-26 12:15'
+scenarios = [('2022-07-25 12:00', '2022-07-26 12:00'),('2022-07-24 12:00', '2022-07-25 12:00'),('2022-07-22 12:00', '2022-07-23 12:00')]
+names = scenario_data_generator(filepath_spot,filepath,scenarios)
 scenario_structure_generator(names)
