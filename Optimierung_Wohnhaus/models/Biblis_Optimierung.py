@@ -34,7 +34,7 @@ import pyomo.environ as pe
 from pyomo.util.infeasible import log_infeasible_constraints
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
-from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp, load_df
+from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp, load_df, moving_average
 import pandas as pd
 import numpy as np
 import datetime as dt
@@ -48,8 +48,8 @@ energy_factor = timestep/60
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-07-25 00:00'
-Enddatum = '2022-07-27 00:00'
+Startdatum = '2022-07-25 04:00'
+Enddatum = '2022-07-25 22:00'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
 df = load_df(filepath)

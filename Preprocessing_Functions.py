@@ -42,7 +42,7 @@ def demand(date, demand, zeitpunkt, df, round=True):
         demand_date = np.round(demand_date, decimals=0).astype(int)
     return demand_date
 
-def dmd(df, Startdatum, Enddatum, round=True):
+def dmd(df, Startdatum, Enddatum, round=True, smooth=True):
     """
     Lese den Verbrauch in einem bestimmten Zeitraum ein und speiche ihn als float64-numpy array.
     Runde die Werte auf drei Nachkommastellen um die Maschinengenauigkeit nicht auszureizen
@@ -58,9 +58,11 @@ def dmd(df, Startdatum, Enddatum, round=True):
     dmd_date = df['Hausverbrauch (W)'].to_numpy()
     if round:
         dmd_date = np.round(dmd_date, decimals=0).astype(int)
+    if smooth:
+        dmd_date = moving_average(dmd_date)
     return dmd_date
 
-def car(df, Startdatum, Enddatum, round=True):
+def car(df, Startdatum, Enddatum, round=True, smooth=True):
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
     
@@ -72,6 +74,8 @@ def car(df, Startdatum, Enddatum, round=True):
     car_date = df['Ladepunktverbrauch (W)'].to_numpy()
     if round:
         car_date = np.round(car_date, decimals=0).astype(int)
+    if smooth:
+        car_date = moving_average(car_date)
     return car_date
 
 def price(Startdatum, Enddatum, preis, zeitpunkt, zeitschritt, df):
@@ -158,7 +162,7 @@ def pv_generation(date, pv_generation, zeitpunkt, df):
     pv_date = df.filter(like=date, axis=0)[pv_generation].to_numpy();
     return pv_date
 
-def pv(df, Startdatum, Enddatum, round=True):
+def pv(df, Startdatum, Enddatum, round=True, smooth=True):
     """
     Speichere die PV-Daten der Anlagen in einem bestimmtem Zeitraum  als numpy-Array mit float64 Werten.
     Runde die Werte auf drei Stellen um die Maschinengenauigkeit nicht ausreizen zu müssen.
@@ -175,9 +179,11 @@ def pv(df, Startdatum, Enddatum, round=True):
     pv = df['PV Leistung (W)'].to_numpy()
     if round:
         pv = np.round(pv, decimals=0).astype(int)
+    if smooth:
+        pv = moving_average(pv)
     return pv
 
-def hp(df, Startdatum, Enddatum, round=True):
+def hp(df, Startdatum, Enddatum, round=True, smooth=True):
     """
     Verbrauch der Wärmepumpe in einem bestimmten Zeitrahmen als numpy-Array gerundet darstellen.
     """
@@ -192,10 +198,22 @@ def hp(df, Startdatum, Enddatum, round=True):
     hp = df['Wärmepumpeverbrauch (W)'].to_numpy()
     if round:
         hp = np.round(hp, decimals=0).astype(int)
+    if smooth:
+        hp = moving_average(hp)
     return hp
 
 
-def moving_average_full_dim(a, n=4) :
-    ret = np.cumsum(a, dtype=float)
-    ret[n:] = ret[n:] - ret[:-n]
-    return ret[n - 1:] / n
+def moving_average(a, n=10):
+    """
+    Schreibe eine moving_average Funktion für PV, um die Kurve zu glätten.
+    Wichtig: Diese soll die gleiche Dimension haben wie der Input!
+    1. Berechne zur Zeit j die Summe der letzten min(j,n) Datenpunkten
+    2. Teile diese jeweils durch min(j,n)
+    """
+    b = np.empty(np.shape(a)[0])
+    for i in range(np.shape(a)[0]):
+        if i < 10:
+            b[i] = a[i]
+        else:
+            b[i]=sum(a[i-n+1:i+1])/n
+    return b
