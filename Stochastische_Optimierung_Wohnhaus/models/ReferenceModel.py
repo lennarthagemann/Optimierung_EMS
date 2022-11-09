@@ -97,9 +97,9 @@ def ObjCostsSecondStage(m):
     return sum(-m.p_kauf[t]*m.price[t] for t in m.steps)
 model.SecondStageCost=pe.Expression(rule=ObjCostsSecondStage)
 
-def TotalCostRule(m):
+def TotalEarningsRule(m):
     return m.FirstStageCost + m.SecondStageCost
-model.TotalCostObj = pe.Objective(rule=TotalCostRule, sense=pe.maximize)
+model.TotalEarningsObj = pe.Objective(rule=TotalEarningsRule, sense=pe.maximize)
 
 # opt = pe.SolverFactory('glpk')
 # instance = model.create_instance("C:/Users/hagem/Optimierung_EMS/Optimierung_Wohnhaus/AbstractModel/scenarios/scenario.dat")
