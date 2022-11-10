@@ -14,7 +14,8 @@ ist um die Restriktionen zu erfüllen, muss dies ausgeglichen werden.
 ## Workflow stochastische Optimierung
 1. Szenariodaten generieren durch Aufrufen von scenario_generation.py, Einstellen von Datum und Szenarien
 2. Im Ordner .\Stochastische_Optimierung_Wohnhaus  wird durch Aufrufen des Befehls
- runef -m models -s scenarios --solve --solver=glpk --solution-writer=pyomo.pysp.plugins.jsonsolutionwriter
+<p style="text-align: center;">
+ runef -m models -s scenarios --solve --solver=glpk --solution-writer=pyomo.pysp.plugins.jsonsolutionwriter </p>
 das stochastische Optimierungsproblem in erweiterter Formulierung mit glpk gelöst, mit Referenzmodell im Ordner models und
 Szenariodateien im Ordner scenarios.
 3. Rufe Result_pickler.py auf um die Lösungen aus der .json Datei seriell und seperat abzuspeichern.
