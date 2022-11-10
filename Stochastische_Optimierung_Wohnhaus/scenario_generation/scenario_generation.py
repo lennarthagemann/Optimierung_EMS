@@ -1,9 +1,10 @@
 import sys
+import os
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp, load_df
 import datetime as dt
 import numpy as np
-
+import pickle 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
 
@@ -20,27 +21,48 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     ----------------------------------
     -filepath_prc: Dateipfad mit CSV-Datei der Spot-Markt Preise.
     -filepath_prosumer: Dateipfad mit Verbrauch/Erzeugung
-    -scenarios: Liste von Szenarien, z.B. Tage, die jeweils als .dat gespeichert werden sollen. 
+    -scenarios: Liste von Szenarien, z.B. Tage, die jeweils als .dat gespeichert werden sollen.
+    Annahme: scenarios[0] ist der T 
     """
     scenarionames = []
     timeformat = '%Y-%m-%d %H:%M'
     timestep = 1
     energy_factor = timestep/60
-    Startdatum = '2022-05-08 12:00'
-    Enddatum = '2022-05-08 13:00'
+    Startdatum = '2022-05-08 00:00'
+    day = Startdatum[:10]
+    if not os.path.exists(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/'):
+        os.makedirs(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/')
+    Enddatum = '2022-05-09 00:00'
     delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
     steps = [f"t{i}" for i in range(delta)]
     df = load_df(filepath_prosumer)
     i = 1
+    prc_biblis = prc(filepath_prc, Startdatum, Enddatum)
+    if timestep == 1:
+        prc_biblis = prc_stretched(prc_biblis)
+    with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/prc', 'wb') as f:
+        pickle.dump(prc_biblis,f)
+    base = dt.datetime.strptime(Startdatum, timeformat)
+    dates = [base + dt.timedelta(minutes=i) for i in range(delta)]
+    with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/dates', 'wb') as f:
+        pickle.dump(dates,f)
+    dmd_biblis = dmd(df, Startdatum, Enddatum) 
+    with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/dmd', 'wb') as f:
+        pickle.dump(dmd_biblis,f)
+    pv_biblis = pv(df, Startdatum, Enddatum)
+    with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/pv', 'wb') as f:
+        pickle.dump(pv_biblis,f)
+    car_biblis = car(df, Startdatum, Enddatum)
+    with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/car', 'wb') as f:
+        pickle.dump(car_biblis,f)
+    hp_biblis = hp(df, Startdatum, Enddatum)
+    with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/hp', 'wb') as f:
+        pickle.dump(hp_biblis,f)
     for start, end in scenarios:
         dmd_biblis = dmd(df, start, end) 
-        prc_biblis = prc(filepath_prc, start, end)
-        if timestep == 1:
-            prc_biblis = prc_stretched(prc_biblis)
         pv_biblis = pv(df, start, end)
         car_biblis = car(df, start, end)
         hp_biblis = hp(df, start, end)
-
         with open(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/scenarios/scenario{i}.dat', 'w') as f:
             f.write('set steps := ')
             for t in steps:
@@ -127,6 +149,6 @@ def scenario_structure_generator(scenarionames):
         f.write('param StageCost := FirstStage FirstStageCost \n SecondStage SecondStageCost;')
     return
 
-scenarios = [('2022-07-25 12:00', '2022-07-25 13:00'),('2022-07-24 12:00', '2022-07-24 13:00'),('2022-07-22 12:00', '2022-07-22 13:00')]
+scenarios = [('2022-05-08 00:00', '2022-05-09 00:00'),('2022-05-09 00:00', '2022-05-10 00:00'),('2022-05-10 00:00', '2022-05-11 00:00')]
 names = scenario_data_generator(filepath_spot,filepath,scenarios)
 scenario_structure_generator(names)

@@ -35,6 +35,7 @@ from pyomo.util.infeasible import log_infeasible_constraints
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car, hp, load_df, moving_average
+from plotting_functions import load_curve_plot
 import pandas as pd
 import numpy as np
 import datetime as dt
@@ -45,21 +46,22 @@ import matplotlib.dates as mdates
 timeformat = '%Y-%m-%d %H:%M'
 timestep = 1
 energy_factor = timestep/60
+smth=True
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-07-25 04:00'
-Enddatum = '2022-07-25 22:00'
+Startdatum = '2022-05-08 00:00'
+Enddatum = '2022-05-09 00:00'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
 df = load_df(filepath)
-dmd_biblis = dmd(df, Startdatum, Enddatum) 
+dmd_biblis = dmd(df, Startdatum, Enddatum, smooth=smth) 
 prc_biblis = prc(filepath_spot, Startdatum, Enddatum)
 if timestep == 1:
     prc_biblis = prc_stretched(prc_biblis)
-pv_biblis = pv(df, Startdatum, Enddatum)
-car_biblis = car(df, Startdatum, Enddatum)
-hp_biblis = hp(df, Startdatum, Enddatum)
+pv_biblis = pv(df, Startdatum, Enddatum, smooth=smth)
+car_biblis = car(df, Startdatum, Enddatum, smooth=smth)
+hp_biblis = hp(df, Startdatum, Enddatum, smooth=smth)
 
 
 
@@ -163,16 +165,20 @@ dates = [base + dt.timedelta(minutes=i) for i in range(delta)]
 #converter = mdates.ConciseDateConverter()
 #munits.registry[dt.datetime] = converter
 
-fig, axs = plt.subplots(constrained_layout=True)
-axs.step(dates, 5000*prc_biblis, label='price', alpha=0.3)
-axs.step(dates, pv_biblis, label='pv')
-axs.step(dates, dmd_biblis + car_biblis + hp_biblis, label='demand')
-axs.step(dates, [pe.value(model.p_kauf[k]) for k in  model.steps], label='Energy_Bought')
-axs.step(dates, [pe.value(model.p_bat_Nutz[k]) for k in  model.steps], label='Bat-Use')
-axs.step(dates, [pe.value(model.p_bat_Lade[k]) for k in  model.steps], label='Bat-Charge')
-axs.legend(loc='upper left', fontsize='x-small')
-#axs.set_xlim(lims)
-for label in axs.get_xticklabels():
-    label.set_rotation(30)
-    label.set_horizontalalignment('right')
-plt.show()
+load_curve_plot(dates, prc_biblis, pv_biblis, dmd_biblis, car_biblis, hp_biblis, [pe.value(model.p_kauf[k]) for k in  model.steps], 
+                [pe.value(model.p_bat_Nutz[k]) for k in  model.steps], 
+                [pe.value(model.p_bat_Lade[k]) for k in  model.steps])
+
+# fig, axs = plt.subplots(constrained_layout=True)
+# axs.step(dates, 5000*prc_biblis, label='price', alpha=0.3)
+# axs.step(dates, pv_biblis, label='pv')
+# axs.step(dates, dmd_biblis + car_biblis + hp_biblis, label='demand')
+# axs.step(dates, [pe.value(model.p_kauf[k]) for k in  model.steps], label='Energy_Bought')
+# axs.step(dates, [pe.value(model.p_bat_Nutz[k]) for k in  model.steps], label='Bat-Use')
+# axs.step(dates, [pe.value(model.p_bat_Lade[k]) for k in  model.steps], label='Bat-Charge')
+# axs.legend(loc='upper left', fontsize='x-small')
+# #axs.set_xlim(lims)
+# for label in axs.get_xticklabels():
+#     label.set_rotation(30)
+#     label.set_horizontalalignment('right')
+# plt.show()

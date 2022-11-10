@@ -56,10 +56,10 @@ def dmd(df, Startdatum, Enddatum, round=True, smooth=True):
     df['Hausverbrauch (W)'] = df['Hausverbrauch (W)'].astype(float)
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
     dmd_date = df['Hausverbrauch (W)'].to_numpy()
-    if round:
-        dmd_date = np.round(dmd_date, decimals=0).astype(int)
     if smooth:
         dmd_date = moving_average(dmd_date)
+    if round:
+        dmd_date = np.round(dmd_date, decimals=0).astype(int)
     return dmd_date
 
 def car(df, Startdatum, Enddatum, round=True, smooth=True):
@@ -72,10 +72,11 @@ def car(df, Startdatum, Enddatum, round=True, smooth=True):
     df['Ladepunktverbrauch (W)'] = df['Ladepunktverbrauch (W)'].astype(float)
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
     car_date = df['Ladepunktverbrauch (W)'].to_numpy()
-    if round:
-        car_date = np.round(car_date, decimals=0).astype(int)
     if smooth:
         car_date = moving_average(car_date)
+    if round:
+        car_date = np.round(car_date, decimals=0).astype(int)
+
     return car_date
 
 def price(Startdatum, Enddatum, preis, zeitpunkt, zeitschritt, df):
@@ -177,10 +178,11 @@ def pv(df, Startdatum, Enddatum, round=True, smooth=True):
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
     df = df.set_index('Zeitstempel')
     pv = df['PV Leistung (W)'].to_numpy()
-    if round:
-        pv = np.round(pv, decimals=0).astype(int)
     if smooth:
         pv = moving_average(pv)
+    if round:
+        pv = np.round(pv, decimals=0).astype(int)
+
     return pv
 
 def hp(df, Startdatum, Enddatum, round=True, smooth=True):
@@ -196,10 +198,11 @@ def hp(df, Startdatum, Enddatum, round=True, smooth=True):
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
     df = df.set_index('Zeitstempel')
     hp = df['Wärmepumpeverbrauch (W)'].to_numpy()
-    if round:
-        hp = np.round(hp, decimals=0).astype(int)
     if smooth:
         hp = moving_average(hp)
+    if round:
+        hp = np.round(hp, decimals=0).astype(int)
+
     return hp
 
 
