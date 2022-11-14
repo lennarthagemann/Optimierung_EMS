@@ -1,5 +1,5 @@
 # Optimierung Elektromanagement
-Stochastische Optimierung des Elektromanagements eines Wohnhauses
+Stochastische Optimierung des Elektromanagementsystems eines Wohnhauses
 
 # Deterministischer Fall
 Um die Optimierung mit dem abstrakten Modell durchzuführen muss zunächst
