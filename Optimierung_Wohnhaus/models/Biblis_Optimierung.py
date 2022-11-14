@@ -50,8 +50,8 @@ smth=True
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-05-08 00:00'
-Enddatum = '2022-05-09 00:00'
+Startdatum = '2022-07-25 12:00'
+Enddatum = '2022-07-26 12:00'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
 df = load_df(filepath)
@@ -83,6 +83,7 @@ model.p_bat_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,ene
 model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*C_max))
 model.bat = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,C_max))
 model.z1 = pe.Var(model.steps, within=pe.Binary) 
+model.z2 = pe.Var(model.steps, within=pe.Binary)
 model.M = 10**5
 
 def ObjCosts(m):  
@@ -98,9 +99,9 @@ def maxEinspRule(m, t):
     return m.p_einsp[t] <= 0.7*max(pv.values())
 model.maxEinspConstr = pe.Constraint(model.steps, rule=maxEinspRule)
 
-def maxPVGenRule(m, t):
-   return m.p_einsp[t] + m.p_bat_Lade[t] <= pv[t]
-model.maxPVGenConstr = pe.Constraint(model.steps, rule=maxPVGenRule)
+# def maxPVGenRule(m, t):
+#    return m.p_einsp[t] + m.p_bat_Lade[t] <= pv[t]
+# model.maxPVGenConstr = pe.Constraint(model.steps, rule=maxPVGenRule)
 
 def dmdRule(m,t):
     return m.p_kauf[t] + m.p_Nutz[t] + m.p_bat_Nutz[t] >= d[t] + dcar[t] + hp[t]
@@ -149,6 +150,14 @@ model.BatCompConstr1 = pe.Constraint(model.steps, rule=BatComp1)
 def BatComp2(m,t):
     return m.p_bat_Nutz[t] <= m.M *(1 - m.z1[t])
 model.BatCompConstr2 = pe.Constraint(model.steps, rule=BatComp2)
+
+# def BuyComp1(m,t):
+#     return m.p_kauf[t] <= m.M *m.z2[t]
+# model.BuyCompConstr1 = pe.Constraint(model.steps, rule=BuyComp1)
+
+# def BuyComp2(m,t):
+#     return m.p_einsp[t] <= m.M *(1 - m.z2[t])
+# model.BuyCompConstr2 = pe.Constraint(model.steps, rule=BuyComp2)
 
 def buyRule(m,t):
     return m.p_kauf[t] <= d[t] + dcar[t] + hp[t]

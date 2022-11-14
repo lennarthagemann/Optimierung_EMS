@@ -25,6 +25,41 @@ def load_curve_plot(dates, prc, pv, dmd, car, hp, buy, bat_use, bat_charge):
     for label in axs.get_xticklabels():
         label.set_rotation(30)
         label.set_horizontalalignment('right')
-    axs.fmt_xdata = DateFormatter('%H:%M')
-    fig.autofmt_xdate()
+    plt.show()
+
+def multiscale_load_curve_plot(dates1, prc1, pv1, dmd1, car1, hp1, buy1, bat_use1, bat_charge1, dates2, prc2, pv2, dmd2, car2, hp2, buy2, bat_use2, bat_charge2):
+    
+    """
+    Lastprofil innerhalb eines bestimmten Zeitraums, chronologischer Verlauf.
+    Problem hier: wir müssen auf verschiedene Zeitskalen achten, jeweils für die beiden Schritte.
+    Diese sollen in einem Bild nacheinander geplottet werden.
+    Idee: Konkateniere die Arrays, sorge dafür das in der zweiten Zeitstufe der Abstand der xticks größer ist.
+    """
+
+    dates = dates1 + dates2
+    prc = prc1 + prc2
+    pv = pv1 + pv2
+    dmd = dmd1 + dmd2
+    car = car1 + car2
+    hp = hp1 + hp2
+    buy = buy1 + buy2
+    bat_use = bat_use1 + bat_use2
+    bat_charge = bat_charge1 + bat_charge2
+    steps1 = [int(el.split('t')[1]) for el in dates1]
+    steps2 = [15*(int(el.split('t')[1])+1) for el in dates2]
+    steps = steps1 + steps2
+    print(f'battery use : {bat_use}')
+    print(f'battery charging : {bat_charge}')
+    fig, axs = plt.subplots(constrained_layout=True)
+    axs.step(steps, prc, label='price', alpha=0.3)
+    axs.step(steps, pv, label='pv')
+    axs.step(steps, [i+j+k for i,j,k in zip(dmd, car, hp)], label='demand')
+    axs.step(steps, buy, label='Energy_Bought')
+    axs.step(steps, bat_use, label='Bat-Use')
+    axs.step(steps, bat_charge, label='Bat-Charge')
+    axs.legend(loc='upper left', fontsize='x-small')
+    #axs.set_xlim(lims)
+    for label in axs.get_xticklabels():
+        label.set_rotation(30)
+        label.set_horizontalalignment('right')
     plt.show()

@@ -28,6 +28,7 @@ model.p_bat_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,ene
 model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*model.C_max))
 model.bat = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.C_max))
 model.z1 = pe.Var(model.steps, within=pe.Binary) 
+model.z2 = pe.Var(model.steps, within=pe.Binary)
 
 def SupplyRule(m, t):
     return m.p_Nutz[t] + m.p_bat_Lade[t] + m.p_einsp[t] <= m.pv[t]
@@ -67,14 +68,14 @@ def Bat1(m,t):
     if t !='t0':
         return  m.bat[t] >= m.bat[m.steps.prev(t)] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] >= 0
+        return m.bat[t] >= 10000
 model.batConstr1 = pe.Constraint(model.steps, rule=Bat1)
 
 def Bat2(m,t):
     if t != 't0':
         return  m.bat[t] <= m.bat[m.steps.prev(t)] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] <= 0
+        return m.bat[t] <= 10000
 model.batConstr2 = pe.Constraint(model.steps, rule=Bat2)
 
 def BatComp1(m,t):
@@ -84,6 +85,14 @@ model.BatCompConstr1 = pe.Constraint(model.steps, rule=BatComp1)
 def BatComp2(m,t):
     return m.p_bat_Nutz[t] <= m.M *(1 - m.z1[t])
 model.BatCompConstr2 = pe.Constraint(model.steps, rule=BatComp2)
+
+def BuyComp1(m,t):
+    return m.p_kauf[t] <= m.M *m.z2[t]
+model.BuyCompConstr1 = pe.Constraint(model.steps, rule=BuyComp1)
+
+def BuyComp2(m,t):
+    return m.p_einsp[t] <= m.M *(1 - m.z2[t])
+model.BuyCompConstr2 = pe.Constraint(model.steps, rule=BuyComp2)
 
 def buyRule(m,t):
     return m.p_kauf[t] <= m.d[t] + m.dcar[t] + m.hp[t]
