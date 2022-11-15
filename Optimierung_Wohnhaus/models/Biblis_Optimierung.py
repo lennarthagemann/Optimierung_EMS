@@ -50,8 +50,8 @@ smth=True
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-07-25 12:00'
-Enddatum = '2022-07-26 12:00'
+Startdatum = '2022-05-08 00:00'
+Enddatum = '2022-05-09 00:00'
 delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 
 df = load_df(filepath)

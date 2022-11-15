@@ -4,8 +4,8 @@ sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from plotting_functions import load_curve_plot
 import datetime as dt
 
-start = '2022-05-08 05:00'
-ende = '2022-05-08 18:15'
+start = '2022-02-08 10:00'
+ende = '2022-02-08 11:00'
 timeformat = '%Y-%m-%d %H:%M'
 day = start[:10]
 sol_path = f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}'

@@ -21,7 +21,7 @@ def lex_to_num_sorter(dict):
     """
     return {t : dict[t] for t in sorted(dict , key=lambda x: int(x.split('[t')[1].split(']')[0]))}
 
-day = "2022-05-08"
+day = "2022-02-08"
 src = 'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/ef_solution.json'
 dest = f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/ef_solution.json'
 shutil.move(src, dest)

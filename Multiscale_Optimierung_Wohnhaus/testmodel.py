@@ -44,9 +44,10 @@ energy_factor = timestep/60
 filepath_1min = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_1minute_power.csv'
 filepath_15min = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_15minutes_power.csv'
 filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
-Startdatum = '2022-07-25 09:00'
-Enddatum = '2022-07-27 10:00'
-Mitte = date_splitter(Startdatum, Enddatum, timeformat, dt.timedelta(minutes=15))
+Startdatum = '2022-05-08 12:00'
+Enddatum = '2022-05-09 12:00'
+split=60
+Mitte = date_splitter(Startdatum, Enddatum, timeformat, dt.timedelta(minutes=split))
 delta1 = int((dt.datetime.strptime(Mitte, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
 delta2 = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Mitte, timeformat)).total_seconds()/(60*15))
 
@@ -59,11 +60,12 @@ pv_biblis_1min = pv(df_1min, Startdatum, Enddatum)
 car_biblis_1min = car(df_1min, Startdatum, Enddatum)
 hp_biblis_1min = hp(df_1min, Startdatum, Enddatum)
 
+no=False
 df_15min = load_df(filepath_15min)
-dmd_biblis_15min = dmd(df_15min, Startdatum, Enddatum) 
-pv_biblis_15min = pv(df_15min, Startdatum, Enddatum)
-car_biblis_15min = car(df_15min, Startdatum, Enddatum)
-hp_biblis_15min = hp(df_15min, Startdatum, Enddatum)
+dmd_biblis_15min = dmd(df_15min, Startdatum, Enddatum, smooth=no) 
+pv_biblis_15min = pv(df_15min, Startdatum, Enddatum, smooth=no)
+car_biblis_15min = car(df_15min, Startdatum, Enddatum, smooth=no)
+hp_biblis_15min = hp(df_15min, Startdatum, Enddatum, smooth=no)
 
 steps1 = ['t' + str(i) for i in range(delta1)]
 steps2 = ['t' + str(i) for i in range(delta2)]
@@ -253,7 +255,7 @@ model.display()
 print([pe.value(model.bat1[k]) for k in model.steps1])
 print([pe.value(model.bat2[k]) for k in model.steps2])
 
-multiscale_load_curve_plot(steps1, [5000* i for i in list(price1.values())], list(pv1.values()), list(d1.values()), list(dcar1.values()), list(hp1.values()),
+multiscale_load_curve_plot(split, steps1, [5000* i for i in list(price1.values())], list(pv1.values()), list(d1.values()), list(dcar1.values()), list(hp1.values()),
                  [pe.value(model.p_kauf1[k]) for k in  model.steps1], 
                 [pe.value(model.p_bat_Nutz1[k]) for k in  model.steps1], 
                 [pe.value(model.p_bat_Lade1[k]) for k in  model.steps1],

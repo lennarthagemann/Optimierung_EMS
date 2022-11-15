@@ -28,8 +28,8 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     timeformat = '%Y-%m-%d %H:%M'
     timestep = 1
     energy_factor = timestep/60
-    Startdatum = '2022-05-08 05:00'
-    Enddatum = '2022-05-08 18:15'
+    Startdatum = '2022-02-08 10:00'
+    Enddatum = '2022-02-08 13:00'
     day = Startdatum[:10]
     if not os.path.exists(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/'):
         os.makedirs(f'C:/Users/hagem/Optimierung_EMS/Stochastische_Optimierung_Wohnhaus/results/arrays/{day}/')
@@ -150,6 +150,6 @@ def scenario_structure_generator(scenarionames):
         f.write('param StageCost := FirstStage FirstStageCost \n SecondStage SecondStageCost;')
     return
 
-scenarios = [('2022-05-08 05:00', '2022-05-08 18:15'),('2022-05-09 05:00', '2022-05-09 18:15'),('2022-05-10 05:00', '2022-05-10 18:15')]
+scenarios = [('2022-05-08 10:00', '2022-05-08 11:00'),('2022-05-09 10:00', '2022-05-09 11:00'),('2022-05-10 10:00', '2022-05-10 11:00')]
 names = scenario_data_generator(filepath_spot,filepath,scenarios)
 scenario_structure_generator(names)
