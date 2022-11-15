@@ -18,6 +18,6 @@ ist um die Restriktionen zu erfüllen, muss dies ausgeglichen werden.
     runef -m models -s scenarios --solve --solver=glpk --solution-writer=pyomo.pysp.plugins.jsonsolutionwriter
 ---
 das stochastische Optimierungsproblem in erweiterter Formulierung mit glpk gelöst, mit Referenzmodell im Ordner models und
-Szenariodateien im Ordner scenarios.
+Szenariodateien im Ordner scenarios.  
 3. Rufe Result_pickler.py auf um die Lösungen aus der .json Datei seriell und seperat abzuspeichern.
 4. Stelle in visualize_solution das gewünschte Datum ein, Lastprofil wird generiert. 
