@@ -11,7 +11,7 @@ Das zusätzliche Beziehen von Strom aus dem Netz wird als Recourse Aktion gesehe
 Falls nach Realisierung des Zufalls zu einem Zeitpunkt zu wenig Strom vorhanden 
 ist um die Restriktionen zu erfüllen, muss dies ausgeglichen werden.
 
-## Workflow stochastische Optimierung
+## Workflow Stochastische Optimierung
 1. Szenariodaten generieren durch Aufrufen von scenario_generation.py, Einstellen von Datum und Szenarien
 2. Im Ordner .\Stochastische_Optimierung_Wohnhaus  wird durch Aufrufen des Befehls
 ---
