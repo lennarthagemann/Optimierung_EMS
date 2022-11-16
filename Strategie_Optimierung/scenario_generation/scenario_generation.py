@@ -29,7 +29,7 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     timestep = 1
     energy_factor = timestep/60
     Startdatum = '2022-02-08 10:00'
-    Enddatum = '2022-02-08 12:15'
+    Enddatum = '2022-02-08 11:00'
     day = Startdatum[:10]
     if not os.path.exists(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/'):
         os.makedirs(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/')
@@ -91,6 +91,7 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
             f.write('; \n')
             f.write(f'param M := {10**7}; \n')
             f.write(f'param C_max := {200000}; \n')
+            f.write(f'param C_Start := {0}; \n')
         scenarionames.append(f'{i}')
         i+=1
     return scenarionames
@@ -151,6 +152,7 @@ def scenario_structure_generator(scenarionames):
         f.write('param StageCost := FirstStage FirstStageCost \n SecondStage SecondStageCost;')
     return
 
-scenarios = [('2022-02-08 10:00', '2022-02-08 12:00'), ('2022-02-09 10:00', '2022-02-09 12:00'), ('2022-02-09 10:00', '2022-02-09 12:00'), ('2022-02-09 10:00', '2022-02-09 12:00')]
+scenarios = [('2022-02-08 10:00', '2022-02-08 11:00'), ('2022-02-09 10:00', '2022-02-09 11:00'), ('2022-02-10 10:00', '2022-02-10 11:00'), ('2022-02-11 10:00', '2022-02-11 11:00'),
+             ('2022-02-12 10:00', '2022-02-12 11:00'), ('2022-02-13 10:00', '2022-02-13 11:00'), ('2022-02-14 10:00', '2022-02-14 11:00'), ('2022-02-15 10:00', '2022-02-15 11:00')]
 names = scenario_data_generator(filepath_spot,filepath,scenarios)
 scenario_structure_generator(names)

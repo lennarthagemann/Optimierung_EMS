@@ -19,5 +19,6 @@ ist um die Restriktionen zu erfüllen, muss dies ausgeglichen werden.
 ---
 das stochastische Optimierungsproblem in erweiterter Formulierung mit glpk gelöst, mit Referenzmodell im Ordner models und
 Szenariodateien im Ordner scenarios.  
+
 3. Rufe Result_pickler.py auf um die Lösungen aus der .json Datei seriell und seperat abzuspeichern.
 4. Stelle in visualize_solution das gewünschte Datum ein, Lastprofil wird generiert. 

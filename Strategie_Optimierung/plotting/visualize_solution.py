@@ -5,7 +5,7 @@ from plotting_functions import load_curve_plot
 import datetime as dt
 
 start = '2022-02-08 10:00'
-ende = '2022-02-08 12:15'
+ende = '2022-02-08 11:00'
 timeformat = '%Y-%m-%d %H:%M'
 day = start[:10]
 sol_path = f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}'

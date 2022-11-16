@@ -35,6 +35,7 @@ model.dcar = pe.Param(model.steps, within=pe.NonNegativeReals)
 model.hp = pe.Param(model.steps, within=pe.NonNegativeReals)
 model.M = pe.Param(within=pe.NonNegativeReals)
 model.C_max = pe.Param(within=pe.NonNegativeReals)
+model.C_Start = pe.Param(within=pe.NonNegativeReals)
 model.p_einsp = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_kauf = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals)
@@ -69,7 +70,7 @@ model.SoCConstr = pe.Constraint(model.steps, rule=SoCRule)
 
 def UseRule1(m,t):
     if t==m.steps.first():
-        return pe.Constraint.Skip
+        return m.p_bat_Nutz[t] <= m.C_Start
     else:
         return m.p_bat_Nutz[t] <= m.bat[m.steps.prev(t)]
 model.UseConstr1 = pe.Constraint(model.steps, rule=UseRule1)
@@ -79,17 +80,17 @@ def UseDemand(m,t):
 model.UseDemandConstr = pe.Constraint(model.steps, rule=UseDemand)
 
 def Bat1(m,t):
-    if t !='t0':
+    if t != m.steps.first():
         return  m.bat[t] >= m.bat[m.steps.prev(t)] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] >= 10000
+        return m.bat[t] >= m.C_Start
 model.batConstr1 = pe.Constraint(model.steps, rule=Bat1)
 
 def Bat2(m,t):
-    if t != 't0':
+    if t != m.steps.first():
         return  m.bat[t] <= m.bat[m.steps.prev(t)] + m.p_bat_Lade[t] - m.p_bat_Nutz[t]
     else:
-        return m.bat[t] <= 10000
+        return m.bat[t] <= m.C_Start
 model.batConstr2 = pe.Constraint(model.steps, rule=Bat2)
 
 def BatComp1(m,t):
@@ -113,11 +114,11 @@ def buyRule(m,t):
 model.buyConstr = pe.Constraint(model.steps, rule=buyRule)
 
 def ObjCostsFirstStage(m):  
-    return sum(0.8*m.p_einsp[t]*m.price[t] for t in m.steps)
+    return 0
 model.FirstStageCost = pe.Expression(rule=ObjCostsFirstStage)
 
 def ObjCostsSecondStage(m):
-    return sum(-m.p_kauf[t]*m.price[t] for t in m.steps)
+    return sum(0.8*m.p_einsp[t]*m.price[t]-m.p_kauf[t]*m.price[t] for t in m.steps)
 model.SecondStageCost=pe.Expression(rule=ObjCostsSecondStage)
 
 def TotalEarningsRule(m):
