@@ -28,43 +28,47 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
     timeformat = '%Y-%m-%d %H:%M'
     timestep = 1
     energy_factor = timestep/60
-    Startdatum = '2022-02-08 10:00'
-    Enddatum = '2022-02-08 11:00'
+    Startdatum = scenarios[0][0]
+    Enddatum = scenarios[0][1]
     day = Startdatum[:10]
     if not os.path.exists(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/'):
         os.makedirs(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/')
-
+    for i in range(len(scenarios)):
+        if not os.path.exists(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario' + str(i+1)):
+            os.makedirs(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario' + str(i+1))
     delta = int((dt.datetime.strptime(Enddatum, timeformat) - dt.datetime.strptime(Startdatum, timeformat)).total_seconds()/60)
-    steps = [f"t{i}" for i in range(delta)]
-    df = load_df(filepath_prosumer)
-    i = 1
-    prc_biblis = prc(filepath_prc, Startdatum, Enddatum)
-    if timestep == 1:
-        prc_biblis = prc_stretched(prc_biblis)
-    with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/prc', 'wb') as f:
-        pickle.dump(prc_biblis,f)
     base = dt.datetime.strptime(Startdatum, timeformat)
     dates = [base + dt.timedelta(minutes=i) for i in range(delta)]
-    with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/dates', 'wb') as f:
-        pickle.dump(dates,f)
-    dmd_biblis = dmd(df, Startdatum, Enddatum) 
-    with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/dmd', 'wb') as f:
-        pickle.dump(dmd_biblis,f)
-    pv_biblis = pv(df, Startdatum, Enddatum)
-    with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/pv', 'wb') as f:
-        pickle.dump(pv_biblis,f)
-    car_biblis = car(df, Startdatum, Enddatum)
-    with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/car', 'wb') as f:
-        pickle.dump(car_biblis,f)
-    hp_biblis = hp(df, Startdatum, Enddatum)
-    with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/hp', 'wb') as f:
-        pickle.dump(hp_biblis,f)
-    for start, end in scenarios:
-        dmd_biblis = dmd(df, start, end) 
-        pv_biblis = pv(df, start, end)
-        car_biblis = car(df, start, end)
-        hp_biblis = hp(df, start, end)
-        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/scenarios/scenario{i}.dat', 'w') as f:
+    steps = [f"t{i}" for i in range(delta)]
+    prc_biblis = prc(filepath_prc, Startdatum, Enddatum)
+    df = load_df(filepath_prosumer)
+    if timestep == 1:
+        prc_biblis = prc_stretched(prc_biblis)
+    for i, bounds in enumerate(scenarios):
+        delta = int((dt.datetime.strptime(bounds[1], timeformat) - dt.datetime.strptime(bounds[0], timeformat)).total_seconds()/60)
+        base = dt.datetime.strptime(bounds[0], timeformat)
+        dates = [base + dt.timedelta(minutes=i) for i in range(delta)]
+        dmd_biblis = dmd(df, bounds[0], bounds[1]) 
+        pv_biblis = pv(df, bounds[0], bounds[1])
+        car_biblis = car(df, bounds[0], bounds[1])
+        hp_biblis = hp(df, bounds[0], bounds[1])
+        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/dates', 'wb') as f:
+            pickle.dump(dates,f)
+        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/prc', 'wb') as f:
+            pickle.dump(prc_biblis,f)
+        dmd_biblis = dmd(df, Startdatum, Enddatum) 
+        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/dmd', 'wb') as f:
+            pickle.dump(dmd_biblis,f)
+        pv_biblis = pv(df, Startdatum, Enddatum)
+        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/pv', 'wb') as f:
+            pickle.dump(pv_biblis,f)
+        car_biblis = car(df, Startdatum, Enddatum)
+        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/car', 'wb') as f:
+            pickle.dump(car_biblis,f)
+        hp_biblis = hp(df, Startdatum, Enddatum)
+        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/hp', 'wb') as f:
+            pickle.dump(hp_biblis,f)
+        with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/scenarios/scenario{i+1}.dat', 'w') as f:
             f.write('set steps := ')
             for t in steps:
                 f.write(t + " ")
@@ -93,7 +97,6 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
             f.write(f'param C_max := {200000}; \n')
             f.write(f'param C_Start := {0}; \n')
         scenarionames.append(f'{i}')
-        i+=1
     return scenarionames
 
 def scenario_structure_generator(scenarionames):
