@@ -56,16 +56,16 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
             pickle.dump(dates,f)
         with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/prc', 'wb') as f:
             pickle.dump(prc_biblis,f)
-        dmd_biblis = dmd(df, Startdatum, Enddatum) 
+        dmd_biblis = dmd(df, bounds[0], bounds[1]) 
         with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/dmd', 'wb') as f:
             pickle.dump(dmd_biblis,f)
-        pv_biblis = pv(df, Startdatum, Enddatum)
+        pv_biblis = pv(df, bounds[0], bounds[1])
         with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/pv', 'wb') as f:
             pickle.dump(pv_biblis,f)
-        car_biblis = car(df, Startdatum, Enddatum)
+        car_biblis = car(df, bounds[0], bounds[1])
         with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/car', 'wb') as f:
             pickle.dump(car_biblis,f)
-        hp_biblis = hp(df, Startdatum, Enddatum)
+        hp_biblis = hp(df, bounds[0], bounds[1])
         with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/Scenario{i+1}/hp', 'wb') as f:
             pickle.dump(hp_biblis,f)
         with open(f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/scenarios/scenario{i+1}.dat', 'w') as f:
@@ -95,7 +95,7 @@ def scenario_data_generator(filepath_prc, filepath_prosumer, scenarios):
             f.write('; \n')
             f.write(f'param M := {10**7}; \n')
             f.write(f'param C_max := {200000}; \n')
-            f.write(f'param C_Start := {0}; \n')
+            f.write(f'param C_Start := {1000}; \n')
         scenarionames.append(f'{i}')
     return scenarionames
 

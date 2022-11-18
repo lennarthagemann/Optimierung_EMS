@@ -64,18 +64,18 @@ def multiscale_load_curve_plot(split, dates1, prc1, pv1, dmd1, car1, hp1, buy1, 
         label.set_horizontalalignment('right')
     plt.show()
 
-    def all_scenarios_load_curve_plot(scenarios_x, scenarios_y, dates, prc, pv, dmd, car, hp, buy, bat_use, bat_charge):
-        """
-        Lastprofile für alle Szenarien. In einem Gitter (mit scenarios_x * scenarios_y = Anzahl Szenarien) wird für
-        jedes Szenario das Ergebnis der Optimierung visualisiert.
-        Die Daten werden hier listenweise gegeben und durch Iteration über die zweidimensionalen Indize aufgerufen.
-        """
-        fig, axs = plt.subplots(scenarios_x, scenarios_y, constrained_layout=True)
-        for i, ax in enumerate(fig.axes):
-            ax.step(dates[i], 5000*prc, label='price', alpha=0.3)
-            ax.step(dates[i], pv[i], label='pv')
-            ax.step(dates[i], [j+k+l for j,k,l in zip(dmd[i], car[i], hp[i])], label='demand')
-            ax.step(dates[i], buy[i], label='Energy_Bought')
-            ax.step(dates[i], bat_use[i], label='Bat-Use')
-            ax.step(dates[i], bat_charge[i], label='Bat-Charge')
-        plt.show()
+def all_scenarios_load_curve_plot(scenarios_x, scenarios_y, dates, prc, pv, dmd, car, hp, buy, bat_use, bat_charge):
+    """
+    Lastprofile für alle Szenarien. In einem Gitter (mit scenarios_x * scenarios_y = Anzahl Szenarien) wird für
+    jedes Szenario das Ergebnis der Optimierung visualisiert.
+    Die Daten werden hier listenweise gegeben und durch Iteration über die zweidimensionalen Indize aufgerufen.
+    """
+    fig, axs = plt.subplots(scenarios_x, scenarios_y, constrained_layout=True)
+    for i, ax in enumerate(fig.axes):
+        ax.step(dates[i], 5000*prc, label='price', alpha=0.3)
+        ax.step(dates[i], pv[i], label='pv')
+        ax.step(dates[i], [j+k+l for j,k,l in zip(dmd[i], car[i], hp[i])], label='demand')
+        ax.step(dates[i], buy[i], label='Energy_Bought')
+        ax.step(dates[i], bat_use[i], label='Bat-Use')
+        ax.step(dates[i], bat_charge[i], label='Bat-Charge')
+    plt.show()

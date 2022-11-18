@@ -4,13 +4,20 @@ sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from plotting_functions import load_curve_plot
 import datetime as dt
 
-start = '2022-02-08 10:00'
-ende = '2022-02-08 11:00'
+scenarios = [('2022-02-08 10:00', '2022-02-08 11:00'), ('2022-02-09 10:00', '2022-02-09 11:00'), ('2022-02-10 10:00', '2022-02-10 11:00'), ('2022-02-11 10:00', '2022-02-11 11:00'),
+             ('2022-02-12 10:00', '2022-02-12 11:00'), ('2022-02-13 10:00', '2022-02-13 11:00'), ('2022-02-14 10:00', '2022-02-14 11:00'), ('2022-02-15 10:00', '2022-02-15 11:00')]
+
+start = scenarios[0][0]
+ende = scenarios[0][1]
 timeformat = '%Y-%m-%d %H:%M'
 day = start[:10]
 sc = 'Scenario1'
+
+sol_path_fs = f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/FirstStageDecision'
 sol_path_scenario = f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/{sc}'
-print(sol_path_scenario)
+
+with open(sol_path_fs +'/z1', 'rb') as f:
+    z1 = pickle.load(f)
 with open(sol_path_scenario +'/bat', 'rb') as f:
     bat = pickle.load(f)
 with open(sol_path_scenario +'/p_bat_Lade', 'rb') as f:
@@ -21,8 +28,6 @@ with open(sol_path_scenario +'/p_einsp', 'rb') as f:
     p_einsp = pickle.load(f)
 with open(sol_path_scenario +'/p_Nutz', 'rb') as f:
     p_Nutz = pickle.load(f)
-with open(sol_path_scenario +'/z1', 'rb') as f:
-    z1 = pickle.load(f)
 delta = int((dt.datetime.strptime(ende, timeformat) - dt.datetime.strptime(start, timeformat)).total_seconds()/60)
 dates = [dt.datetime.strptime(start, timeformat) + dt.timedelta(minutes=i) for i in range(delta)]
 with open(sol_path_scenario +'/prc', 'rb') as f:
