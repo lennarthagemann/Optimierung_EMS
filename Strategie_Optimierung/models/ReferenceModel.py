@@ -17,7 +17,7 @@ Die Szenariodaten und -struktur liegen im Ordner scenarios und werden durch die 
 Programme in scenario_generation generiert.
 -----------------------------------------------------------------------------------------------------
 first stage:
--Entscheide die Binärvariable fsür die Steuerung des Ladens/Entladens der Batterie
+-Entscheide die Binärvariable für die Steuerung des Ladens/Entladens der Batterie
 -Entscheide die Binärvariable für die Steuerung der Einspeisung/Bezug des Netzes
 -----------------------------------------------------------------------------------------------------
 second stage:
@@ -36,11 +36,12 @@ model.hp = pe.Param(model.steps, within=pe.NonNegativeReals)
 model.M = pe.Param(within=pe.NonNegativeReals)
 model.C_max = pe.Param(within=pe.NonNegativeReals)
 model.C_Start = pe.Param(within=pe.NonNegativeReals)
+model.energy_factor = pe.Param(within=pe.NonNegativeReals)
 model.p_einsp = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_kauf = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals)
-model.p_bat_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*model.C_max))
-model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,energy_factor*model.C_max))
+model.p_bat_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.energy_factor*model.C_max))
+model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.energy_factor*model.C_max))
 model.bat = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.C_max))
 model.z1 = pe.Var(model.steps, within=pe.Binary) 
 model.z2 = pe.Var(model.steps, within=pe.Binary)
@@ -65,14 +66,14 @@ def SoCRule(m,t):
     if t==m.steps.first():
         return pe.Constraint.Skip
     else:
-        return energy_factor * m.p_bat_Lade[t] <= m.C_max - m.bat[m.steps.prev(t)]
+        return m.p_bat_Lade[t] <= m.C_max - m.bat[m.steps.prev(t)]
 model.SoCConstr = pe.Constraint(model.steps, rule=SoCRule)
 
 def UseRule1(m,t):
     if t==m.steps.first():
         return m.p_bat_Nutz[t] <= m.C_Start
     else:
-        return m.p_bat_Nutz[t] <= m.bat[m.steps.prev(t)]
+        return m.p_bat_Nutz[t] <=m.bat[m.steps.prev(t)]
 model.UseConstr1 = pe.Constraint(model.steps, rule=UseRule1)
 
 def UseDemand(m,t):

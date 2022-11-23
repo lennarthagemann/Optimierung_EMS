@@ -1,0 +1,9 @@
+# allow slamming of z1 to any agreed-up value.
+# and, importantly, indicated what to with x when looking for "x-hat"
+RootNode: # or FirstStage
+  z1[*]:
+    CanSlamToLB: True
+    CanSlamToMin: True
+    CanSlamToAnywhere: True
+    CanSlamToMax: True
+    CanSlamToUB: True

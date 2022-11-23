@@ -78,4 +78,5 @@ def all_scenarios_load_curve_plot(scenarios_x, scenarios_y, dates, prc, pv, dmd,
         ax.step(dates[i], buy[i], label='Energy_Bought')
         ax.step(dates[i], bat_use[i], label='Bat-Use')
         ax.step(dates[i], bat_charge[i], label='Bat-Charge')
+    axs[0][0].legend(loc='upper left', fontsize='small')
     plt.show()

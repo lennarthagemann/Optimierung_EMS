@@ -11,11 +11,13 @@ import datetime as dt
 def load_df(filepath):
     df= pd.read_csv(filepath,
                 sep=';',
-                na_filter=False,
+                na_values='',
+                false_values=[''],
                 low_memory=False,
                 names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
                         'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
                 )
+    df = df.fillna(0)
     return df
 
 def demand(date, demand, zeitpunkt, df, round=True):
@@ -50,8 +52,6 @@ def dmd(df, Startdatum, Enddatum, round=True, smooth=True):
     assert isinstance(Startdatum, str)
     assert isinstance(Enddatum, str)
     
-    df = df.drop(index=0, axis=0)
-    df = df.drop(columns='Zeit', axis=1)
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
     df['Hausverbrauch (W)'] = df['Hausverbrauch (W)'].astype(float)
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )

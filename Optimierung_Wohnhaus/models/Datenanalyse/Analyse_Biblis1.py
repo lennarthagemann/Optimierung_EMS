@@ -3,7 +3,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from Preprocessing_Functions import pv_generation, price, moving_average_full_dim, demand
+import sys
+sys.path.append('C:/Users/hagem/Optimierung_EMS')
+from Preprocessing_Functions import pv_generation, price,  demand
 
 filepath = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/BIblis_15minutes_power.csv'
 start = '2022-10-03'
