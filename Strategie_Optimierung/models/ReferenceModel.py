@@ -43,8 +43,8 @@ model.p_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_bat_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.energy_factor*model.C_max))
 model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.energy_factor*model.C_max))
 model.bat = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.C_max))
-model.z1 = pe.Var(model.steps, within=pe.Binary) 
-model.z2 = pe.Var(model.steps, within=pe.Binary)
+model.z1 = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,1)) 
+model.z2 = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,1))
 
 def SupplyRule(m, t):
     return m.p_Nutz[t] + m.p_bat_Lade[t] + m.p_einsp[t] <= m.pv[t]
