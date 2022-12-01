@@ -43,8 +43,10 @@ model.p_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals)
 model.p_bat_Nutz = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.energy_factor*model.C_max))
 model.p_bat_Lade = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.energy_factor*model.C_max))
 model.bat = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,model.C_max))
-model.z1 = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,1)) 
-model.z2 = pe.Var(model.steps, within=pe.NonNegativeReals, bounds=(0,1))
+# Die Entscheidungsvariablen kann man auch als stetige Variablen aus [0,1] modellieren, da diese im Optimalfall sowieso 0 oder 1 sind.
+# Wegen der Slamming Eigenschaft (vorzeitiges fixieren diskreter Variablen) ist das aber nicht notwendigerweise schneller!
+model.z1 = pe.Var(model.steps, within=pe.Binary) 
+model.z2 = pe.Var(model.steps, within=pe.Binary)
 
 def SupplyRule(m, t):
     return m.p_Nutz[t] + m.p_bat_Lade[t] + m.p_einsp[t] <= m.pv[t]
@@ -119,7 +121,7 @@ def ObjCostsFirstStage(m):
 model.FirstStageCost = pe.Expression(rule=ObjCostsFirstStage)
 
 def ObjCostsSecondStage(m):
-    return sum(0.8*m.p_einsp[t]*m.price[t]-m.p_kauf[t]*m.price[t] for t in m.steps)
+    return sum(0.8*m.p_einsp[t]*m.price[t]-m.p_kauf[t]*m.price[t] for t in m.steps) + m.bat[m.steps.last()]*(sum(m.price[t] for t in m.steps))/m.steps.__len__() 
 model.SecondStageCost=pe.Expression(rule=ObjCostsSecondStage)
 
 def TotalEarningsRule(m):

@@ -4,13 +4,15 @@ sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from plotting_functions import load_curve_plot, all_scenarios_load_curve_plot
 import datetime as dt
 
-# hours = (' 00:00', ' 00:00')
-# days = ['2022-07-08', '2022-07-09', '2022-07-10', '2022-05-08', '2022-05-09', '2022-05-10', '2022-03-08', '2022-03-09', '2022-03-10']
-# scenarios = [(day + hours[0], day + hours[s]
-scenarios = [('2022-02-22 00:00', '2022-02-23 00:00'), ('2022-07-10 00:00', '2022-07-11 00:00'), ('2022-05-09 00:00', '2022-05-10 00:00'),
-                 ('2022-03-08 00:00', '2022-03-09 00:00'), ('2022-03-10 00:00', '2022-03-11 00:00'),
-                 ('2022-04-08 00:00', '2022-04-09 00:00'), ('2022-02-10 00:00', '2022-02-11 00:00'), ('2022-01-09 00:00', '2022-01-10 00:00'),
-                 ('2022-03-16 00:00', '2022-03-17 00:00'), ('2022-03-18 00:00', '2022-03-19 00:00')]
+hours = (' 00:00', ' 00:00')
+month = '08'
+year = '2022'
+days = ['0' + str(i) if (i < 10) else str(i) for i in range(1,18)]
+days = [f'{year}-{month}-{day}' for day in days]
+scenarios = [(day + hours[0], day + hours[1]) for day in days]
+
+scenarios = [(days[i] + hours[0], days[i+1]  + hours[1]) for i in range(len(days)-1)]
+
 start = scenarios[0][0]
 ende = scenarios[0][1]
 timeformat = '%Y-%m-%d %H:%M'
@@ -72,4 +74,4 @@ for i, sc in enumerate(scenarios):
 
 
 #load_curve_plot(dates_arr[0], prcspot, pv_arr[0], dmd_arr[0], car_arr[0], hp_arr[0], p_kauf_arr[0], p_bat_Nutz_arr[0], p_bat_Lade_arr[0])
-all_scenarios_load_curve_plot(2, 2, dates_arr, prcspot, pv_arr, dmd_arr, car_arr, hp_arr, p_kauf_arr, p_bat_Nutz_arr, p_bat_Lade_arr)
+all_scenarios_load_curve_plot(4, 4, dates_arr, prcspot, pv_arr, dmd_arr, car_arr, hp_arr, p_kauf_arr, p_bat_Nutz_arr, p_bat_Lade_arr)

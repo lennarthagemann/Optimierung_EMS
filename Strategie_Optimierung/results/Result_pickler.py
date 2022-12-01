@@ -23,9 +23,9 @@ def lex_to_num_sorter(dict):
     return {t : dict[t] for t in sorted(dict , key=lambda x: int(x.split('[t')[1].split(']')[0]))}
 
 method='ph'
-day = "2022-02-22"
+day = "2022-08-01"
 
-sc_count = 10
+sc_count = 16
 Scenarios = [j for j in range(sc_count)]
 src = f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/{method}_solution.json'
 dest = f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/arrays/{day}/{method}_solution.json'
