@@ -4,6 +4,5 @@ RootNode: # or FirstStage
   z1[*]:
     CanSlamToLB: True
     CanSlamToMin: True
-    CanSlamToAnywhere: True
     CanSlamToMax: True
     CanSlamToUB: True

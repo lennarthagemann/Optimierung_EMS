@@ -14,6 +14,7 @@ def load_df(filepath):
                 na_values='',
                 false_values=[''],
                 low_memory=False,
+                header=1,
                 names=['Zeit', 'Zeitstempel', 'Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
                         'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)'],
                 )
@@ -47,6 +48,7 @@ def demand(date, demand, zeitpunkt, df, round=True):
 def dmd(df, Startdatum, Enddatum, round=True, smooth=True):
     """
     Lese den Verbrauch in einem bestimmten Zeitraum ein und speiche ihn als float64-numpy array.
+    Interpretiere negative Werte als Messfehler und setze diese auf Null.
     Runde die Werte auf drei Nachkommastellen um die Maschinengenauigkeit nicht auszureizen
     """
     assert isinstance(Startdatum, str)
@@ -54,6 +56,7 @@ def dmd(df, Startdatum, Enddatum, round=True, smooth=True):
     
     df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix')
     df['Hausverbrauch (W)'] = df['Hausverbrauch (W)'].astype(float)
+    df['Hausverbrauch (W)'][df['Hausverbrauch (W)'] < 0] = 0
     df = df.query('@Startdatum <= Zeitstempel and @Enddatum > Zeitstempel' )
     dmd_date = df['Hausverbrauch (W)'].to_numpy()
     if smooth:

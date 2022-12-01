@@ -122,7 +122,7 @@ def scenario_structure_generator(scenarionames):
     scnearionames: Liste mit Namen der Scenariodateien .dat, gelistet in Reihenfolge!
     """
     scenario_amount = len(scenarionames)
-    probs = [round(1/len(scenarionames), ndigits=4) for scenario in scenarionames]
+    probs = [1/len(scenarionames) for scenario in scenarionames]
     if len(probs) > 1:
         probs[1] += (1 - sum(probs)) 
     print(probs)
@@ -159,11 +159,13 @@ def scenario_structure_generator(scenarionames):
     return
 
 hours = (' 00:00', ' 00:00')
-days = ['2022-07-08', '2022-07-09', '2022-07-10', '2022-05-08', '2022-05-09', '2022-05-10', '2022-03-08', '2022-03-09', '2022-03-10']
+month = '08'
+year = '2022'
+days = ['0' + str(i) if (i < 10) else str(i) for i in range(1,18)]
+days = [f'{year}-{month}-{day}' for day in days]
 scenarios = [(day + hours[0], day + hours[1]) for day in days]
-scenarios_15 = [('2022-02-22 00:00', '2022-02-23 00:00'), ('2022-07-10 00:00', '2022-07-11 00:00'), ('2022-05-09 00:00', '2022-05-10 00:00'),
-                 ('2022-03-08 00:00', '2022-03-09 00:00'), ('2022-03-10 00:00', '2022-03-11 00:00'),
-                 ('2022-04-08 00:00', '2022-04-09 00:00'), ('2022-02-10 00:00', '2022-02-11 00:00'), ('2022-01-09 00:00', '2022-01-10 00:00'),
-                 ('2022-03-16 00:00', '2022-03-17 00:00'), ('2022-03-18 00:00', '2022-03-19 00:00')]
+
+scenarios_15 = [(days[i] + hours[0], days[i+1]  + hours[1]) for i in range(len(days)-1)]
+print(scenarios_15)
 names = scenario_data_generator(filepath_spot,filepath_15min,scenarios_15, 15)
 scenario_structure_generator(names)

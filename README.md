@@ -26,7 +26,7 @@ das stochastische Optimierungsproblem in erweiterter Formulierung mit glpk gelö
 1. Szenariodaten generieren durch Aufrufen von scenario_generation.py, Einstellen von Datum und Szenarien
 2. Im Ordner .\Strategie_Optimierung  wird durch Aufrufen des Befehls
 ```
-runph -m models -i scenarios -r 100 --solver=glpk --max-iterations=20 --linearize-nonbinary-penalty-terms=4  --solution-writer=pyomo.pysp.plugins.jsonsolutionwriter  --enable-ww-extensions
+runph -m models -i scenarios -r 100 --solver=glpk --max-iterations=20 --linearize-nonbinary-penalty-terms=4  --solution-writer=pyomo.pysp.plugins.jsonsolutionwriter  --enable-ww-extensions --ww-extension-cfgfile=config/wwph.cfg
 ```
 das stochastische Optimierungsproblem mit Progressive Hedging mit glpk gelöst, mit Referenzmodell im Ordner models und Szenariodateien im Ordner scenarios.  
 3. Rufe Result_pickler.py auf um die Lösungen aus der .json Datei seriell und seperat abzuspeichern.

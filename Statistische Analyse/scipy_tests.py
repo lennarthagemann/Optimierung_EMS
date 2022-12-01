@@ -1,17 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
+import pandas as pd
 
 #print(norm.__doc__)
 
-a = np.arange(-2,2, 0.5)
-print(a)
-print(norm.cdf(a))
-print(norm.mean(), norm.std(), norm.var())
 
-#Inverse der cdf -> ppf, Dadurch finden wir den Median der Verteilung (norm.ppf(0.5) => 50% der Werte sind kleiner als der Funktionswert)
-
-print(norm.ppf(np.arange(0,1,0.1)))
 
 """
 -------------------------------
@@ -19,7 +13,10 @@ Verteilung an empirische Werte passen
 -------------------------------
 """
 
+df = pd.DataFrame({'a' : np.random.normal(loc=0, scale=2, size=10000),
+                   'b' : np.arange(10000)})
 
+print(df['a'][df['a'] <= -1].count()/df['a'].count())
 
 """
 -------------------------------

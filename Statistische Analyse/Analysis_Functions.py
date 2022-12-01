@@ -15,6 +15,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import datetime as dt
+import scipy as scp
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import load_df
@@ -66,13 +67,16 @@ def charging_session_data(df):
 	timerange = zip(starttimes,endtimes)
 	avg_loads = []
 	max_loads = []
+	total_energy = []
 	for s,e in timerange:
 			loads = df["Ladepunktverbrauch (W)"][df["Zeitstempel"] >= s][df["Zeitstempel"] <= e]
 			max_load = max(loads)
 			avg_load = sum(loads)/len(loads)
+			energy = avg_load * 0.001 * len(loads) * 0.25
 			avg_loads.append(avg_load)
 			max_loads.append(max_load)
-	return startindex, starttimes, endindex, endtimes, avg_loads, max_loads
+			total_energy.append(energy)
+	return startindex, starttimes, endindex, endtimes, avg_loads, max_loads, total_energy
 
 
 def hp_session_data(df):
@@ -184,73 +188,57 @@ def charging_session_probability_quarter_hourly():
 	"""
 	return
 
-flpth = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_15minutes_power.csv'
-flpth_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
+def empirical_distr_total_energy(df, col, first_day, last_day, energy_factor=0.25, sort=False):
+	"""
+	Gibt die empirische Verteilung der Gesamtenergie eines Tages zurück.
+	Dadurch lässt sich einordnen wie häufig hohe Verbrauchstage/niedrige Verbrauchstage vorkommen
+	"""
+	days = pd.date_range(start=first_day, end=last_day).strftime("%Y-%m-%d").to_numpy()
+	day_range = [(days[i], days[i+1]) for i in range(len(days)-1)]
+	if sort:
+		total_daily_energy = pd.DataFrame({
+			"day" : days[:-1],
+			"total_energy" : sorted([df[col][df["Zeitstempel"] < tup[1]][df["Zeitstempel"] >= tup[0]].sum()*energy_factor*0.001 for tup in day_range])
+			}
+		)
+	else:
+				total_daily_energy = pd.DataFrame({
+			"day" : days[:-1],
+			"total_energy" : [df[col][df["Zeitstempel"] < tup[1]][df["Zeitstempel"] >= tup[0]].sum()*energy_factor*0.001 for tup in day_range]
+			}
+		)
+	return total_daily_energy
 
-cols = ['Netzeinspeisung (W)', 'Netzbezug (W)', 'Batterienutzung (W)', 'Batterieeinspeisung (W)',
-        'PV Leistung (W)', 'Hausverbrauch (W)', 'Ladepunktverbrauch (W)', 'Wärmepumpeverbrauch (W)']
+def prob_daily_event(df, col='total_energy', threshold=0):
+	"""
+	Wahrscheinlichkeit das ein Event über den Betrachtungszeitraum eingetreten ist, z.B. Gesamthausverbrauch kleiner als
+	Schwellenwert, oder Wahrscheinlichkeit für keine Ladesession (threshold=0) 
+	"""
+	p = df[col][df[col] <= threshold].count()/df[col].count()
+	return p
+def classify_session(df, col="Maximalleistung (W)"):
+	cluster = [3300]
+	session_dict = {}
+	return session_dict
+def empirical_quantile(prob,df_energy, col='total_energy',sorted=True):
+	"""
+	Finde anhand der empirischen Verteilung das Quantil zur Wahrscheinlichkeit 'prob',
+	also den Wert so dass mit Wahrscheinlichkeit 'prob' die beobachteten Werte kleiner sind.
+	Dieser ist ziemlich sicher nicht exakt gegeben
+	"""
+	n = df_energy[col].count()
+	if sorted:
+		quant = df_energy[col].iloc[int(prob*n)]
+	return quant
 
-df = load_df(flpth)
-df = df.drop(index=0, axis=0)
-df = df.drop(columns='Zeit', axis=1)
-df['Zeitstempel'] = pd.to_datetime(df['Zeitstempel'], unit='s', origin='unix') +dt.timedelta(hours=2)
-df['Uhrzeit'] = df['Zeitstempel'].dt.time
-for col in ['Hausverbrauch (W)', 'Wärmepumpeverbrauch (W)','Ladepunktverbrauch (W)']:
-	df[col] = df[col].astype(float)
-	df[col] = df[col][df[col] >= 0]
-df = df.round()
-print(df.describe())
-
-cons_15min = home_consumption_quarterhourly_division(df)
-for el in cons_15min:
-	print(el[Remove_Outlier_Indices(el, 0.1, 0.9)].describe(), el.describe())
-
-sp_index, sp_time, ep_index, ep_time, avg_load, max_load = charging_session_data(df[["Zeitstempel", "Ladepunktverbrauch (W)"]])
-
-
-charging_session_analysis = pd.DataFrame({"Startzeitpunkt" : sp_time, 
-											"Endzeitpunkt" : ep_time, 
-											"Durchschnittsleistung (W)" : avg_load,
-											"Maximalleistung (W)" : max_load
-											})
-
-# charging_session_analysis["Dauer"] = charging_session_analysis["Endzeitpunkt"].dt.hour*60 + charging_session_analysis["Endzeitpunkt"].dt.minute - (charging_session_analysis["Startzeitpunkt"].dt.hour*60 + charging_session_analysis["Startzeitpunkt"].dt.minute)
-# print(charging_session_analysis["Dauer"], charging_session_analysis['Durchschnittsleistung (W)'] * charging_session_analysis['Dauer'])
-#print(df[(df['Zeitstempel'] >= charging_session_analysis['Startzeitpunkt']) & (df['Zeitstempel'] <= charging_session_analysis['Endzeitpunkt'])])
-#charging_session_analysis["Durchschnittliche Ladeleistung (W)"] = np.mean(df["Ladepunktverbrauch (W)"][(df['Zeitstempel'] >= charging_session_analysis['Startzeitpunkt']) & 
-#(df['Zeitstempel'] <= charging_session_analysis['Endzeitpunkt'])])
-# hist = charging_session_analysis.hist(column=["Maximalleistung (W)", "Durchschnittsleistung (W)", "Dauer"], layout=(1,3), figsize=(16,4))									
-# plt.show()
-
-# plt.scatter(charging_session_analysis['Dauer'], charging_session_analysis["Maximalleistung (W)"])
-# plt.show()
-# Gruppiere Werte nach Tradingfenster
-
-# dmd_quarter_hour = [df[df['Uhrzeit']==zp]['Hausverbrauch (W)'][Remove_Outlier_Indices(df[df['Uhrzeit']==zp]['Hausverbrauch (W)'],0.25,0.75)] for zp in df['Uhrzeit'].unique()]
-# hp_quarter_hour = [df[df['Uhrzeit']==zp]['Wärmepumpeverbrauch (W)'][Remove_Outlier_Indices(df[df['Uhrzeit']==zp]['Wärmepumpeverbrauch (W)'],0.25,0.75)] for zp in df['Uhrzeit'].unique()]
-# car_quarter_hour = [df[df['Uhrzeit']==zp]['Ladepunktverbrauch (W)'][Remove_Outlier_Indices(df[df['Uhrzeit']==zp]['Ladepunktverbrauch (W)'],0.1,0.9)] for zp in df['Uhrzeit'].unique()]
-day = df[("2020-03-08 00:00" <= df["Zeitstempel"]) & ("2020-03-09 00:00" > df["Zeitstempel"])]
-print(day)
-plt.step(day["Zeitstempel"], day["Wärmepumpeverbrauch (W)"])
-plt.show()
-
-hps_index, hps_time, hpe_index, hpe_time, hp_avg_load, hp_max_load = hp_session_data(df[["Zeitstempel", "Wärmepumpeverbrauch (W)"]])
-hp_analysis = pd.DataFrame({"Startzeitpunkt" : hps_time,
-							"Endzeitpunkt" : hpe_time,
-							"Durchschnittsleistunng (W)" : hp_avg_load,
-							"Maximalleistung (W)" : hp_max_load})
-print(hp_analysis)
-
-# fig,axs = plt.subplots(1,3, figsize=(12,4))
-# axs[0].bar(np.arange(0,24), df.groupby(df['Zeitstempel'].dt.hour)['Hausverbrauch (W)'].mean(), label='Haus')
-# axs[1].bar(np.arange(0,24), df.groupby(df['Zeitstempel'].dt.hour)['Wärmepumpeverbrauch (W)'].mean(),  label='Wärmepumpe')
-# axs[2].bar(np.arange(0,24), df.groupby(df['Zeitstempel'].dt.hour)['Ladepunktverbrauch (W)'].mean(),  label='Ladepunkt')
-# plt.show()
-
-#Stundenpreise=[spot_preise_2022[spot_preise_2022["Start"]==hour]["Preis Euro/mWh"].to_numpy() for hour in spot_preise_2022['Start'].unique()]
-
-# fig,axs = plt.subplots(3,1, figsize=(12,4))
-# axs[0].boxplot(dmd_quarter_hour)
-# axs[1].boxplot(hp_quarter_hour)
-# axs[2].boxplot(car_quarter_hour)
-# plt.show()
+# def curve_fitting_empirical_distr(df_energy, col='total_energy', gauss=True):
+# 	"""
+# 	Passe zu der empirischen Verteilung eine Kurve an, normalerweise eine Normalverteilung.
+# 	Letztlich hilfreich um eventuell neue Lastprofile zu generieren.
+# 	Hierzu muss die Kurve normiert werden, nachher kann dies wieder rückgängig gemacht werden.
+# 	"""
+# 	f = lambda x,mu,sigma: scp.stats.norm(mu,sigma).cdf(x) # Normalverteilung
+# 	x = np.linspace(-1,1, df_energy[col].count())
+# 	data = df_energy[col]
+# 	mu, sigma = scp.optimize.curve_fit(f,x,data)[0]
+# 	return curve
