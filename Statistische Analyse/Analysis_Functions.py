@@ -11,6 +11,7 @@ In dieser Datei stehen die nötigen Funktionen zur Datenanalyse. Folgende Frages
 -> Schreibe eine Funktion um eine annähernde Wahrscheinlichkeitsverteilung mittels empirischer Verteilungsfunktion zu finden.
 -----------------------------------------
 """
+from collections import Counter
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -216,10 +217,21 @@ def prob_daily_event(df, col='total_energy', threshold=0):
 	"""
 	p = df[col][df[col] <= threshold].count()/df[col].count()
 	return p
-def classify_session(df, col="Maximalleistung (W)"):
-	cluster = [3300]
-	session_dict = {}
-	return session_dict
+def classify_session(df, col="Maximalleistung (W)", bins=[3300, 6600, 11000, 22000]):
+	"""
+	Ordne die Ladesessions einem ungefähren Ladeniveau zu, welches zu einem bestimmmten Typ passt.
+	Nutze dazu cdist von scipy (benötigt min. 2-dim Input), um das näheste Cluster zu finden.
+	Output: -Zuordnung der maximalen Ladeleistungen zu den Clustern
+	-Anteile/Wahrscheinlichkeit für eine bestimmte Ladeleistung
+	"""
+	cluster_2d = [[e,0] for e in bins]
+	powers = [[el, 0] for el in df[col].to_numpy()]
+	distances = scp.spatial.distance.cdist(powers, cluster_2d, 'euclidean')
+	print(distances)
+	closest_powers = [cluster_2d[el][0] for el in distances.argmin(axis=1)]
+	session_dict = {powers[i][0] : closest_powers[i] for i in range(len(closest_powers))}
+	probs = list(zip(bins,[val/len(session_dict.values()) for val in Counter(session_dict.values()).values()]))
+	return session_dict, probs
 def empirical_quantile(prob,df_energy, col='total_energy',sorted=True):
 	"""
 	Finde anhand der empirischen Verteilung das Quantil zur Wahrscheinlichkeit 'prob',

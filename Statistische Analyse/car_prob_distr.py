@@ -20,8 +20,9 @@ import datetime as dt
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import load_df
-from Analysis_Functions import charging_session_data, empirical_distr_total_energy, prob_daily_event, empirical_quantile, Remove_Outlier_Indices
+from Analysis_Functions import charging_session_data, empirical_distr_total_energy, prob_daily_event, empirical_quantile, Remove_Outlier_Indices, classify_session
 import pandas as pd
+from collections import Counter
 from scipy import stats
 
 class car_distr(stats.rv_continuous):
@@ -68,27 +69,32 @@ charging_session_analysis = pd.DataFrame({"Startzeitpunkt" : pd.Series(sp_time, 
                                         })
 print(charging_session_analysis[["Gesamtleistung (kWh)", "Maximalleistung (W)", "Durchschnittsleistung (W)"]].describe())
 
+clusters, probs = classify_session(charging_session_analysis)
+print(clusters, '\n', probs)
+
+plt.hist(clusters.values(), bins=[0, 3300, 6600, 11000, 22000])
+plt.show()
 
 charging_session_analysis["Dauer"] = charging_session_analysis["Endzeitpunkt"] - charging_session_analysis["Startzeitpunkt"]
 print(charging_session_analysis["Dauer"], charging_session_analysis['Durchschnittsleistung (W)'] * charging_session_analysis['Dauer'].dt.total_seconds()/(60*60*1000))
 # print(df[df['Zeitstempel'] >= charging_session_analysis['Startzeitpunkt']][df['Zeitstempel'] <= charging_session_analysis['Endzeitpunkt']])
 # charging_session_analysis["Durchschnittliche Ladeleistung (W)"] = np.mean(df["Ladepunktverbrauch (W)"][(df['Zeitstempel'] >= charging_session_analysis['Startzeitpunkt']) & 
 # (df['Zeitstempel'] <= charging_session_analysis['Endzeitpunkt'])])
-hist = charging_session_analysis.hist(column=["Maximalleistung (W)", "Durchschnittsleistung (W)", "Dauer"], layout=(1,3), figsize=(16,4))									
-plt.show()
+# hist = charging_session_analysis.hist(column=["Maximalleistung (W)", "Durchschnittsleistung (W)", "Dauer"], layout=(1,3), figsize=(16,4))									
+# plt.show()
 
-plt.scatter(charging_session_analysis['Dauer'].dt.total_seconds(), charging_session_analysis["Maximalleistung (W)"])
-plt.show()
+# plt.scatter(charging_session_analysis['Dauer'].dt.total_seconds(), charging_session_analysis["Maximalleistung (W)"])
+# plt.show()
 # Gruppiere Werte nach Tradingfenster
 
-car_quarter_hour = [df[df['Uhrzeit']==zp]['Ladepunktverbrauch (W)'][Remove_Outlier_Indices(df[df['Uhrzeit']==zp]['Ladepunktverbrauch (W)'],0.1,0.9)] for zp in df['Uhrzeit'].unique()]
+# car_quarter_hour = [df[df['Uhrzeit']==zp]['Ladepunktverbrauch (W)'][Remove_Outlier_Indices(df[df['Uhrzeit']==zp]['Ladepunktverbrauch (W)'],0.1,0.9)] for zp in df['Uhrzeit'].unique()]
 
-fig,axs = plt.subplots(1,1, figsize=(12,4))
-axs.bar(np.arange(0,24), df.groupby(df['Zeitstempel'].dt.hour)['Ladepunktverbrauch (W)'].mean(),  label='Ladepunkt')
-plt.show()
+# fig,axs = plt.subplots(1,1, figsize=(12,4))
+# axs.bar(np.arange(0,24), df.groupby(df['Zeitstempel'].dt.hour)['Ladepunktverbrauch (W)'].mean(),  label='Ladepunkt')
+# plt.show()
 
-# Stundenpreise=[spot_preise_2022[spot_preise_2022["Start"]==hour]["Preis Euro/mWh"].to_numpy() for hour in spot_preise_2022['Start'].unique()]
+# # Stundenpreise=[spot_preise_2022[spot_preise_2022["Start"]==hour]["Preis Euro/mWh"].to_numpy() for hour in spot_preise_2022['Start'].unique()]
 
-fig,axs = plt.subplots(1,1, figsize=(12,4))
-axs.boxplot(car_quarter_hour)
-plt.show()
+# fig,axs = plt.subplots(1,1, figsize=(12,4))
+# axs.boxplot(car_quarter_hour)
+# plt.show()
