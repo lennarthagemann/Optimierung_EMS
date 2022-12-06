@@ -17,6 +17,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime as dt
 import scipy as scp
+import pickle
+import os
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import load_df
@@ -243,6 +245,42 @@ def empirical_quantile(prob,df_energy, col='total_energy',sorted=True):
 		quant = df_energy[col].iloc[int(prob*n)]
 	return quant
 
+def rayleigh(x, amplitude, sigma):
+	"""
+	x muss np-Array sein! Berechnet die Wahrscheinlichkeitsdichtefunktion der rayleigh-Funktion
+	"""
+	return amplitude *(x / (sigma)**2 * np.exp(-x**2/(2*sigma**2)))
+
+def rayleigh_scaled(x, sigma, height=1, scale=1):
+	return height*(x*scale)/sigma**2 * np.exp(-(x*scale)**2/(2*sigma**2))
+
+def rayleigh_fit(xdata, ydata, f=rayleigh, normalized=False):
+	"""
+	Passe die Rayleigh-Verteilung (oder eine andere Funktion) an die Daten an,
+	z.B. Rayleigh an die Gesamtverbräche der Ladesessions. 
+	"""
+	if not normalized:
+		y = ydata/float(sum(ydata))
+	x = np.arange(1,len(xdata)+1)
+	popt, pcov = scp.optimize.curve_fit(f,xdata, ydata)
+	return popt, pcov
+
+def pickle_probs(dest, data, names):
+	"""
+	Speichere die Werte aus der Analyse so ab, dass sie seperat wieder geladen werden können um damit Lastsprofile zu erstellen
+		-dest : Genereller Speicherort, wird mit Aufruf der Funktion erstellt
+		-data : Liste mit Daten die gespeichert werden sollen
+		-names : Liste mit Namen der zugehörigen Variablen 
+	"""
+	assert 'C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse' in dest
+	assert type(data) == list
+	assert type(names) == list
+	assert len(data) == len(names)
+	if not os.path.exists(dest):
+		os.makedirs(dest)
+	for el,name in zip(data, names):
+		with open(dest +"/"+ name + ".pkl", 'wb') as f:
+			pickle.dump(el, f)
 # def curve_fitting_empirical_distr(df_energy, col='total_energy', gauss=True):
 # 	"""
 # 	Passe zu der empirischen Verteilung eine Kurve an, normalerweise eine Normalverteilung.
