@@ -32,14 +32,15 @@ total_daily_energy_dmd.hist()
 total_daily_energy_dmd.plot()
 print(total_daily_energy_dmd)
 
-days = [(f'2019-05-{i + 1}', f'2019-05-{i + 2}' )for i in range(14)]
+days = [(f'2019-05-{i + 1}', f'2019-05-{i + 2}' )for i in range(1)]
 print(days)
 
+df['delta'] = df['Hausverbrauch (W)'].diff()
 fig, axs = plt.subplots(figsize=(16,4))
 for day in days:
+        axs.plot(np.arange(96), df['delta'][(df['Zeitstempel'] < day[1])][df['Zeitstempel'] >= day[0]])
         axs.plot(np.arange(96), df['Hausverbrauch (W)'][(df['Zeitstempel'] < day[1])][df['Zeitstempel'] >= day[0]])
 plt.show()
-df['delta'] = df['Hausverbrauch (W)'].diff()
 print(df)
 dmd_quarter_hour = [df[df['Uhrzeit']==zp]['Hausverbrauch (W)'][Remove_Outlier_Indices(df[df['Uhrzeit']==zp]['Hausverbrauch (W)'],0.25,0.75)] for zp in df['Uhrzeit'].unique()]
 

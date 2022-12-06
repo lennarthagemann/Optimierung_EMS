@@ -38,7 +38,6 @@ total_daily_energy_car = empirical_distr_total_energy(df, "Ladepunktverbrauch (W
 
 prob_charging_session = prob_daily_event(total_daily_energy_car)
 print(prob_charging_session) # -> 75% aller Tage findet keine charging session statt.
-print(empirical_quantile(0.95, total_daily_energy_car))
 sp_index, sp_time, ep_index, ep_time, avg_load, max_load, total_energy = charging_session_data(df[["Zeitstempel", "Ladepunktverbrauch (W)"]])
 
 charging_session_analysis = pd.DataFrame({"Startzeitpunkt" : pd.Series(sp_time, dtype='datetime64[s]'),
@@ -48,30 +47,48 @@ charging_session_analysis = pd.DataFrame({"Startzeitpunkt" : pd.Series(sp_time, 
                                         "Gesamtleistung (kWh)" : pd.Series(total_energy, dtype='float32'),
                                         })
 charging_session_analysis["Dauer"] = (charging_session_analysis["Endzeitpunkt"] - charging_session_analysis["Startzeitpunkt"]).dt.total_seconds()/60
-print(charging_session_analysis[["Gesamtleistung (kWh)", "Maximalleistung (W)", "Durchschnittsleistung (W)", "Dauer"]].describe())
-counts,bins,_ = plt.hist(charging_session_analysis["Gesamtleistung (kWh)"])
-bins = bins[:-1] + np.diff(bins)/2
-print(counts, '\n', bins)
 
-clusters, probs_charging_speed = classify_session(charging_session_analysis)
+probs_charging_speed, powers = classify_session(charging_session_analysis)
+charging_session_analysis["Angenäherte Ladeleistung"] = powers
+print(charging_session_analysis)
 print(f'Die Wahrscheinlichkeit für eine approximative Ladegeschwindigkeit von {probs_charging_speed[0][0]} W beträgt: {probs_charging_speed[0][1]}')
 print(f'Die Wahrscheinlichkeit für eine approximative Ladegeschwindigkeit von {probs_charging_speed[1][0]} W beträgt: {probs_charging_speed[1][1]}')
 print(f'Die Wahrscheinlichkeit für eine approximative Ladegeschwindigkeit von {probs_charging_speed[2][0]} W beträgt: {probs_charging_speed[2][1]}')
-print(f'Die Wahrscheinlichkeit für eine approximative Ladegeschwindigkeit von {probs_charging_speed[3][0]} W beträgt: {probs_charging_speed[3][1]}')
-pars, pcov  = rayleigh_fit(np.array(bins), np.array(counts))
-print(f'Die optimalen Werte lauten für die Amplitude: {pars[0]}; Parameter der Rayleigh-Verteilung: {pars[1]}')
-# fig, axs = plt.subplots(figsize=(12,12))
-# axs.plot(np.linspace(bins[0], bins[-1], 10000), rayleigh(np.linspace(bins[0], bins[-1], 10000), *pars))
-# axs.hist(charging_session_analysis["Gesamtleistung (kWh)"])
-# plt.show()
+print(f'Die Wahrscheinlichkeit für eine approximative Ladegeschwindigkeit von {probs_charging_speed[3][0]} W beträgt: {probs_charging_speed[3][1]}')#
+
+fig, axs = plt.subplots(nrows=2,ncols=2,figsize=(16,16))
+counts, bins = [0 for i in range(4)],[0 for i in range(4)]
+counts[0], bins[0],_ = axs[0][0].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 3300])
+counts[1], bins[1],_ = axs[0][1].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 6600])
+counts[2], bins[2],_ = axs[1][0].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 11000])
+counts[3], bins[3],_ = axs[1][1].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 22000])
+
+for i, bin in enumerate(bins):
+    bins[i] = bin[:-1] + np.diff(bin)/2
+pars, pcov = [0 for i in range(4)], [0 for i in range(4)]
+for i, (bin, count) in enumerate(zip(bins, counts)):
+    print(bin, count)
+    pars[i], pcov[i]  = rayleigh_fit(np.array(bin), np.array(count))
+print(f'Die optimalen Werte lauten für die Amplitude: {pars}; Parameter der Rayleigh-Verteilung: {pars}')
+fig, axs = plt.subplots(2, 2, figsize=(16,16))
+print(bins[0][0], bins[0][-1], pars)
+axs[0][0].plot(np.linspace(bins[0][0], bins[0][-1], 10000), rayleigh(np.linspace(bins[0][0], bins[0][-1], 10000), *pars[0]))
+axs[0][0].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 3300])
+axs[0][1].plot(np.linspace(bins[1][0], bins[1][-1], 10000), rayleigh(np.linspace(bins[1][0], bins[1][-1], 10000), *pars[1]))
+axs[0][1].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 6600])
+axs[1][0].plot(np.linspace(bins[2][0], bins[2][-1], 10000), rayleigh(np.linspace(bins[2][0], bins[2][-1], 10000), *pars[2]))
+axs[1][0].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 11000])
+axs[1][1].plot(np.linspace(bins[3][0], bins[3][-1], 10000), rayleigh(np.linspace(bins[3][0], bins[3][-1], 10000), *pars[3]))
+axs[1][1].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 22000])
+plt.show()
 
 print(charging_session_analysis["Dauer"])
 # charging_session_analysis.hist(column=["Maximalleistung (W)", "Durchschnittsleistung (W)"], layout=(1,3), figsize=(16,4))									
 # plt.hist(charging_session_analysis["Dauer"], bins=[15*i for i in range(50)], color="grey", edgecolor='yellow')
 # plt.show()
 
-# plt.scatter(charging_session_analysis['Dauer'].dt.total_seconds(), charging_session_analysis["Maximalleistung (W)"])
-# plt.show()
+plt.scatter(charging_session_analysis['Dauer'], charging_session_analysis["Maximalleistung (W)"])
+plt.show()
 # Gruppiere Werte nach Tradingfenster
 
 charging_session_analysis["Startuhrzeit"] = (charging_session_analysis["Startzeitpunkt"].dt.hour*60) + (charging_session_analysis["Startzeitpunkt"].dt.minute)
@@ -92,9 +109,9 @@ Speichere die Werte ab
 -------------------------
 """
 
-pickle_probs("C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/Auto",
-                data= [hourly_start_prob, prob_charging_session, probs_charging_speed, pars],
-                names=["Startwahrscheinlichkeit", "Tägliche_Wahrscheinlichkeit ", "Wahrscheinlichkeit_Ladeleistung", "Parameter_Pareto_Gesamtenergie"])
+# pickle_probs("C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/Auto",
+#                 data= [hourly_start_prob, prob_charging_session, probs_charging_speed, pars],
+#                 names=["Startwahrscheinlichkeit", "Tägliche_Wahrscheinlichkeit ", "Wahrscheinlichkeit_Ladeleistung", "Parameter_Pareto_Gesamtenergie"])
 
 
 # fig,axs = plt.subplots(1,1, figsize=(12,4))

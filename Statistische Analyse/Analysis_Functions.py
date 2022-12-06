@@ -219,6 +219,7 @@ def prob_daily_event(df, col='total_energy', threshold=0):
 	"""
 	p = df[col][df[col] <= threshold].count()/df[col].count()
 	return p
+
 def classify_session(df, col="Maximalleistung (W)", bins=[3300, 6600, 11000, 22000]):
 	"""
 	Ordne die Ladesessions einem ungefähren Ladeniveau zu, welches zu einem bestimmmten Typ passt.
@@ -228,13 +229,14 @@ def classify_session(df, col="Maximalleistung (W)", bins=[3300, 6600, 11000, 220
 	"""
 	cluster_2d = [[e,0] for e in bins]
 	powers = [[el, 0] for el in df[col].to_numpy()]
-	distances = scp.spatial.distance.cdist(powers, cluster_2d, 'euclidean')
+	distances = scp.spatial.distance.cdist(powers, cluster_2d, 'minkowski', p=1)
 	print(distances)
 	closest_powers = [cluster_2d[el][0] for el in distances.argmin(axis=1)]
 	session_dict = {powers[i][0] : closest_powers[i] for i in range(len(closest_powers))}
 	probs = list(zip(bins,[val/len(session_dict.values()) for val in Counter(session_dict.values()).values()]))
-	return session_dict, probs
-def empirical_quantile(prob,df_energy, col='total_energy',sorted=True):
+	return probs, [closest_powers[i] for i in range(len(df[col].to_numpy()))]
+
+def empirical_quantile(prob,df_energy, col='total_energy',sorted=True): 
 	"""
 	Finde anhand der empirischen Verteilung das Quantil zur Wahrscheinlichkeit 'prob',
 	also den Wert so dass mit Wahrscheinlichkeit 'prob' die beobachteten Werte kleiner sind.
@@ -262,7 +264,7 @@ def rayleigh_fit(xdata, ydata, f=rayleigh, normalized=False):
 	if not normalized:
 		y = ydata/float(sum(ydata))
 	x = np.arange(1,len(xdata)+1)
-	popt, pcov = scp.optimize.curve_fit(f,xdata, ydata)
+	popt, pcov = scp.optimize.curve_fit(f,xdata, ydata, p0=(100,10))
 	return popt, pcov
 
 def pickle_probs(dest, data, names):
@@ -281,6 +283,28 @@ def pickle_probs(dest, data, names):
 	for el,name in zip(data, names):
 		with open(dest +"/"+ name + ".pkl", 'wb') as f:
 			pickle.dump(el, f)
+
+def loading_session_division(time):
+	"""
+	Teile die Ladesessions so auf, das wir wissen wie viele 15 Minuten Schritte gemacht wurden,
+	und wie groß der letzte Zeitbruchteil ist der kürzer als 15 Minuten ist
+	Input: Float mit Minuten hintern Komma (aber in Dezimaldarstallung)
+	"""
+	hours = int(time)
+	remaining_minutes = int(round((time - int(time))*(60/100),2)*100) % 15
+	minutes = int(round((time - int(time))*(60/100),2)*100) - remaining_minutes
+	print(f"Die Ladesession dauert {hours} Stunden, {minutes} Minuten (ganze 15 Minuten Schritte) und es verbleiben {remaining_minutes} Minuten im letzten Fenster. ")
+	return hours, minutes, remaining_minutes
+
+def float_to_minute(remaining_minutes, power):
+	"""
+	Berechne die verbleibende Anzahl in Minuten und die durchschnittliche Leistung
+	im letzten Schritt (Abbrechender 15 Minuten Teil) 
+	"""
+	assert remaining_minutes <= 15
+	remaining_avg_power = power * (remaining_minutes/15)
+	return remaining_avg_power
+
 # def curve_fitting_empirical_distr(df_energy, col='total_energy', gauss=True):
 # 	"""
 # 	Passe zu der empirischen Verteilung eine Kurve an, normalerweise eine Normalverteilung.
