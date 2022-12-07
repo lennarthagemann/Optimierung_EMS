@@ -21,7 +21,7 @@ ist um die Restriktionen zu erfüllen, muss dies ausgeglichen werden.
 das stochastische Optimierungsproblem in erweiterter Formulierung mit glpk gelöst, mit Referenzmodell im Ordner models und Szenariodateien im Ordner scenarios.  
 3. Rufe Result_pickler.py auf um die Lösungen aus der .json Datei seriell und seperat abzuspeichern.
 4. Stelle in visualize_solution das gewünschte Datum ein, Lastprofil wird generiert. 
-## Workflow Stretegie_Optimierung
+## Workflow Strategie_Optimierung
 
 1. Szenariodaten generieren durch Aufrufen von scenario_generation.py, Einstellen von Datum und Szenarien
 2. Im Ordner .\Strategie_Optimierung  wird durch Aufrufen des Befehls
