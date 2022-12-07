@@ -69,7 +69,9 @@ pars, pcov = [0 for i in range(4)], [0 for i in range(4)]
 for i, (bin, count) in enumerate(zip(bins, counts)):
     print(bin, count)
     pars[i], pcov[i]  = rayleigh_fit(np.array(bin), np.array(count))
-print(f'Die optimalen Werte lauten für die Amplitude: {pars}; Parameter der Rayleigh-Verteilung: {pars}')
+print(f'Die optimalen Werte lauten für die Amplitude: {dict(zip([3300,6600,11000,22000],[pars[i][0] for i in range(4)]))}; Parameter der Rayleigh-Verteilung: {dict(zip([3300,6600,11000,22000],[pars[i][1] for i in range(4)]))}')
+pareto_amp = dict(zip([3300,6600,11000,22000],[pars[i][0] for i in range(4)]))
+pareto_sigma = dict(zip([3300,6600,11000,22000],[pars[i][1] for i in range(4)]))
 fig, axs = plt.subplots(2, 2, figsize=(16,16))
 print(bins[0][0], bins[0][-1], pars)
 axs[0][0].plot(np.linspace(bins[0][0], bins[0][-1], 10000), rayleigh(np.linspace(bins[0][0], bins[0][-1], 10000), *pars[0]))
@@ -82,7 +84,6 @@ axs[1][1].plot(np.linspace(bins[3][0], bins[3][-1], 10000), rayleigh(np.linspace
 axs[1][1].hist(charging_session_analysis["Gesamtleistung (kWh)"][charging_session_analysis['Angenäherte Ladeleistung'] == 22000])
 plt.show()
 
-print(charging_session_analysis["Dauer"])
 # charging_session_analysis.hist(column=["Maximalleistung (W)", "Durchschnittsleistung (W)"], layout=(1,3), figsize=(16,4))									
 # plt.hist(charging_session_analysis["Dauer"], bins=[15*i for i in range(50)], color="grey", edgecolor='yellow')
 # plt.show()
@@ -109,9 +110,9 @@ Speichere die Werte ab
 -------------------------
 """
 
-# pickle_probs("C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/Auto",
-#                 data= [hourly_start_prob, prob_charging_session, probs_charging_speed, pars],
-#                 names=["Startwahrscheinlichkeit", "Tägliche_Wahrscheinlichkeit ", "Wahrscheinlichkeit_Ladeleistung", "Parameter_Pareto_Gesamtenergie"])
+pickle_probs("C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/Auto",
+                data= [hourly_start_prob, prob_charging_session, probs_charging_speed, pareto_amp, pareto_sigma],
+                names=["Startwahrscheinlichkeit", "Tägliche_Wahrscheinlichkeit ", "Wahrscheinlichkeit_Ladeleistung", "Parameter_Pareto_Amplitude", "Parameter_Pareto_Sigma"])
 
 
 # fig,axs = plt.subplots(1,1, figsize=(12,4))

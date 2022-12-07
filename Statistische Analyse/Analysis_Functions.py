@@ -38,7 +38,7 @@ def charging_session_data(df):
 	
 	-----------
 	Eingabe: Dataframe mit der Zeit und den Leistungen 
-	Ausgabe: Ein Dataframe mit den Startzeitpunkten, Endzeitpunkten, Ladezeit und durchschnittliche Ladeleistung.
+	Ausgabe: Ein Dataframe mit den Startzeitpunkten, Endzeitpunkten, Ladezeit, durchschnittliche Ladeleistung und der Gesamtenergie.
 	"""
 	index  = df.index.values
 	startindex = []
@@ -220,7 +220,7 @@ def prob_daily_event(df, col='total_energy', threshold=0):
 	p = df[col][df[col] <= threshold].count()/df[col].count()
 	return p
 
-def classify_session(df, col="Maximalleistung (W)", bins=[3300, 6600, 11000, 22000]):
+def classify_session(df, col="Durchschnittsleistung (W)", bins=[3300, 6600, 11000, 22000]):
 	"""
 	Ordne die Ladesessions einem ungefähren Ladeniveau zu, welches zu einem bestimmmten Typ passt.
 	Nutze dazu cdist von scipy (benötigt min. 2-dim Input), um das näheste Cluster zu finden.
@@ -293,7 +293,6 @@ def loading_session_division(time):
 	hours = int(time)
 	remaining_minutes = int(round((time - int(time))*(60/100),2)*100) % 15
 	minutes = int(round((time - int(time))*(60/100),2)*100) - remaining_minutes
-	print(f"Die Ladesession dauert {hours} Stunden, {minutes} Minuten (ganze 15 Minuten Schritte) und es verbleiben {remaining_minutes} Minuten im letzten Fenster. ")
 	return hours, minutes, remaining_minutes
 
 def float_to_minute(remaining_minutes, power):
