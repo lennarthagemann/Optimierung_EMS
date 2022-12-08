@@ -48,7 +48,7 @@ full_hours ,full_minutes, remaining_minutes = loading_session_division((total_en
 full_time = full_hours*60 + full_minutes
 total_start = car_start_sample + quarter_hour_sample
 full_step_stop = total_start + full_time 
-total_stop = full_step_stop+ remaining_minutes
+total_stop = full_step_stop + remaining_minutes
 rem_avg_pwr = float_to_minute(remaining_minutes, car_power_sample[0])
 
 if car_daily_sample:
@@ -64,10 +64,37 @@ else:
 print(remaining_minutes, rem_avg_pwr)
 
 """
+-------------------------------------------------------------------------
+-                               Wärmepumpe                              -
+-------------------------------------------------------------------------
+
+"""
+
+hp_path = 'C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/Wärmepumpe'
+
+with open(hp_path + "/Wärmesessions_niedrige_Last.pkl", 'rb') as f:
+    hp_low_sessions= pickle.load(f)
+
+with open(hp_path + "/Wärmesessions_mittlere_Last.pkl", 'rb') as f:
+    hp_medium_sessions = pickle.load(f)
+
+with open(hp_path + "/Wärmesessions_hohe_Last.pkl", 'rb') as f:
+    hp_high_sessions = pickle.load(f)
+
+hp_load_distr = rv_discrete(name="Distribution power class heat pump", values=([0, 1, 2], [1/3 for i in range(3)]))
+hp_index_low_distr = rv_discrete(name="Distribution low heat pump", values=([i for i in range(len(hp_))], [1/3 for i in range(3)]))
+hp_index_medium_distr = rv_discrete(name="Distribution low heat pump", values=([], [1/3 for i in range(3)]))
+hp_index_high_distr = rv_discrete(name="Distribution low heat pump", values=([], [1/3 for i in range(3)]))
+print(hp_load_distr.rvs(size=50))
+
+print(hp_low_sessions, hp_medium_sessions, hp_high_sessions)
+
+
+
+"""
 _____________________________
 Plotte das Lastprofil
 _____________________________
-
 """
 
 x_timeframe = np.arange(start=0,stop=1440,step=15)

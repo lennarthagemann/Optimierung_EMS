@@ -131,6 +131,26 @@ def hp_session_data(df):
 			max_loads.append(max_load)
 	return startindex, starttimes, endindex, endtimes, avg_loads, max_loads
 
+def classify_sessions(df_energy, col_en='total_energy', col_day='day', quants=[0.3,0.6,0.9]):
+	"""
+	Input: Dataframe mit den täglichen Energiewerten
+	Output: 3 Dataframes mit dem jeweiligen Tag für niedrigen, mittleren oder hohen Verbrauch, ermittelt über die Quantile
+	"""
+	low = df_energy[[col_en, col_day]][df_energy[col_en] <= df_energy.quantile(quants[0])[0]]
+	medium = df_energy[[col_en, col_day]][(df_energy[col_en] >= df_energy.quantile(quants[0])[0]) & (df_energy[col_en] <= df_energy.quantile(quants[1])[0])]
+	high = df_energy[[col_en, col_day]][(df_energy[col_en] >= df_energy.quantile(quants[1])[0]) & (df_energy[col_en] <= df_energy.quantile(quants[2])[0])]
+	return low, medium, high
+
+def daily_load_group(df, df_group, col_pow, col_day='day', col_time='Zeitstempel'):
+	"""
+	Lese all die Tage ein aus 'df_group', speichere für jeden Tag die tägliche Kurve aus 'df' als Numpy-Array.
+	Ausgabe: Mehrdimensinonales np-Array (Array von Arrays) mit allen aufgeschlüsselten Verbräuchen in praktischer Form.
+ 	"""
+	group_load_curves = []
+	for day in df_group[col_day].unique():
+		group_load_curves.append(df[col_pow][(df[col_time] <= dt.datetime.strptime(day,'%Y-%m-%d') + dt.timedelta(days=1) ) & (df[col_time] >= dt.datetime.strptime(day, '%Y-%m-%d'))])
+	return np.array(group_load_curves)
+
 def home_consumption_quarterhourly_division(df):
 	"""
 	Analysiere den Hausverbrauch über den gesamten Zeitverlauf in 15 Minutenschritten.
@@ -201,9 +221,9 @@ def empirical_distr_total_energy(df, col, first_day, last_day, energy_factor=0.2
 	if sort:
 		total_daily_energy = pd.DataFrame({
 			"day" : days[:-1],
-			"total_energy" : sorted([df[col][df["Zeitstempel"] < tup[1]][df["Zeitstempel"] >= tup[0]].sum()*energy_factor*0.001 for tup in day_range])
+			"total_energy" : [df[col][df["Zeitstempel"] < tup[1]][df["Zeitstempel"] >= tup[0]].sum()*energy_factor*0.001 for tup in day_range]
 			}
-		)
+		).sort_values(by=["total_energy"])
 	else:
 				total_daily_energy = pd.DataFrame({
 			"day" : days[:-1],

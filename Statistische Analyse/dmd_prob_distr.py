@@ -25,9 +25,9 @@ for col in ['Hausverbrauch (W)', 'Wärmepumpeverbrauch (W)','Ladepunktverbrauch 
 df = df.round()
 
 
-first_day = '2019-04-18'
+first_day = '2019-06-30'
 last_day = '2022-10-18'
-total_daily_energy_dmd = empirical_distr_total_energy(df, "Hausverbrauch (W)", first_day, last_day, sort=True)
+total_daily_energy_dmd = empirical_distr_total_energy(df, "Hausverbrauch (W)", first_day, last_day, sort=False)
 total_daily_energy_dmd.hist()
 total_daily_energy_dmd.plot()
 print(total_daily_energy_dmd)

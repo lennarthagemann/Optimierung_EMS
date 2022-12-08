@@ -5,7 +5,7 @@ import datetime as dt
 import sys
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import load_df
-from Analysis_Functions import  hp_session_data, Remove_Outlier_Indices, empirical_distr_total_energy
+from Analysis_Functions import  hp_session_data, Remove_Outlier_Indices, empirical_distr_total_energy, classify_sessions, daily_load_group, pickle_probs
 
 flpth = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Biblis/Leistung/Biblis_15minutes_power.csv'
 flpth_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
@@ -27,6 +27,15 @@ print(df.describe())
 first_day = '2019-04-18'
 last_day = '2022-10-18'
 total_daily_energy_hp= empirical_distr_total_energy(df, "Wärmepumpeverbrauch (W)", first_day, last_day, sort=True)
+print(total_daily_energy_hp)
+low_hp, medium_hp, high_hp = classify_sessions(total_daily_energy_hp)
+print(low_hp, medium_hp, high_hp)
+
+low_sessions = daily_load_group(df, low_hp, col_pow='Wärmepumpeverbrauch (W)')
+medium_sessions = daily_load_group(df, medium_hp, col_pow='Wärmepumpeverbrauch (W)')
+high_sessions = daily_load_group(df, high_hp, col_pow='Wärmepumpeverbrauch (W)')
+print(low_sessions, medium_sessions, high_sessions)
+
 total_daily_energy_hp.hist()
 total_daily_energy_hp.plot()
 plt.show()
@@ -39,11 +48,26 @@ plt.step(day["Zeitstempel"], day["Wärmepumpeverbrauch (W)"])
 plt.show()
 
 hps_index, hps_time, hpe_index, hpe_time, hp_avg_load, hp_max_load = hp_session_data(df[["Zeitstempel", "Wärmepumpeverbrauch (W)"]])
-hp_analysis = pd.DataFrame({"Startzeitpunkt" : hps_time,
-							"Endzeitpunkt" : hpe_time,
-							"Durchschnittsleistunng (W)" : hp_avg_load,
-							"Maximalleistung (W)" : hp_max_load})
-print(hp_analysis)
+# hp_analysis = pd.DataFrame({"Startzeitpunkt" : hps_time,
+# 							"Endzeitpunkt" : hpe_time,
+# 							"Durchschnittsleistunng (W)" : hp_avg_load,
+# 							"Maximalleistung (W)" : hp_max_load})
+# print(hp_analysis)
+
+
+
+"""
+-------------------------
+Speichere die Werte ab
+-------------------------
+"""
+
+
+
+pickle_probs("C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/Wärmepumpe",
+                data= [low_sessions, medium_sessions, high_sessions],
+                names=["Wärmesessions_niedrige_Last", "Wärmesessions_mittlere_Last", "Wärmesessions_hohe_Last"])
+
 
 # fig,axs = plt.subplots(1,1, figsize=(12,4))
 # axs.bar(np.arange(0,24), df.groupby(df['Zeitstempel'].dt.hour)['Wärmepumpeverbrauch (W)'].mean(),  label='Wärmepumpe')
