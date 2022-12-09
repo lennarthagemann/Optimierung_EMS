@@ -148,7 +148,7 @@ def daily_load_group(df, df_group, col_pow, col_day='day', col_time='Zeitstempel
  	"""
 	group_load_curves = []
 	for day in df_group[col_day].unique():
-		group_load_curves.append(df[col_pow][(df[col_time] <= dt.datetime.strptime(day,'%Y-%m-%d') + dt.timedelta(days=1) ) & (df[col_time] >= dt.datetime.strptime(day, '%Y-%m-%d'))])
+		group_load_curves.append(df[col_pow][(df[col_time] < dt.datetime.strptime(day,'%Y-%m-%d') + dt.timedelta(days=1) ) & (df[col_time] >= dt.datetime.strptime(day, '%Y-%m-%d'))])
 	return np.array(group_load_curves)
 
 def home_consumption_quarterhourly_division(df):

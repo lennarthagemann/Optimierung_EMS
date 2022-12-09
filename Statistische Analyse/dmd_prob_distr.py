@@ -1,4 +1,4 @@
-from Analysis_Functions import home_consumption_quarterhourly_division, Remove_Outlier_Indices, empirical_distr_total_energy
+from Analysis_Functions import home_consumption_quarterhourly_division, Remove_Outlier_Indices, empirical_distr_total_energy, classify_sessions, daily_load_group, pickle_probs
 import sys
 import pandas as pd
 import numpy as np
@@ -24,14 +24,18 @@ for col in ['Hausverbrauch (W)', 'Wärmepumpeverbrauch (W)','Ladepunktverbrauch 
 	df[col] = df[col][df[col] >= 0]
 df = df.round()
 
-
 first_day = '2019-06-30'
 last_day = '2022-10-18'
 total_daily_energy_dmd = empirical_distr_total_energy(df, "Hausverbrauch (W)", first_day, last_day, sort=False)
+low_dmd, medium_dmd, high_dmd = classify_sessions(total_daily_energy_dmd)
 total_daily_energy_dmd.hist()
 total_daily_energy_dmd.plot()
 print(total_daily_energy_dmd)
 
+low_dmd_days = daily_load_group(df, low_dmd, col_pow="Hausverbrauch (W)")
+medium_dmd_days = daily_load_group(df, medium_dmd, col_pow="Hausverbrauch (W)")
+high_dmd_days = daily_load_group(df, high_dmd, col_pow="Hausverbrauch (W)")
+print(low_dmd_days, medium_dmd_days, high_dmd_days)
 days = [(f'2019-05-{i + 1}', f'2019-05-{i + 2}' )for i in range(1)]
 print(days)
 
@@ -62,6 +66,10 @@ axs[2].bar(np.arange(0,24) + width/2, df.groupby(df['Zeitstempel'].dt.hour)['del
 axs[2].set_xlabel('Stunde')
 axs[2].set_title('Median')
 plt.show()
+
+pickle_probs("C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/Hausverbrauch",
+                data= [low_dmd_days, medium_dmd_days, high_dmd_days],
+                names=["Hausverbrauch_niedrige_Last", "Hausverbrauch_mittlere_Last", "Hausverbrauch_hohe_Last"])
 
 # Stundenpreise=[spot_preise_2022[spot_preise_2022["Start"]==hour]["Preis Euro/mWh"].to_numpy() for hour in spot_preise_2022['Start'].unique()]
 
