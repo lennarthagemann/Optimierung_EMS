@@ -22,12 +22,10 @@ for col in ['Hausverbrauch (W)', 'Wärmepumpeverbrauch (W)','Ladepunktverbrauch 
 	df[col] = df[col].astype(float)
 	df[col] = df[col][df[col] >= 0]
 df = df.round()
-print(df.describe())
 
 first_day = '2019-04-18'
 last_day = '2022-10-18'
 total_daily_energy_hp= empirical_distr_total_energy(df, "Wärmepumpeverbrauch (W)", first_day, last_day, sort=True)
-print(total_daily_energy_hp)
 low_hp, medium_hp, high_hp = classify_sessions(total_daily_energy_hp)
 print(low_hp, medium_hp, high_hp)
 
