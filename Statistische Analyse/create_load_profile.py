@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import bernoulli, rv_discrete, rayleigh
 import numpy as np
+
 """
 ---------------------
 Erstelle eine Wahrscheinlichkeitsverteilung für die Ladesessions eines Autos.
@@ -68,7 +69,6 @@ if car_daily_sample:
 else:
     print("Heute keine Ladesession!")
 
-print(remaining_minutes, rem_avg_pwr)
 
 """
 -------------------------------------------------------------------------
@@ -153,7 +153,7 @@ _____________________________
 x_timeframe = np.arange(start=0,stop=1440,step=15)
 y = np.array([car_daily_sample[0]*car_power_sample[0] if((i * 15 >= total_start) & (i*15 <= total_stop)) else 0 for i  in range(len(x_timeframe))])
 y[np.argmin([i if (i*15 > full_step_stop) else len(x_timeframe) for i in range(len(x_timeframe))])] += car_daily_sample[0]*rem_avg_pwr
-print(x_timeframe, y)
+print(y + y_hp + y_dmd)
 
 fig, axs = plt.subplots(figsize=(16,4))
 axs.bar(x_timeframe, y_hp, width=15, bottom=y_dmd, label='Wärmepumpenverbrauch')
