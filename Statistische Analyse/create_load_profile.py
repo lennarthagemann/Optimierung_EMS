@@ -17,6 +17,50 @@ Erstelle eine Wahrscheinlichkeitsverteilung für die Ladesessions eines Autos.
 ---------------------
 """
 
+
+"""
+-------------------------------------------------------------------------
+-                                  PV                                   -
+-------------------------------------------------------------------------
+
+"""
+
+pv_path = 'C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/PV'
+
+with open(pv_path + "/PV_niedrige_Erzeugung.pkl", 'rb') as f:
+    pv_low_sessions = pickle.load(f)
+
+with open(pv_path + "/PV_mittlere_Erzeugung.pkl", 'rb') as f:
+    pv_medium_sessions = pickle.load(f)
+
+with open(pv_path + "/PV_hohe_Erzeugung.pkl", 'rb') as f:
+    pv_high_sessions = pickle.load(f)
+
+season = 'Herbst'
+if season:
+    pv_low_sessions = pv_low_sessions[season]
+    pv_medium_sessions = pv_medium_sessions[season]
+    pv_high_sessions = pv_high_sessions[season]
+
+print(pv_low_sessions, pv_medium_sessions, pv_high_sessions)
+
+pv_load_distr = rv_discrete(name="Distribution power class heat pump", values=([0, 1, 2], [1/3 for i in range(3)]))
+pv_index_low_distr = rv_discrete(name="Distribution low heat pump", values=([i for i in range(len(pv_low_sessions))], [1/len(pv_low_sessions) for i in range(len(pv_low_sessions))]))
+pv_index_medium_distr = rv_discrete(name="Distribution low heat pump", values=([i for i in range(len(pv_medium_sessions))], [1/len(pv_medium_sessions) for i in range(len(pv_medium_sessions))]))
+pv_index_high_distr = rv_discrete(name="Distribution low heat pump", values=([i for i in range(len(pv_high_sessions))], [1/len(pv_high_sessions) for i in range(len(pv_high_sessions))]))
+pv_load_sample = pv_load_distr.rvs(size=1)
+
+if pv_load_sample == 0:
+    print("Niedrige Erzeugung von PV-Strom.")
+    pv = np.array(pv_low_sessions[pv_index_low_distr.rvs(size=1)][0])
+if pv_load_sample == 1:
+    print("Mittlere Erzeugung von PV-Strom.")
+    pv = np.array(pv_medium_sessions[pv_index_medium_distr.rvs(size=1)][0])
+if pv_load_sample == 2:
+    print("Hohe Erzeugung von PV-Strom.")
+    pv = np.array(pv_high_sessions[pv_index_high_distr.rvs(size=1)][0])
+
+
 """
 -------------------------------------------------------------------------
 -                                  Auto                                 -
@@ -159,4 +203,6 @@ fig, axs = plt.subplots(figsize=(16,4))
 axs.bar(x_timeframe, y_hp, width=15, bottom=y_dmd, label='Wärmepumpenverbrauch')
 axs.bar(x_timeframe, y, width=15, bottom=y_hp+y_dmd, label='Ladepunktverbrauch')
 axs.bar(x_timeframe, y_dmd, width=15, label='Hausverbrauch')
+axs.plot(x_timeframe, pv, label='PV-Erzeugung', color='yellow')
+axs.legend()
 plt.show()

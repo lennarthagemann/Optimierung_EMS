@@ -185,32 +185,6 @@ def time_between_charging_sessions(starttimes, length, df):
 	"""
 	return 
 
-def charging_session_probability_daily():
-	"""
-	Wie viele charging sessions kommen pro Tag vor? 
-	Gebe eine Wahrscheinlichkeitsverteilung, indem je nach Anzahl von Startpunkten eines bestimmten Tages
-	-----------
-	Ausgabe:
-	"""
-	return
-
-def charging_session_probability_hourly():
-	"""
-
-	-----------
-	Ausgabe:
-	"""
-	return
-
-
-def charging_session_probability_quarter_hourly():
-	"""
-	
-	-----------
-	Ausgabe:
-	"""
-	return
-
 def empirical_distr_total_energy(df, col, first_day, last_day, energy_factor=0.25, sort=False):
 	"""
 	Gibt die empirische Verteilung der Gesamtenergie eines Tages zurück.
