@@ -36,7 +36,7 @@ with open(pv_path + "/PV_mittlere_Erzeugung.pkl", 'rb') as f:
 with open(pv_path + "/PV_hohe_Erzeugung.pkl", 'rb') as f:
     pv_high_sessions = pickle.load(f)
 
-season = 'Herbst'
+season = 'Sommer'
 if season:
     pv_low_sessions = pv_low_sessions[season]
     pv_medium_sessions = pv_medium_sessions[season]
