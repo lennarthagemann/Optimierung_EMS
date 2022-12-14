@@ -168,4 +168,7 @@ scenarios = [(day + hours[0], day + hours[1]) for day in days]
 scenarios_15 = [(days[i] + hours[0], days[i+1]  + hours[1]) for i in range(len(days)-1)]
 print(scenarios_15)
 names = scenario_data_generator(filepath_spot,filepath_15min,scenarios_15, 15)
+print(names)
 scenario_structure_generator(names)
+
+

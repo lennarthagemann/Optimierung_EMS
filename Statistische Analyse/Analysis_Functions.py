@@ -283,18 +283,26 @@ def loading_session_division(time):
 	Teile die Ladesessions so auf, das wir wissen wie viele 15 Minuten Schritte gemacht wurden,
 	und wie groß der letzte Zeitbruchteil ist der kürzer als 15 Minuten ist
 	Input: Float mit Minuten hintern Komma (aber in Dezimaldarstallung)
+	Output: 
+	-hours: Wie viele ganze Stunden werden benötigt?
+	-minutes: Wie viele Minuten werden insgesamt geladen?
+	-remaining_minutes: Wie viele Minuten werden geladen im letzten, unvollständigem Zeitfenster?
 	"""
-	hours = int(time)
-	remaining_minutes = int(round((time - int(time))*(60/100),2)*100) % 15
-	minutes = int(round((time - int(time))*(60/100),2)*100) - remaining_minutes
+	time = np.array(time, dtype=float)
+	hours = np.array(time, dtype=int)
+	print(f'time: {time}', f'hours: {hours}')
+	minutes = np.round(time*60)
+	remaining_minutes = minutes % 15
+	minutes -= remaining_minutes
 	return hours, minutes, remaining_minutes
 
 def float_to_minute(remaining_minutes, power):
 	"""
 	Berechne die verbleibende Anzahl in Minuten und die durchschnittliche Leistung
 	im letzten Schritt (Abbrechender 15 Minuten Teil) 
+	Input: np.Array der aktiven Ladezeit im letzten 15 Minuten Fenster, Durchschnittsleistung
+	Output: np.Array der Durchschnittsleistung im vollständigen 15 Minuten Fenster
 	"""
-	assert remaining_minutes <= 15
 	remaining_avg_power = power * (remaining_minutes/15)
 	return remaining_avg_power
 
