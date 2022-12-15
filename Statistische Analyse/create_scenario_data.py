@@ -1,6 +1,7 @@
 import pickle
 import os
 import sys
+import shutil
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import dmd, prc, prc_stretched, car, hp, load_df
 from Analysis_Functions import *
@@ -15,7 +16,7 @@ import numpy as np
 -------------------------------------------------------------------------
 
 """
-scenario_count = 20 #Anzahl der Szenarien, also verschiedener Lastprofile die generiert und erstellt werden sollen.
+scenario_count = 10 #Anzahl der Szenarien, also verschiedener Lastprofile die generiert und erstellt werden sollen.
 energy_factor = 4 # =60/15, dient zur Berechnung der Energie, hängt stets von der Zeitskala ab (hier 15-minütige Schritte).
 x_timeframe = np.arange(start=0,stop=1440,step=15) #Beobachtungszeitraum ist ein 24-Stunden Fenster mit 15-minütigen Zeitschritten
 pv_path = 'C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/PV'
@@ -179,22 +180,62 @@ for i, sample in enumerate(dmd_load_sample):
         print("Hohe Auslastung im Haus.")
         y_dmd[i] = np.array(dmd_high_sessions[dmd_index_high_distr.rvs(size=scenario_count)][0])
 
+
+"""
+-------------------------------------------------------------------------
+-     Speichere die gesampelten Daten zur späteren Visualisierung       -
+-------------------------------------------------------------------------
+"""
+
+filepath_sampled_data = 'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/Samples'
+
+filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
+Startdatum = '2022-07-21 00:00'
+Enddatum = '2022-07-22 00:00'
+prc_biblis = prc(filepath_spot, Startdatum, Enddatum)
+categories = ['hp', 'dmd', 'pv', 'car', 'prc']
+if os.path.exists(filepath_sampled_data):
+    shutil.rmtree(filepath_sampled_data)
+    os.makedirs(filepath_sampled_data)
+else:
+    os.makedirs(filepath_sampled_data)
+
+for cat in categories:
+    if os.path.exists(filepath_sampled_data + f'/{cat}'):
+        shutil.rmtree(filepath_sampled_data + f'/{cat}')
+        os.makedirs(filepath_sampled_data + f'/{cat}')
+    else:
+        os.makedirs(filepath_sampled_data + f'/{cat}')    
+
+for i in range(scenario_count):
+    with open(filepath_sampled_data + f'/hp/hp_{i}', 'wb') as f:
+        pickle.dump(y_hp[i], f)
+    with open(filepath_sampled_data + f'/dmd/dmd_{i}', 'wb') as f:
+       pickle.dump(y_dmd[i], f)
+    with open(filepath_sampled_data + f'/pv/pv_{i}', 'wb') as f:
+        pickle.dump(pv[i], f)
+    with open(filepath_sampled_data + f'/car/car_{i}', 'wb') as f:
+        pickle.dump(y_car[i], f)
+with open(filepath_sampled_data + f'/prc/prc', 'wb') as f:
+    pickle.dump(prc_biblis, f)
+
 """
 -------------------------------------------------------------------------
 -           Generation der Szenariodaten und -struktur                  -
 -------------------------------------------------------------------------
 
 """
-filepath_spot = 'C:/Users/hagem/Optimierung_EMS/CSV-Dateien/Spot-Markt Preise 2022/entsoe_spot_germany_2022.csv'
+
 scenario_filepath = 'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/scenarios/'
 steps = [f't{i}' for i in range(len(x_timeframe))]
-Startdatum = '2022-07-21 00:00'
-Enddatum = '2022-07-22 00:00'
-prc_biblis = prc(filepath_spot, Startdatum, Enddatum)
+
 
 print(y_car[0], y_dmd[0], y_hp[0], prc_biblis)
 
-if not os.path.exists(scenario_filepath):
+if os.path.exists(scenario_filepath):
+    shutil.rmtree(scenario_filepath)
+    os.makedirs(scenario_filepath)
+else:
     os.makedirs(scenario_filepath)
 
 #Generiere die Szenariodaten (so viele wie durch scenario_count gewünscht sind)

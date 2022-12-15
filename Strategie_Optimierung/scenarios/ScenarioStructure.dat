@@ -10,16 +10,6 @@ Node6
 Node7 
 Node8 
 Node9 
-Node10 
-Node11 
-Node12 
-Node13 
-Node14 
-Node15 
-Node16 
-Node17 
-Node18 
-Node19 
 ; 
 param NodeStage := RootNode FirstStage 
 Node0 SecondStage 
@@ -32,16 +22,6 @@ Node6 SecondStage
 Node7 SecondStage 
 Node8 SecondStage 
 Node9 SecondStage 
-Node10 SecondStage 
-Node11 SecondStage 
-Node12 SecondStage 
-Node13 SecondStage 
-Node14 SecondStage 
-Node15 SecondStage 
-Node16 SecondStage 
-Node17 SecondStage 
-Node18 SecondStage 
-Node19 SecondStage 
 ; 
 set Children[RootNode] := Node0 
 Node1 
@@ -53,38 +33,18 @@ Node6
 Node7 
 Node8 
 Node9 
-Node10 
-Node11 
-Node12 
-Node13 
-Node14 
-Node15 
-Node16 
-Node17 
-Node18 
-Node19 
 ; 
 param ConditionalProbability := RootNode 1.0 
-Node0 0.05 
-Node1 0.04999999999999978 
-Node2 0.05 
-Node3 0.05 
-Node4 0.05 
-Node5 0.05 
-Node6 0.05 
-Node7 0.05 
-Node8 0.05 
-Node9 0.05 
-Node10 0.05 
-Node11 0.05 
-Node12 0.05 
-Node13 0.05 
-Node14 0.05 
-Node15 0.05 
-Node16 0.05 
-Node17 0.05 
-Node18 0.05 
-Node19 0.05 
+Node0 0.1 
+Node1 0.10000000000000012 
+Node2 0.1 
+Node3 0.1 
+Node4 0.1 
+Node5 0.1 
+Node6 0.1 
+Node7 0.1 
+Node8 0.1 
+Node9 0.1 
 ; 
 set Scenarios := Scenario0 
 Scenario1 
@@ -96,16 +56,6 @@ Scenario6
 Scenario7 
 Scenario8 
 Scenario9 
-Scenario10 
-Scenario11 
-Scenario12 
-Scenario13 
-Scenario14 
-Scenario15 
-Scenario16 
-Scenario17 
-Scenario18 
-Scenario19 
 ; 
 param ScenarioLeafNode := Scenario0  Node0 
 Scenario1  Node1 
@@ -117,16 +67,6 @@ Scenario6  Node6
 Scenario7  Node7 
 Scenario8  Node8 
 Scenario9  Node9 
-Scenario10  Node10 
-Scenario11  Node11 
-Scenario12  Node12 
-Scenario13  Node13 
-Scenario14  Node14 
-Scenario15  Node15 
-Scenario16  Node16 
-Scenario17  Node17 
-Scenario18  Node18 
-Scenario19  Node19 
 ; 
 set StageVariables[FirstStage] := z1[*]; 
 set StageVariables[SecondStage] := p_kauf[*] 
