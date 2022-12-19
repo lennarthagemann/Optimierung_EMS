@@ -5,10 +5,15 @@ import shutil
 sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from Preprocessing_Functions import dmd, prc, prc_stretched, car, hp, load_df
 from Analysis_Functions import *
+sys.path.append('C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/scenario_generation')
+# from scenario_generation import scenario_data_generator
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import bernoulli, rv_discrete, rayleigh
 import numpy as np
+
+
+np.random.seed(seed=23342327)
 
 """
 -------------------------------------------------------------------------
@@ -16,7 +21,7 @@ import numpy as np
 -------------------------------------------------------------------------
 
 """
-scenario_count = 10 #Anzahl der Szenarien, also verschiedener Lastprofile die generiert und erstellt werden sollen.
+scenario_count = 6 #Anzahl der Szenarien, also verschiedener Lastprofile die generiert und erstellt werden sollen.
 energy_factor = 4 # =60/15, dient zur Berechnung der Energie, hängt stets von der Zeitskala ab (hier 15-minütige Schritte).
 x_timeframe = np.arange(start=0,stop=1440,step=15) #Beobachtungszeitraum ist ein 24-Stunden Fenster mit 15-minütigen Zeitschritten
 pv_path = 'C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/PV'
@@ -30,7 +35,7 @@ with open(pv_path + "/PV_mittlere_Erzeugung.pkl", 'rb') as f:
 with open(pv_path + "/PV_hohe_Erzeugung.pkl", 'rb') as f:
     pv_high_sessions = pickle.load(f)
 
-season = 'Sommer'
+season = 'Herbst'
 if season:
     pv_low_sessions = pv_low_sessions[season]
     pv_medium_sessions = pv_medium_sessions[season]
@@ -83,7 +88,7 @@ car_daily_sample = bernoulli.rvs(car_daily_prob, size=scenario_count) #Ladet das
 car_start_distr = rv_discrete(name='Daytime Start Distribution', values=([int(el[:2]) for el in car_start_prob.keys()], list(car_start_prob.values()))) #Wann startet die Ladesession?
 car_power_distr = rv_discrete(name="Charging Power Distribution", values=([a[0] for a in car_power_prob], [a[1] for a in car_power_prob]))# Welche Ladeleistung wird genutzt (approximativ)
 quarter_hour_distr = rv_discrete(name="Quarter Hour Distribution", values=([0, 15, 30, 45], [0.25 for i in range(4)])) #Zu welcher Viertelstunde soll gestartet werden? (gleichverteilt) 
-car_power_sample = np.array(car_power_distr.rvs(size=scenario_count))  # Array der zufällig bestimmten durchschnittlichen 0Ladeleistungen
+car_power_sample = np.array(car_power_distr.rvs(size=scenario_count))  # Array der zufällig bestimmten durchschnittlichen Ladeleistungen
 car_energy_distr = rayleigh(scale=abs(car_pareto_sigma[car_power_sample[0]]))
 total_energy = car_pareto_amp[car_power_sample[0]]*np.array(car_energy_distr.rvs(size=scenario_count)) #Array der zu ladenden Gesamtenergie (abhängig von Durchschnittsladeleistung)
 car_start_sample = np.array(car_start_distr.rvs(size=scenario_count))*60 #Array der zufällig bestimmten Startzeiten

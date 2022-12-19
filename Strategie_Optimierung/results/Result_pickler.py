@@ -128,4 +128,4 @@ def result_pickler_sample(save_dest, scenario_count, method='ph'):
                     pickle.dump(list(temp_2s.values()), s) 
     return
 
-result_pickler_sample('C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/Samples', 10)
+result_pickler_sample('C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/Samples', 5)

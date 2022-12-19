@@ -113,8 +113,7 @@ def prc(filepath, Startdatum, Enddatum, round=True):
     assert isinstance(Enddatum, str)
     #assert isinstance(Zeitschritt, int)
     spot = pd.read_csv(filepath,
-                       skiprows=1,
-                       engine='python',
+                       skiprows=1, 
                        header=None,
                        sep=',"',
                        names=['Zeitraum', 'Day-ahead Preis (Eur/kWh)', 'Währung'])

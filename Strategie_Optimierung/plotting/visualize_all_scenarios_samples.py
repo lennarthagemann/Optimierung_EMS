@@ -4,7 +4,7 @@ sys.path.append('C:/Users/hagem/Optimierung_EMS')
 from plotting_functions import load_curve_plot, all_scenarios_load_curve_plot
 import datetime as dt
 
-scenario_count = 10
+scenario_count = 6
 scenarios = [i for i in range(scenario_count)]
 sol_path_fs = f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/Samples/FirstStageDecision'
 sol_path_scenario = f'C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/results/Samples'
@@ -62,6 +62,6 @@ for i, sc in enumerate(scenarios):
 
 dates_arr = [[dt.datetime(2022,12,15,0,0) + dt.timedelta(minutes=i*15) for i in range(96)] for j in range(scenario_count)]
 
-index=9
+index=5
 load_curve_plot(dates_arr[index], prcspot, pv_arr[index], dmd_arr[index], car_arr[index], hp_arr[index], p_kauf_arr[index], p_bat_Nutz_arr[index], p_bat_Lade_arr[index])
-all_scenarios_load_curve_plot(2, 2, dates_arr, prcspot, pv_arr, dmd_arr, car_arr, hp_arr, p_kauf_arr, p_bat_Nutz_arr, p_bat_Lade_arr)
+all_scenarios_load_curve_plot(3, 3, dates_arr, prcspot, pv_arr, dmd_arr, car_arr, hp_arr, p_kauf_arr, p_bat_Nutz_arr, p_bat_Lade_arr)

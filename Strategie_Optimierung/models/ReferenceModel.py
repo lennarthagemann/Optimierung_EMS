@@ -121,7 +121,8 @@ def ObjCostsFirstStage(m):
 model.FirstStageCost = pe.Expression(rule=ObjCostsFirstStage)
 
 def ObjCostsSecondStage(m):
-    return sum(0.8*m.p_einsp[t]*m.price[t]-m.p_kauf[t]*m.price[t] for t in m.steps) + m.bat[m.steps.last()]*(sum(m.price[t] for t in m.steps))/m.steps.__len__() 
+    return sum(0.8*m.p_einsp[t]*m.price[t]-m.p_kauf[t]*m.price[t] for t in m.steps)  \
+    + m.bat[m.steps.last()]*(sum(m.price[t] for t in m.steps))/m.steps.__len__() 
 model.SecondStageCost=pe.Expression(rule=ObjCostsSecondStage)
 
 def TotalEarningsRule(m):
