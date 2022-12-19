@@ -32,3 +32,17 @@ das stochastische Optimierungsproblem mit Progressive Hedging mit glpk gelöst, 
 3. Rufe Result_pickler.py auf um die Lösungen aus der .json Datei seriell und seperat abzuspeichern.
 4. Stelle in visualize_solution mit all_scenarios_load_curve_plot die Lastprofile für alle Szenarien dar.
 
+## Workflow Stochastische Optimierung mit Sampling aus statistischen Lastprofilen
+
+Durch eine Mischung von Cross-sampling und statistischer Analyse lassen sich künstliche Lastprofile erstellen.
+
+
+1. künstliche Lastprofile, Anzahl Szenarien und Szenariodaten generieren durch Aufrufen von create_scenario_data.py in .\Statistische Analyse
+2. Im Ordner .\Strategie_Optimierung  wird durch Aufrufen des Befehls
+```
+runph -m models -i scenarios -r 100 --solver=glpk --max-iterations=20 --linearize-nonbinary-penalty-terms=4  --solution-writer=pyomo.pysp.plugins.jsonsolutionwriter  --enable-ww-extensions --ww-extension-cfgfile=config/wwph.cfg
+```
+das stochastische Optimierungsproblem mit Progressive Hedging mit glpk gelöst, mit Referenzmodell im Ordner models und Szenariodateien im Ordner scenarios.  
+3. Rufe Result_pickler.py auf um mit result_pickler_sample() die Lösungen aus der .json Datei seriell und seperat abzuspeichern.
+4. Stelle in visualize_all_scenarios_samples.py mit all_scenarios_load_curve_plot die Lastprofile für alle Szenarien dar.
+
