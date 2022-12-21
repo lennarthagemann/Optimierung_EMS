@@ -1,0 +1,24 @@
+Unter dem folgenden Link ist eine Anleitung zur Installation aller notwendiger Komponenten gegeben:
+
+https://practicaleconomics.org/installing-python-anaconda-pyomo-and-glpk-the-only-economic-modelling-software-youll-ever-need/
+
+
+
+Dabei müssen die folgenden Versionen installiert werden, um die stochastische Optimierungsbibliothek PySP von Pyomo zu nutzen, da diese
+nur bis zu einer bestimmten Version unterstützt wurde. (Es gibt mittlerweile den Ersatz mpisppy unter der Nutzung mpi4py, welcher auch deutlich schneller
+ist als PySP durchAusnutzen von Parallelität, in Zukunft kann dafür der Code angepasst werden)
+
+Python=3.6.13
+pyomo=5.7.3
+pandas = 1.1.5
+numpy = 1.19.2
+matplotlib = 3.3.4
+scipty = 1.5.2
+
+Zusammenfassend für Python, Pyomo : 
+1. Installiere die aktuellste Version von Anaconda
+2. Erstelle ein venv mit der richtigen PythonVersion, z.B. conda create -n PyomoPySP python=3.6.13
+3. Aktiviere die Umgebung mit conda activate PyomoPySP
+4. Installiere die ältere Version von Pyomo mit conda install -c conda-forge pyomo=5.7.3
+
+Folge der Anleitung oben für die Installation von glpk, es würden sich aber auch andere Solver anbieten wie z.B. cplex oder ipopt.
