@@ -1,6 +1,6 @@
 import pyomo.environ as pe
 import sys
-sys.path.append('C:/Users/hagem/Optimierung_EMS')
+sys.path.append('C:/Users/Lenni/VSCode_Projekte/Optimierung_EMS')
 from Preprocessing_Functions import dmd, prc, prc_stretched, pv, car
 import pandas as pd
 import numpy as np

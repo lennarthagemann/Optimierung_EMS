@@ -2,10 +2,10 @@ import pickle
 import os
 import sys
 import shutil
-sys.path.append('C:/Users/hagem/Optimierung_EMS')
+sys.path.append('C:/Users/Lenni/VSCode_Projekte/Optimierung_EMS')
 from Preprocessing_Functions import dmd, prc, prc_stretched, car, hp, load_df
 from Analysis_Functions import *
-sys.path.append('C:/Users/hagem/Optimierung_EMS/Strategie_Optimierung/scenario_generation')
+sys.path.append('C:/Users/Lenni/VSCode_Projekte/Optimierung_EMS/Strategie_Optimierung/scenario_generation')
 # from scenario_generation import scenario_data_generator
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -21,7 +21,7 @@ np.random.seed(seed=23342327)
 -------------------------------------------------------------------------
 
 """
-scenario_count = 6 #Anzahl der Szenarien, also verschiedener Lastprofile die generiert und erstellt werden sollen.
+scenario_count = 50 #Anzahl der Szenarien, also verschiedener Lastprofile die generiert und erstellt werden sollen.
 energy_factor = 4 # =60/15, dient zur Berechnung der Energie, hängt stets von der Zeitskala ab (hier 15-minütige Schritte).
 x_timeframe = np.arange(start=0,stop=1440,step=15) #Beobachtungszeitraum ist ein 24-Stunden Fenster mit 15-minütigen Zeitschritten
 pv_path = 'C:/Users/hagem/Optimierung_EMS/Statistische Analyse/Ergebnisse/Biblis/PV'
